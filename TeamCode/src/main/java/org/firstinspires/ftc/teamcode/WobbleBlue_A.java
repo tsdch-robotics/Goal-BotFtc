@@ -36,36 +36,36 @@ public class WobbleBlue_A extends LinearOpMode {
         //FrontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         //FrontRightMotor.setDirection(DcMotor.Direction.REVERSE);
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        DriveRobot(3935, .5,.5,0);//move forward 80.75 in
+        DriveRobot(3935, .5,.5,.5, .5, 0);//move forward 80.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(650,0,0,-1);//move the arm down to horizontal
+        DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
         sleep(250);//wait for 1 sec
-        DriveRobot(260, .5,.5,0);//move forward 5 in
+        DriveRobot(260, .5,.5,.5, .5, 0);//move forward 5 in
         sleep(250);//wait for 1 sec
-        DriveRobot(650,0,0,1);//move the arm up to vertical
+        DriveRobot(650, 0, 0,0,0, 1);//move the arm up to vertical
         sleep(250);//wait for 1 sec
-        DriveRobot(2900, 0.5, -0.5, 0);//turn back
+        DriveRobot(2900, 0.5, .5,-.5,-0.5, 0);//turn back
         sleep(250);//wait for 1 sec
-        DriveRobot(4195, .5,.5,0);//move forward 80.75 in
+        DriveRobot(4195, .5, .5,.5,.5, 0);//move forward 80.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(650,0,0,-1);//move the arm down to horizontal
+        DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
         sleep(250);//wait for 1 sec
-        DriveRobot(520, -.5,-.5,0);//move backwards 10 in
+        DriveRobot(520, -.5, -.5,-.5,-.5, 0);//move backwards 10 in
         sleep(250);//wait for 1 sec
-        DriveRobot(650,0,0,1);//move the arm up to vertical
+        DriveRobot(650, 0, 0,0,0, 1);//move the arm up to vertical
         sleep(250);//wait for 1 esc
-        DriveRobot(3935, -.5,-.5,0);//move backward 80.75 in
+        DriveRobot(3935, -.5,-.5,-.5, -.5, 0);//move backward 80.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(2900, -0.5, 0.5, 0);//turn back
+        DriveRobot(2900, -.5,-.5,.5, .5, 0);//turn back
         sleep(250);//wait for 1 sec
-        DriveRobot(650,0,0,-1);//move the arm down to horizontal
+        DriveRobot(650, 0, 0,0,0, -1);//move the arm down to horizontal
         sleep(250);//wait for 1 sec
-        DriveRobot(260, .5,.5,0);//move forward 5 in
-        DriveRobot(650,0,0,1);//move the arm up to vertical
+        DriveRobot(260, .5, .5,.5,.5, 0);//move forward 5 in
+        DriveRobot(650, 0,0,0, 0, 1);//move the arm up to vertical
     }
 
 
-    private void DriveRobot(int milliseconds, double LeftPower, double RightPower, double ArmPower) {
+    private void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower) {
         telemetry.addData("Mode", "waiting");
         telemetry.update();
 
@@ -78,10 +78,10 @@ public class WobbleBlue_A extends LinearOpMode {
 
         // set both motors to x power.
 
-        FrontLeftMotor.setPower(LeftPower);
-        FrontRightMotor.setPower(RightPower);
-        BackLeftMotor.setPower(LeftPower);
-        BackRightMotor.setPower(RightPower);
+        FrontLeftMotor.setPower(LeftFrontPower);
+        FrontRightMotor.setPower(RightFrontPower);
+        BackLeftMotor.setPower(LeftBackPower);
+        BackRightMotor.setPower(RightBackPower);
         ArmMotor.setPower(ArmPower);
 
 

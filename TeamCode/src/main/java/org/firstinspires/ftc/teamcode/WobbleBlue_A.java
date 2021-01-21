@@ -33,8 +33,6 @@ public class WobbleBlue_A extends LinearOpMode {
         BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
         BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
-        //FrontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        //FrontRightMotor.setDirection(DcMotor.Direction.REVERSE);
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(3935, .5,.5,.5, .5, 0);//move forward 80.75 in
         sleep(250);//wait for 1 sec

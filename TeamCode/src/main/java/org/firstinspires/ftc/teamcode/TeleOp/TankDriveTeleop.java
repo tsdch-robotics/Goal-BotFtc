@@ -33,13 +33,11 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.firstinspires.ftc.teamcode.TeleOp;
 
-import android.renderscript.ScriptGroup;
-
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.ChampBot;
+import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
 
 
 @TeleOp(name="Tank Drive", group="ChampBot")

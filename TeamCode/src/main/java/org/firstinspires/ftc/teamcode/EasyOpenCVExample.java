@@ -189,8 +189,9 @@ public class EasyOpenCVExample extends LinearOpMode {
         {
             return avg1;
         }
-
     }
+
+
     public void A_Zone(){
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");

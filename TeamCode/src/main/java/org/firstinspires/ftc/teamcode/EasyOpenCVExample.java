@@ -186,15 +186,13 @@ public class EasyOpenCVExample<position> extends LinearOpMode {
         }
     }
     public void Targetzones() {
+        FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
+        FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
+        BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
+        BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
+        ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
+        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         if (call == 0) {
-            FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
-            FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
-            BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
-            BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
-            ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
-            //FrontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-            //FrontRightMotor.setDirection(DcMotor.Direction.REVERSE);
-            BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
             DriveRobot(3935, .5,.5,.5, .5, 0);//move forward 80.75 in
             sleep(250);//wait for 1 sec
             DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
@@ -223,14 +221,6 @@ public class EasyOpenCVExample<position> extends LinearOpMode {
             DriveRobot(650, 0,0,0, 0, 1);//move the arm up to vertical
         }
         if (call == 1) {
-            FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
-            FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
-            BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
-            BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
-            ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
-            //FrontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-            //FrontRightMotor.setDirection(DcMotor.Direction.REVERSE);
-            BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
             DriveRobot(1182, .5,.5,.5, .5, 0);//move forward 22.75 in
             sleep(250);//wait for 1 sec
             DriveRobot(1350, 0.5,.5,-.5, -0.5, 0);//turn right

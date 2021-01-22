@@ -40,12 +40,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 @Autonomous
 public class WobbleBlue extends LinearOpMode {
-    private static DcMotor FrontLeftMotor;
-    private static DcMotor FrontRightMotor;
-    private static DcMotor BackLeftMotor;
-    private static DcMotor BackRightMotor;
-    private static DcMotor ArmMotor;
-    private static HardwareMap hardwareMap;
+    DcMotor FrontLeftMotor;
+    DcMotor FrontRightMotor;
+    DcMotor BackLeftMotor;
+    DcMotor BackRightMotor;
+    DcMotor ArmMotor;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
@@ -185,6 +184,9 @@ public class WobbleBlue extends LinearOpMode {
             return avg1;
         }
     }
+}
+/*
+
     public void Targetzones() {
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
@@ -313,5 +315,4 @@ public class WobbleBlue extends LinearOpMode {
         BackLeftMotor.setPower(0);
         BackRightMotor.setPower(0);
         ArmMotor.setPower(0);
-    }
-}
+*/

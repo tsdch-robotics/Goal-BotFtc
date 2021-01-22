@@ -87,18 +87,18 @@ public class TankDriveTeleop extends OpMode {
         }
         if (gamepad1.y) {
             robot.WheelMotor.setPower(1);
-            robot.IntakeMotor.setPower(1);
+            //robot.IntakeMotor.setPower(1);
         } else {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
-            robot.IntakeMotor.setPower(0);
+            //robot.IntakeMotor.setPower(0);
         }
         if (gamepad1.left_bumper) {
             robot.WheelMotor.setPower(-1);
-            robot.IntakeMotor.setPower(-1);
+            //robot.IntakeMotor.setPower(-1);
         } else {
             robot.WheelMotor.setPower(0);
-            robot.IntakeMotor.setPower(0);
+            //robot.IntakeMotor.setPower(0);
         }
         if (gamepad1.dpad_up) {
             robot.ArmMotor.setPower(1);

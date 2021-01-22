@@ -28,7 +28,7 @@ public class ChampBot {
     //the intake motor
     public DcMotor WheelMotor;
     public DcMotor ArmMotor;
-    public DcMotor IntakeMotor;
+    //public DcMotor IntakeMotor;
     //public DcMotor LauncherMotor;
     /*
     public DcMotor Arm;
@@ -63,7 +63,7 @@ public class ChampBot {
         //initialize intake motor
         WheelMotor = hwMap.dcMotor.get("WheelMotor");
         ArmMotor = hwMap.dcMotor.get("ArmMotor");
-        IntakeMotor = hwMap.dcMotor.get("IntakeMotor");
+        //IntakeMotor = hwMap.dcMotor.get("IntakeMotor");
         //LauncherMotor = hwMap.dcMotor.get("LauncherMotor");
 
         // reverse one side of the drivetrain so that directions are more natural

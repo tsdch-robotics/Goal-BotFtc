@@ -40,12 +40,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 @Autonomous
 public class WobbleBlue extends LinearOpMode {
-    private static DcMotor FrontLeftMotor;
-    private static DcMotor FrontRightMotor;
-    private static DcMotor BackLeftMotor;
-    private static DcMotor BackRightMotor;
-    private static DcMotor ArmMotor;
-    private static HardwareMap hardwareMap;
+    DcMotor FrontLeftMotor;
+     DcMotor FrontRightMotor;
+    DcMotor BackLeftMotor;
+     DcMotor BackRightMotor;
+     DcMotor ArmMotor;
+     HardwareMap hardwareMap;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
@@ -84,7 +84,6 @@ public class WobbleBlue extends LinearOpMode {
             sleep(50);
         }
     }
-
     public static class SkystoneDeterminationPipeline extends OpenCvPipeline {
         /*
          * An enum to define the skystone position
@@ -98,14 +97,13 @@ public class WobbleBlue extends LinearOpMode {
         /*
          * Some color constants
          */
-        static final Scalar BLUE = new Scalar(0, 0, 255);
-        static final Scalar GREEN = new Scalar(0, 255, 0);
+        final Scalar BLUE = new Scalar(0, 0, 255);
+        final Scalar GREEN = new Scalar(0, 255, 0);
 
         /*
          * The core values which define the location and size of the sample regions
          */
         static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(181, 98);
-
         static final int REGION_WIDTH = 35;
         static final int REGION_HEIGHT = 25;
 
@@ -168,8 +166,7 @@ public class WobbleBlue extends LinearOpMode {
                 call = 1;
             } else {
                 position = RingPosition.NONE;
-                call = 0;
-            }
+                call=0
 
             Imgproc.rectangle(
                     input, // Buffer to draw on

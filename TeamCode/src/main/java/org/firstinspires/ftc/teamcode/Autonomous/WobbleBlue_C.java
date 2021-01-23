@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous(name="Wobble_Blue_C", group="ChampBot")
 //@Disabled
-public class WobbleBlue_C extends LinearOpMode {
+public class  WobbleBlue_C extends LinearOpMode {
     DcMotor FrontLeftMotor;
     DcMotor FrontRightMotor;
     DcMotor BackLeftMotor;
@@ -33,7 +33,7 @@ public class WobbleBlue_C extends LinearOpMode {
         BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        DriveRobot(571, -1,1,1,-1,0);//strafe left 11 in
+        DriveRobot(571, -.5,.5,.5,-.5,0);//strafe left 11 in
         sleep(250);
         DriveRobot(6117, .5,.5,.5,.5,0);//move forward 117.75 in
         sleep(250);
@@ -41,13 +41,13 @@ public class WobbleBlue_C extends LinearOpMode {
         sleep(250);
         DriveRobot(260, .5,.5,.5,.5,0);//move forward 5 in
         sleep(250);
-        DriveRobot(1753, 1,-1,-1,1,0);//strafe right 33.75 in
+        DriveRobot(1753, .5,-.5,-.5,.5,0);//strafe right 33.75 in
         sleep(250);
         DriveRobot(6117, -.5,-.5,-.5,-.5,0);//move backward 117.75 in
         sleep(250);
         DriveRobot(650,0,0,0,0,1);//move the arm up to vertical
         sleep(250);
-        DriveRobot(1753, -1,1,1,-1,0);//strafe left 33.75 in
+        DriveRobot(1753, -.5,.5,.5,-.5,0);//strafe left 33.75 in
         sleep(250);
         DriveRobot(6117, .5,.5,.5,.5,0);//move forward 117.75 in
         sleep(250);

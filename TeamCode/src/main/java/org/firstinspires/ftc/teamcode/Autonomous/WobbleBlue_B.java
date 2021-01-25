@@ -35,18 +35,20 @@ public class WobbleBlue_B extends LinearOpMode {
         BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
         BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
+        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
+        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        DriveRobot(1182, .5,.5,.5, .5, 0);//move forward 22.75 in
+        DriveRobot(1182, .5,.5,.5, .5, 0,-1,-1);//move forward 22.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(1350, 0.5,.5,-.5, -0.5, 0);//turn right
+        DriveRobot(1350, 0.5,.5,-.5, -0.5, 0,0,0);//turn right
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1182, .5,.5,.5, .5, 0);//move forward 22.75 in
+        DriveRobot(1182, .5,.5,.5, .5, 0,0,0);//move forward 22.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(1350, -0.5,-.5,.5, 0.5, 0);//turn left
+        DriveRobot(1350, -0.5,-.5,.5, 0.5, 0,0,0);//turn left
         sleep(250);//wait for 0.25 sec
-        DriveRobot(3935, .5, .5,.5,.5, 0);//move forward 80.75 in
+        DriveRobot(3935, .5, .5,.5,.5, 0,0,0);//move forward 80.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
+        DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
         DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
         sleep(250);//wait for 1 sec

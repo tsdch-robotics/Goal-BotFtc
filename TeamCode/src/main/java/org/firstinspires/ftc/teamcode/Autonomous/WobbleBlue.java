@@ -40,11 +40,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous
 public abstract class WobbleBlue extends LinearOpMode {
     DcMotor FrontLeftMotor;
-     DcMotor FrontRightMotor;
+    DcMotor FrontRightMotor;
     DcMotor BackLeftMotor;
-     DcMotor BackRightMotor;
-     DcMotor ArmMotor;
-     HardwareMap hardwareMap;
+    DcMotor BackRightMotor;
+    DcMotor ArmMotor;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
@@ -83,6 +82,7 @@ public abstract class WobbleBlue extends LinearOpMode {
             sleep(50);
         }
     }
+
     public static class SkystoneDeterminationPipeline extends OpenCvPipeline {
         /*
          * An enum to define the skystone position
@@ -96,13 +96,14 @@ public abstract class WobbleBlue extends LinearOpMode {
         /*
          * Some color constants
          */
-        final Scalar BLUE = new Scalar(0, 0, 255);
-        final Scalar GREEN = new Scalar(0, 255, 0);
+        static final Scalar BLUE = new Scalar(0, 0, 255);
+        static final Scalar GREEN = new Scalar(0, 255, 0);
 
         /*
          * The core values which define the location and size of the sample regions
          */
         static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(181, 98);
+
         static final int REGION_WIDTH = 35;
         static final int REGION_HEIGHT = 25;
 
@@ -165,7 +166,8 @@ public abstract class WobbleBlue extends LinearOpMode {
                 call = 1;
             } else {
                 position = RingPosition.NONE;
-                call=0
+                call = 0;
+            }
 
             Imgproc.rectangle(
                     input, // Buffer to draw on
@@ -181,11 +183,7 @@ public abstract class WobbleBlue extends LinearOpMode {
             return avg1;
         }
     }
-<<<<<<< HEAD
-    
 
-=======
->>>>>>> 33592a828fff5f04fedd3ac6f738e09212b212c9
     public void Targetzones() {
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
@@ -194,97 +192,98 @@ public abstract class WobbleBlue extends LinearOpMode {
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         if (call == 0) {
-            DriveRobot(3935, .5,.5,.5, .5, 0);//move forward 80.75 in
+            DriveRobot(3935, .5, .5, .5, .5, 0);//move forward 80.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
+            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);//wait for 1 sec
-            DriveRobot(260, .5,.5,.5, .5, 0);//move forward 5 in
+            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0,0,0, 1);//move the arm up to vertical
+            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
             sleep(250);//wait for 1 sec
-            DriveRobot(2900, 0.5, .5,-.5,-0.5, 0);//turn back
+            DriveRobot(2900, 0.5, .5, -.5, -0.5, 0);//turn back
             sleep(250);//wait for 1 sec
-            DriveRobot(4195, .5, .5,.5,.5, 0);//move forward 80.75 in
+            DriveRobot(4195, .5, .5, .5, .5, 0);//move forward 80.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
+            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);//wait for 1 sec
-            DriveRobot(520, -.5, -.5,-.5,-.5, 0);//move backwards 10 in
+            DriveRobot(520, -.5, -.5, -.5, -.5, 0);//move backwards 10 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0,0,0, 1);//move the arm up to vertical
+            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
             sleep(250);//wait for 1 esc
-            DriveRobot(3935, -.5,-.5,-.5, -.5, 0);//move backward 80.75 in
+            DriveRobot(3935, -.5, -.5, -.5, -.5, 0);//move backward 80.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(2900, -.5,-.5,.5, .5, 0);//turn back
+            DriveRobot(2900, -.5, -.5, .5, .5, 0);//turn back
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0,0,0, -1);//move the arm down to horizontal
+            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);//wait for 1 sec
-            DriveRobot(260, .5, .5,.5,.5, 0);//move forward 5 in
-            DriveRobot(650, 0,0,0, 0, 1);//move the arm up to vertical
+            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
+            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
         }
         if (call == 1) {
-            DriveRobot(1182, .5,.5,.5, .5, 0);//move forward 22.75 in
+            DriveRobot(1182, .5, .5, .5, .5, 0);//move forward 22.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(1350, 0.5,.5,-.5, -0.5, 0);//turn right
+            DriveRobot(1350, 0.5, .5, -.5, -0.5, 0);//turn right
             sleep(250);//wait for 0.25 sec
-            DriveRobot(1182, .5,.5,.5, .5, 0);//move forward 22.75 in
+            DriveRobot(1182, .5, .5, .5, .5, 0);//move forward 22.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(1350, -0.5,-.5,.5, 0.5, 0);//turn left
+            DriveRobot(1350, -0.5, -.5, .5, 0.5, 0);//turn left
             sleep(250);//wait for 0.25 sec
-            DriveRobot(3935, .5, .5,.5,.5, 0);//move forward 80.75 in
+            DriveRobot(3935, .5, .5, .5, .5, 0);//move forward 80.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
+            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);//wait for 0.25 sec
-            DriveRobot(260, .5,.5,.5, .5, 0);//move forward 5 in
+            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0,0,0, 0, 1);//move the arm up to vertical
+            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
             sleep(250);//wait for 0.25 sec
-            DriveRobot(1182, -.5,-.5,-.5, -.5, 0);//move backwards 22.75 in
+            DriveRobot(1182, -.5, -.5, -.5, -.5, 0);//move backwards 22.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(600, 0,0,0, 0, -1);//move the arm down to horizontal
+            DriveRobot(600, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);//wait for 0.25 sec
-            DriveRobot(3935, -.5,-.5,-.5, -.5, 0);//move backwards 80.75 in
+            DriveRobot(3935, -.5, -.5, -.5, -.5, 0);//move backwards 80.75 in
             sleep(250);//wait for 1 sec
-            DriveRobot(600, 0,0,0, 0, 1);//move the arm up to vertical
+            DriveRobot(600, 0, 0, 0, 0, 1);//move the arm up to vertical
             sleep(250);//wait for 0.25 sec
-            DriveRobot(5195, .5,.5,.5, .5, 0);//move forward 100 in
+            DriveRobot(5195, .5, .5, .5, .5, 0);//move forward 100 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0,0,0, 0, -1);//move the arm down to horizontal
+            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);//wait for 0.25 sec
-            DriveRobot(260, .5,.5,.5,.5, 0);//move forward 5 in
+            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
             sleep(250);//wait for 1 sec
-            DriveRobot(650, 0,0,0,0, 1);//move the arm up to vertical
+            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
             sleep(250);//wait for 0.25 sec
-            DriveRobot(1182, -.5, -.5,-.5,-.5, 0);//move backwards 22.75 in
+            DriveRobot(1182, -.5, -.5, -.5, -.5, 0);//move backwards 22.75 in
             sleep(250);//wait for 1 sec
         }
         if (call == 4) {
-            DriveRobot(571, -1,1,1,-1,0);//strafe left 11 in
+            DriveRobot(571, -1, 1, 1, -1, 0);//strafe left 11 in
             sleep(250);
-            DriveRobot(6117, .5,.5,.5,.5,0);//move forward 117.75 in
+            DriveRobot(6117, .5, .5, .5, .5, 0);//move forward 117.75 in
             sleep(250);
-            DriveRobot(650,0,0,0,0,-1);//move the arm down to horizontal
+            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);
-            DriveRobot(260, .5,.5,.5,.5,0);//move forward 5 in
+            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
             sleep(250);
-            DriveRobot(1753, 1,-1,-1,1,0);//strafe right 33.75 in
+            DriveRobot(1753, 1, -1, -1, 1, 0);//strafe right 33.75 in
             sleep(250);
-            DriveRobot(6117, -.5,-.5,-.5,-.5,0);//move backward 117.75 in
+            DriveRobot(6117, -.5, -.5, -.5, -.5, 0);//move backward 117.75 in
             sleep(250);
-            DriveRobot(650,0,0,0,0,1);//move the arm up to vertical
+            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
             sleep(250);
-            DriveRobot(1753, -1,1,1,-1,0);//strafe left 33.75 in
+            DriveRobot(1753, -1, 1, 1, -1, 0);//strafe left 33.75 in
             sleep(250);
-            DriveRobot(6117, .5,.5,.5,.5,0);//move forward 117.75 in
+            DriveRobot(6117, .5, .5, .5, .5, 0);//move forward 117.75 in
             sleep(250);
-            DriveRobot(650,0,0,0,0,-1);//move the arm down to horizontal
+            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
             sleep(250);
-            DriveRobot(260, .5,.5,.5,.5,0);//move forward 5 in
+            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
             sleep(250);
-            DriveRobot(650,0,0,0,0,1);//move the arm up to vertical
+            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
             sleep(250);
-            DriveRobot(1558, -.5,-.5,-.5,-.5, 0);//move backward 30 in
+            DriveRobot(1558, -.5, -.5, -.5, -.5, 0);//move backward 30 in
         }
     }
+
     private void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower) {
         telemetry.addData("Mode", "waiting");
         telemetry.update();
@@ -314,8 +313,5 @@ public abstract class WobbleBlue extends LinearOpMode {
         BackLeftMotor.setPower(0);
         BackRightMotor.setPower(0);
         ArmMotor.setPower(0);
-<<<<<<< HEAD
-=======
     }
 }
->>>>>>> 33592a828fff5f04fedd3ac6f738e09212b212c9

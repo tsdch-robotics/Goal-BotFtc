@@ -36,10 +36,9 @@ import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvPipeline;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 @Autonomous
-public class WobbleBlue extends LinearOpMode {
+public abstract class WobbleBlue extends LinearOpMode {
     DcMotor FrontLeftMotor;
     DcMotor FrontRightMotor;
     DcMotor BackLeftMotor;
@@ -184,8 +183,7 @@ public class WobbleBlue extends LinearOpMode {
             return avg1;
         }
     }
-}
-/*
+    
 
     public void Targetzones() {
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
@@ -315,4 +313,3 @@ public class WobbleBlue extends LinearOpMode {
         BackLeftMotor.setPower(0);
         BackRightMotor.setPower(0);
         ArmMotor.setPower(0);
-*/

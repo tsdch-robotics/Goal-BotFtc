@@ -34,6 +34,8 @@ public class WobbleBlue_C extends LinearOpMode {
         BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
         BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
+        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
+        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(571, -1,1,1,-1,0,0,0);//strafe left 11 in
         sleep(250);

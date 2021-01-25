@@ -161,6 +161,8 @@ public abstract class WobbleBlue extends LinearOpMode {
             if (avg1 > FOUR_RING_THRESHOLD) {
                 position = RingPosition.FOUR;
                 call = 4;
+                WobbleBlue_A wobbleBlue_a = new WobbleBlue_A();
+                WobbleBlue_A.WobbleBlue_A();
             } else if (avg1 > ONE_RING_THRESHOLD) {
                 position = RingPosition.ONE;
                 call = 1;

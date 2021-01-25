@@ -40,10 +40,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous
 public abstract class WobbleBlue extends LinearOpMode {
     DcMotor FrontLeftMotor;
-    DcMotor FrontRightMotor;
+     DcMotor FrontRightMotor;
     DcMotor BackLeftMotor;
-    DcMotor BackRightMotor;
-    DcMotor ArmMotor;
+     DcMotor BackRightMotor;
+     DcMotor ArmMotor;
+     HardwareMap hardwareMap;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
@@ -82,7 +83,6 @@ public abstract class WobbleBlue extends LinearOpMode {
             sleep(50);
         }
     }
-
     public static class SkystoneDeterminationPipeline extends OpenCvPipeline {
         /*
          * An enum to define the skystone position
@@ -96,14 +96,13 @@ public abstract class WobbleBlue extends LinearOpMode {
         /*
          * Some color constants
          */
-        static final Scalar BLUE = new Scalar(0, 0, 255);
-        static final Scalar GREEN = new Scalar(0, 255, 0);
+        final Scalar BLUE = new Scalar(0, 0, 255);
+        final Scalar GREEN = new Scalar(0, 255, 0);
 
         /*
          * The core values which define the location and size of the sample regions
          */
         static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(181, 98);
-
         static final int REGION_WIDTH = 35;
         static final int REGION_HEIGHT = 25;
 
@@ -166,8 +165,7 @@ public abstract class WobbleBlue extends LinearOpMode {
                 call = 1;
             } else {
                 position = RingPosition.NONE;
-                call = 0;
-            }
+                call=0
 
             Imgproc.rectangle(
                     input, // Buffer to draw on
@@ -183,8 +181,11 @@ public abstract class WobbleBlue extends LinearOpMode {
             return avg1;
         }
     }
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 33592a828fff5f04fedd3ac6f738e09212b212c9
     public void Targetzones() {
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
@@ -313,3 +314,8 @@ public abstract class WobbleBlue extends LinearOpMode {
         BackLeftMotor.setPower(0);
         BackRightMotor.setPower(0);
         ArmMotor.setPower(0);
+<<<<<<< HEAD
+=======
+    }
+}
+>>>>>>> 33592a828fff5f04fedd3ac6f738e09212b212c9

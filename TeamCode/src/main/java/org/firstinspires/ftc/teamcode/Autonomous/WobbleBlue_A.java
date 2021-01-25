@@ -4,6 +4,7 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 // below is the Annotation that registers this OpMode with the FtcRobotController app.
 // @Autonomous classifies the OpMode as autonomous, name is the OpMode title and the
@@ -13,23 +14,19 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous(name="Wobble_Blue_A", group="ChampBot")
 //@Disabled
 public class WobbleBlue_A extends LinearOpMode {
-    DcMotor FrontLeftMotor;
-    DcMotor FrontRightMotor;
-    DcMotor BackLeftMotor;
-    DcMotor BackRightMotor;
-    DcMotor ArmMotor;
-    DcMotor WheelMotor;
-    DcMotor LauncherMotor;
+    static DcMotor FrontLeftMotor;
+    static DcMotor FrontRightMotor;
+    static DcMotor BackLeftMotor;
+    static DcMotor BackRightMotor;
+    static DcMotor ArmMotor;
+    static DcMotor WheelMotor;
+    static DcMotor LauncherMotor;
+    private static HardwareMap hardwareMap;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
 
-
-
-    // called when init button is  pressed.
-
-    @Override
-    public void runOpMode() throws InterruptedException {
+    public static void WobbleBlue_A() {
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
         BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
@@ -39,44 +36,47 @@ public class WobbleBlue_A extends LinearOpMode {
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(3935, .5,.5,.5, .5, 0,-1,-1);//move forward 80.75 in
-        sleep(250);//wait for 1 sec
+        //sleep(250);//wait for 1 sec
         DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
-        sleep(250);//wait for 1 sec
+        //sleep(250);//wait for 1 sec
         DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
-        sleep(250);//wait for 1 sec
+        //sleep(250);//wait for 1 sec
         DriveRobot(650, 0, 0,0,0, 1,0,0);//move the arm up to vertical
-        sleep(250);//wait for 1 sec
+       // sleep(250);//wait for 1 sec
         DriveRobot(2900, 0.5, .5,-.5,-0.5, 0,0,0);//turn back
-        sleep(250);//wait for 1 sec
+        //sleep(250);//wait for 1 sec
         DriveRobot(4195, .5, .5,.5,.5, 0,0,0);//move forward 80.75 in
-        sleep(250);//wait for 1 sec
+       // sleep(250);//wait for 1 sec
         DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
-        sleep(250);//wait for 1 sec
+       // sleep(250);//wait for 1 sec
         DriveRobot(520, -.5, -.5,-.5,-.5, 0,0,0);//move backwards 10 in
-        sleep(250);//wait for 1 sec
+       // sleep(250);//wait for 1 sec
         DriveRobot(650, 0, 0,0,0, 1,0,0);//move the arm up to vertical
-        sleep(250);//wait for 1 esc
+       // sleep(250);//wait for 1 esc
         DriveRobot(3935, -.5,-.5,-.5, -.5, 0,0,0);//move backward 80.75 in
-        sleep(250);//wait for 1 sec
+       // sleep(250);//wait for 1 sec
         DriveRobot(2900, -.5,-.5,.5, .5, 0,0,0);//turn back
-        sleep(250);//wait for 1 sec
+       // sleep(250);//wait for 1 sec
         DriveRobot(650, 0, 0,0,0, -1,0,0);//move the arm down to horizontal
-        sleep(250);//wait for 1 sec
+      //  sleep(250);//wait for 1 sec
         DriveRobot(260, .5, .5,.5,.5, 0,0,0);//move forward 5 in
         DriveRobot(650, 0,0,0, 0, 1,0,0);//move the arm up to vertical
     }
 
 
-    private void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
-        telemetry.addData("Mode", "waiting");
-        telemetry.update();
+    // called when init button is  pressed.
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+        WobbleBlue_A();
+    }
+
+
+    private static void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
 
         // wait for start button.
 
-        waitForStart();
 
-        telemetry.addData("Mode", "running");
-        telemetry.update();
 
         // set both motors to x power.
 
@@ -88,8 +88,6 @@ public class WobbleBlue_A extends LinearOpMode {
         WheelMotor.setPower(WheelPower);
         LauncherMotor.setPower(LauncherPower);
 
-
-        sleep(milliseconds);        // wait for x seconds.
 
         // set motor power to zero to stop motors.
 

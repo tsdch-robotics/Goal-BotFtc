@@ -162,7 +162,7 @@ public abstract class WobbleBlue extends LinearOpMode {
                 position = RingPosition.FOUR;
                 call = 4;
                 WobbleBlue_A wobbleBlue_a = new WobbleBlue_A();
-                WobbleBlue_A.WobbleBlue_A();
+                wobbleBlue_a.WobbleBlue_A();
             } else if (avg1 > ONE_RING_THRESHOLD) {
                 position = RingPosition.ONE;
                 call = 1;
@@ -194,32 +194,7 @@ public abstract class WobbleBlue extends LinearOpMode {
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         if (call == 0) {
-            DriveRobot(3935, .5, .5, .5, .5, 0);//move forward 80.75 in
-            sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
-            sleep(250);//wait for 1 sec
-            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
-            sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
-            sleep(250);//wait for 1 sec
-            DriveRobot(2900, 0.5, .5, -.5, -0.5, 0);//turn back
-            sleep(250);//wait for 1 sec
-            DriveRobot(4195, .5, .5, .5, .5, 0);//move forward 80.75 in
-            sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
-            sleep(250);//wait for 1 sec
-            DriveRobot(520, -.5, -.5, -.5, -.5, 0);//move backwards 10 in
-            sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
-            sleep(250);//wait for 1 esc
-            DriveRobot(3935, -.5, -.5, -.5, -.5, 0);//move backward 80.75 in
-            sleep(250);//wait for 1 sec
-            DriveRobot(2900, -.5, -.5, .5, .5, 0);//turn back
-            sleep(250);//wait for 1 sec
-            DriveRobot(650, 0, 0, 0, 0, -1);//move the arm down to horizontal
-            sleep(250);//wait for 1 sec
-            DriveRobot(260, .5, .5, .5, .5, 0);//move forward 5 in
-            DriveRobot(650, 0, 0, 0, 0, 1);//move the arm up to vertical
+
         }
         if (call == 1) {
             DriveRobot(1182, .5, .5, .5, .5, 0);//move forward 22.75 in

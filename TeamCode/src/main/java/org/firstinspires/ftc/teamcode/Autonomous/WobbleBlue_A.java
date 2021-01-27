@@ -14,14 +14,14 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 @Autonomous(name="Wobble_Blue_A", group="ChampBot")
 //@Disabled
 public class WobbleBlue_A extends LinearOpMode {
-    static DcMotor FrontLeftMotor;
-    static DcMotor FrontRightMotor;
-    static DcMotor BackLeftMotor;
-    static DcMotor BackRightMotor;
-    static DcMotor ArmMotor;
-    static DcMotor WheelMotor;
-    static DcMotor LauncherMotor;
-    private static HardwareMap hardwareMap;
+    public static DcMotor FrontLeftMotor;
+    public static DcMotor FrontRightMotor;
+    public static DcMotor BackLeftMotor;
+    public static DcMotor BackRightMotor;
+    public static DcMotor ArmMotor;
+    public static DcMotor WheelMotor;
+    //static DcMotor LauncherMotor;
+    public static HardwareMap hardwareMap;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
@@ -33,7 +33,7 @@ public class WobbleBlue_A extends LinearOpMode {
         BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
         WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
-        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
+        //LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(3935, .5,.5,.5, .5, 0,-1,-1);//move forward 80.75 in
         DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
@@ -72,7 +72,7 @@ public class WobbleBlue_A extends LinearOpMode {
     }
 
 
-    private static void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
+    public static void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
 
         // wait for start button.
 
@@ -86,7 +86,7 @@ public class WobbleBlue_A extends LinearOpMode {
         BackRightMotor.setPower(RightBackPower);
         ArmMotor.setPower(ArmPower);
         WheelMotor.setPower(WheelPower);
-        LauncherMotor.setPower(LauncherPower);
+        //LauncherMotor.setPower(LauncherPower);
 
 
         // set motor power to zero to stop motors.
@@ -96,7 +96,7 @@ public class WobbleBlue_A extends LinearOpMode {
         BackLeftMotor.setPower(0);
         BackRightMotor.setPower(0);
         ArmMotor.setPower(0);
-        LauncherMotor.setPower(0);
+        //LauncherMotor.setPower(0);
         WheelMotor.setPower(0);
     }
 }

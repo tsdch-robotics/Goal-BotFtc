@@ -28,7 +28,7 @@ public class ChampBot {
     //the intake motor
     public DcMotor WheelMotor;
     public DcMotor ArmMotor;
-    //public DcMotor IntakeMotor;
+    public DcMotor IntakeMotor;
     //public DcMotor LauncherMotor;
     /*
     public DcMotor Arm;

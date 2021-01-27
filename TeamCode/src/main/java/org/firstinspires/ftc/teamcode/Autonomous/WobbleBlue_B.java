@@ -20,7 +20,7 @@ public class WobbleBlue_B extends LinearOpMode {
     DcMotor BackRightMotor;
     DcMotor ArmMotor;
     DcMotor WheelMotor;
-    DcMotor LauncherMotor;
+    //DcMotor LauncherMotor;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
@@ -36,7 +36,7 @@ public class WobbleBlue_B extends LinearOpMode {
         BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
         ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
         WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
-        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
+        //LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(1182, .5,.5,.5, .5, 0,-1,-1);//move forward 22.75 in
         sleep(250);//wait for 1 sec
@@ -76,15 +76,6 @@ public class WobbleBlue_B extends LinearOpMode {
 
 
     private void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
-        telemetry.addData("Mode", "waiting");
-        telemetry.update();
-
-        // wait for start button.
-
-        waitForStart();
-
-        telemetry.addData("Mode", "running");
-        telemetry.update();
 
         // set both motors to x power.
 
@@ -94,7 +85,7 @@ public class WobbleBlue_B extends LinearOpMode {
         BackRightMotor.setPower(RightBackPower);
         ArmMotor.setPower(ArmPower);
         WheelMotor.setPower(WheelPower);
-        LauncherMotor.setPower(LauncherPower);
+        //LauncherMotor.setPower(LauncherPower);
 
 
         sleep(milliseconds);        // wait for x seconds.
@@ -106,7 +97,7 @@ public class WobbleBlue_B extends LinearOpMode {
         BackLeftMotor.setPower(0);
         BackRightMotor.setPower(0);
         ArmMotor.setPower(0);
-        LauncherMotor.setPower(0);
+        //LauncherMotor.setPower(0);
         WheelMotor.setPower(0);
     }
 }

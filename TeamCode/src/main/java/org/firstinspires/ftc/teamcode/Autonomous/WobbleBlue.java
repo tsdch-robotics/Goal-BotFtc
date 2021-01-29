@@ -161,14 +161,30 @@ public abstract class WobbleBlue extends LinearOpMode {
             if (avg1 > FOUR_RING_THRESHOLD) {
                 position = RingPosition.FOUR;
                 call = 4;
-                WobbleBlue_A wobbleBlue_a = new WobbleBlue_A();
-                wobbleBlue_a.WobbleBlue_A();
+                WobbleBlue_A Track_a = new WobbleBlue_A();
+                try {
+                    Track_a.runOpMode();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else if (avg1 > ONE_RING_THRESHOLD) {
                 position = RingPosition.ONE;
                 call = 1;
+                WobbleBlue_B Track_b = new WobbleBlue_B();
+                try {
+                    Track_b.runOpMode();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else {
                 position = RingPosition.NONE;
                 call = 0;
+                WobbleBlue_C Track_c = new WobbleBlue_C();
+                try {
+                    Track_c.runOpMode();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             Imgproc.rectangle(

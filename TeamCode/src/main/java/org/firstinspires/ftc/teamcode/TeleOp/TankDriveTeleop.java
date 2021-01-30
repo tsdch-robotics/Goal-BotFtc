@@ -74,16 +74,16 @@ public class TankDriveTeleop extends OpMode {
 
         if (RightStrafe) {
             // to right strafe, right motors towards each other, left motors away from each other
-            robot.DriveFrontLeft.setPower(1);
-            robot.DriveFrontRight.setPower(-1);
-            robot.DriveBackLeft.setPower(-1);
-            robot.DriveBackRight.setPower(1);
-        } else if (LeftStrafe) {
-            // opposite of right strafe
             robot.DriveFrontLeft.setPower(-1);
             robot.DriveFrontRight.setPower(1);
             robot.DriveBackLeft.setPower(1);
             robot.DriveBackRight.setPower(-1);
+        } else if (LeftStrafe) {
+            // opposite of right strafe
+            robot.DriveFrontLeft.setPower(1);
+            robot.DriveFrontRight.setPower(-1);
+            robot.DriveBackLeft.setPower(-1);
+            robot.DriveBackRight.setPower(1);
         }
         if (gamepad1.y) {
             robot.WheelMotor.setPower(-.75);

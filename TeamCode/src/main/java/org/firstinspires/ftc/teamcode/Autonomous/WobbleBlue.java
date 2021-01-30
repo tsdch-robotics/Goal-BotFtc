@@ -84,6 +84,8 @@ public abstract class WobbleBlue extends LinearOpMode {
     }
 
     public static class SkystoneDeterminationPipeline extends OpenCvPipeline {
+        int call;
+
         /*
          * An enum to define the skystone position
          */
@@ -147,7 +149,7 @@ public abstract class WobbleBlue extends LinearOpMode {
         @Override
         public Mat processFrame(Mat input) {
             inputToCb(input);
-            int call = 0;
+            call = 0;
             avg1 = (int) Core.mean(region1_Cb).val[0];
 
             Imgproc.rectangle(

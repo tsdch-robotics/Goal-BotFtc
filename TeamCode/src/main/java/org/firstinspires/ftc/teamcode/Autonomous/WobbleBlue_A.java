@@ -4,7 +4,6 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 // below is the Annotation that registers this OpMode with the FtcRobotController app.
 // @Autonomous classifies the OpMode as autonomous, name is the OpMode title and the
@@ -14,19 +13,18 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 @Autonomous(name="Wobble_Blue_A", group="ChampBot")
 //@Disabled
 public class WobbleBlue_A extends LinearOpMode {
-    public static DcMotor FrontLeftMotor;
-    public static DcMotor FrontRightMotor;
-    public static DcMotor BackLeftMotor;
-    public static DcMotor BackRightMotor;
-    public static DcMotor ArmMotor;
-    public static DcMotor WheelMotor;
-    public static DcMotor LauncherMotor;
-    public static HardwareMap hardwareMap;
+    DcMotor FrontLeftMotor;
+    DcMotor FrontRightMotor;
+    DcMotor BackLeftMotor;
+    DcMotor BackRightMotor;
+    DcMotor ArmMotor;
+    DcMotor WheelMotor;
+    DcMotor LauncherMotor;
     int milliseconds = 0;
     double LeftPower = 0;
     double RightPower = 0;
 
-    public static void WobbleBlue_A() {
+    public void WobbleBlue_A() {
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
         BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
@@ -36,13 +34,13 @@ public class WobbleBlue_A extends LinearOpMode {
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(3935, .5,.5,.5, .5, 0,0,0);//move forward 80.75 in
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+        sleep(250);//wait for 0.25 sec
         DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+        sleep(250);//wait for 0.25 sec
         DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+        sleep(250);//wait for 0.25 sec
         DriveRobot(650, 0, 0,0,0, 1,0,0);//move the arm up to vertical
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+        sleep(250);//wait for 0.25 sec
         DriveRobot(520, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 10 in
     }
 
@@ -55,10 +53,16 @@ public class WobbleBlue_A extends LinearOpMode {
     }
 
 
-    public static void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
+    public void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
+        telemetry.addData("Mode", "waiting");
+        telemetry.update();
 
         // wait for start button.
 
+        waitForStart();
+
+        telemetry.addData("Mode", "running");
+        telemetry.update();
 
 
         // set both motors to x power.
@@ -71,6 +75,7 @@ public class WobbleBlue_A extends LinearOpMode {
         WheelMotor.setPower(WheelPower);
         LauncherMotor.setPower(LauncherPower);
 
+        sleep(milliseconds);        // wait for x seconds.
 
         // set motor power to zero to stop motors.
 

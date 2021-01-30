@@ -35,7 +35,7 @@ public class WobbleBlue_A extends LinearOpMode {
         WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        DriveRobot(3935, .5,.5,.5, .5, 0,-1,-1);//move forward 80.75 in
+        DriveRobot(3935, .5,.5,.5, .5, 0,0,0);//move forward 80.75 in
         DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
         DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
         DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
@@ -43,24 +43,7 @@ public class WobbleBlue_A extends LinearOpMode {
         DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
         DriveRobot(650, 0, 0,0,0, 1,0,0);//move the arm up to vertical
         DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(2900, 0.5, .5,-.5,-0.5, 0,0,0);//turn back
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(4195, .5, .5,.5,.5, 0,0,0);//move forward 80.75 in
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(520, -.5, -.5,-.5,-.5, 0,0,0);//move backwards 10 in
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(650, 0, 0,0,0, 1,0,0);//move the arm up to vertical
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(3935, -.5,-.5,-.5, -.5, 0,0,0);//move backward 80.75 in
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(2900, -.5,-.5,.5, .5, 0,0,0);//turn back
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(650, 0, 0,0,0, -1,0,0);//move the arm down to horizontal
-        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
-        DriveRobot(260, .5, .5,.5,.5, 0,0,0);//move forward 5 in
-        DriveRobot(650, 0,0,0, 0, 1,0,0);//move the arm up to vertical
+        DriveRobot(520, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 10 in
     }
 
 

@@ -86,7 +86,7 @@ public class TankDriveTeleop extends OpMode {
             robot.DriveBackRight.setPower(-1);
         }
         if (gamepad1.y) {
-            robot.WheelMotor.setPower(-.5);
+            robot.WheelMotor.setPower(-.75);
             robot.IntakeMotor.setPower(1);
         } else {
             robot.WheelMotor.setPower(0);
@@ -94,7 +94,7 @@ public class TankDriveTeleop extends OpMode {
             robot.IntakeMotor.setPower(0);
         }
         if (gamepad1.left_bumper) {
-            robot.WheelMotor.setPower(.5);
+            robot.WheelMotor.setPower(.75);
             robot.IntakeMotor.setPower(-1);
         } else {
             robot.WheelMotor.setPower(0);
@@ -120,7 +120,7 @@ public class TankDriveTeleop extends OpMode {
             robot.ArmMotor.setPower(0);
         }
         if (gamepad1.right_bumper) {
-            robot.LauncherMotor.setPower(-1);
+            robot.LauncherMotor.setPower(25);
         } else {
                 robot.LauncherMotor.setPower(0);
             }

@@ -34,6 +34,7 @@ public class WobbleBlue_A extends LinearOpMode {
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(3935, .5,.5,.5, .5, 0,0,0);//move forward 80.75 in
+<<<<<<< Updated upstream
         sleep(250);//wait for 0.25 sec
         DriveRobot(1000, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
@@ -41,6 +42,15 @@ public class WobbleBlue_A extends LinearOpMode {
         sleep(250);//wait for 0.25 sec
         DriveRobot(1000, 0, 0,0,0, 1,0,0);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
+=======
+        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+        DriveRobot(1000, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
+        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+        DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
+        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+        DriveRobot(1000, 0, 0,0,0, 1,0,0);//move the arm up to vertical
+        DriveRobot(250,0,0,0,0,0,0,0);//wait for 0.25 sec
+>>>>>>> Stashed changes
         DriveRobot(520, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 10 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(415, .5,-.5,-.5,.5,0,0,0);//strafe right 8 in

@@ -87,7 +87,10 @@ public class TankDriveTeleop extends OpMode {
         }
         if (gamepad2.y) {
             robot.WheelMotor.setPower(-.75);
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             robot.IntakeMotor.setPower(1);
         } else {
             robot.WheelMotor.setPower(0);

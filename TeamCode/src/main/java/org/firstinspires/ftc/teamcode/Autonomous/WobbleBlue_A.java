@@ -35,13 +35,28 @@ public class WobbleBlue_A extends LinearOpMode {
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(3935, .5,.5,.5, .5, 0,0,0);//move forward 80.75 in
         sleep(250);//wait for 0.25 sec
-        DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
+        DriveRobot(1000, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
         DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
         sleep(250);//wait for 0.25 sec
-        DriveRobot(650, 0, 0,0,0, 1,0,0);//move the arm up to vertical
+        DriveRobot(1000, 0, 0,0,0, 1,0,0);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
         DriveRobot(520, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 10 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,0);//strafe right 8 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        sleep(250);//wait for 1 sec
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,0);//strafe right 8 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        sleep(250);//wait for 1 sec
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,0);//strafe right 8 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        sleep(250);//wait for 1 sec
+        DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
+        sleep(250);//wait for 1 sec
     }
 
 

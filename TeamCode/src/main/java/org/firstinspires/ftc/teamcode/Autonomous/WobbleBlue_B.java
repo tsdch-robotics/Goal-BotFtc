@@ -38,6 +38,8 @@ public class WobbleBlue_B extends LinearOpMode {
         WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        DriveRobot(400, 0,0,0, 0, -1,0,0);//move the arm down half way
+        sleep(250);//wait for 0.25 sec
         DriveRobot(1182, .5,.5,.5, .5, 0,0,0);//move forward 22.75 in
         sleep(250);//wait for 1 sec
         DriveRobot(1350, 0.5,.5,-.5, -0.5, 0,0,0);//turn right
@@ -46,25 +48,25 @@ public class WobbleBlue_B extends LinearOpMode {
         sleep(250);//wait for 1 sec
         DriveRobot(1350, -0.5,-.5,.5, 0.5, 0,0,0);//turn left
         sleep(250);//wait for 0.25 sec
-        DriveRobot(3935, .5, .5,.5,.5, 0,0,0);//move forward 80.75 in
+        DriveRobot(4675, .5, .5,.5,.5, 0,0,0);//move forward 90.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(650, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
+        DriveRobot(600, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
         DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
         sleep(250);//wait for 1 sec
-        DriveRobot(650, 0,0,0, 0, 1,0,0);//move the arm up to vertical
+        DriveRobot(1000, 0,0,0, 0, 1,0,0);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1182, -.5,-.5,-.5, -.5, 0,0,0);//move backwards 22.75 in
-        sleep(250);//wait for 1 sec
-        DriveRobot(1000, 0,0,0, 0, 0,-1,1);//launch ring
-        sleep(250);//wait for 1 sec
-        DriveRobot(415, .5,-.5,-.5,.5,0,0,0);//strafe right 8 in
-        sleep(250);
-        DriveRobot(1000, 0,0,0, 0, 0,-1,1);//launch ring
-        sleep(250);//wait for 1 sec
-        DriveRobot(415, .5,-.5,-.5,.5,0,0,0);//strafe right 8 in
-        sleep(250);
-        DriveRobot(1000, 0,0,0, 0, 0,-1,1);//launch ring
+        DriveRobot(2077, -.5,-.5,-.5, -.5, 0,0,1);//move backwards 30 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep
+        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep
+        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep
+        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
         sleep(250);//wait for 1 sec
         DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
         sleep(250);//wait for 1 sec

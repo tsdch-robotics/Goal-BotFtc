@@ -25,6 +25,7 @@ public class WobbleBlue_A extends LinearOpMode {
     double RightPower = 0;
 
     public void WobbleBlue_A() {
+
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
         BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");

@@ -58,15 +58,15 @@ public class WobbleBlue_B extends LinearOpMode {
         sleep(250);//wait for 0.25 sec
         DriveRobot(2077, -.5,-.5,-.5, -.5, 0,0,1);//move backwards 30 in
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
         DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
         DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,1);//launch ring
         DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
     }
 

@@ -85,7 +85,7 @@ public class TankDriveTeleop extends OpMode {
             robot.DriveBackLeft.setPower(-1);
             robot.DriveBackRight.setPower(1);
         }
-        if (gamepad1.y) {
+        if (gamepad2.y) {
             robot.WheelMotor.setPower(-.75);
             robot.IntakeMotor.setPower(1);
         } else {
@@ -93,33 +93,33 @@ public class TankDriveTeleop extends OpMode {
             robot.ArmMotor.setPower(0);
             robot.IntakeMotor.setPower(0);
         }
-        if (gamepad1.left_bumper) {
+        if (gamepad2.left_bumper) {
             robot.WheelMotor.setPower(.75);
             robot.IntakeMotor.setPower(-1);
         } else {
             robot.WheelMotor.setPower(0);
             robot.IntakeMotor.setPower(0);
         }
-        if (gamepad1.dpad_up) {
+        if (gamepad2.dpad_up) {
             robot.ArmMotor.setPower(1);
         } else {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
         }
-        if (gamepad1.dpad_down) {
+        if (gamepad2.dpad_down) {
             robot.ArmMotor.setPower(-1);
         } else {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
         }
-        if (gamepad1.b) {
+        if (gamepad2.b) {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
         } else {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
         }
-        if (gamepad1.right_bumper) {
+        if (gamepad2.right_bumper) {
             robot.LauncherMotor.setPower(25);
         } else {
                 robot.LauncherMotor.setPower(0);

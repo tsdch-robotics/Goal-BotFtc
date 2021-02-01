@@ -24,7 +24,7 @@ public class WobbleBlue_A extends LinearOpMode {
     double LeftPower = 0;
     double RightPower = 0;
 
-    public void WobbleBlue_A() {
+    public void runOpMode() throws InterruptedException {
 
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
         FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
@@ -46,26 +46,21 @@ public class WobbleBlue_A extends LinearOpMode {
         sleep(250);//wait for 0.25 sec
         DriveRobot(520, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 10 in
         sleep(250);//wait for 0.25 sec
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        DriveRobot(1040, .5,-.5,-.5, .5, 0,0,1);//strafe right 20 in while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
         DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.5,1);//launch ring
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,1);//launch ring
         DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
     }
 
 
     // called when init button is  pressed.
-
-    @Override
-    public void runOpMode() throws InterruptedException {
-        WobbleBlue_A();
-    }
 
 
     public void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {

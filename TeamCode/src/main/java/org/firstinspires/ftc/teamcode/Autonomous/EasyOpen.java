@@ -208,7 +208,7 @@ public class EasyOpen extends LinearOpMode
             // Don't burn CPU cycles busy-looping in this sample
             sleep(50);
 
-        
+
         if(pipeline.position == SkystoneDeterminationPipeline.RingPosition.FOUR){
             Track_c();
         }else if(pipeline.position == SkystoneDeterminationPipeline.RingPosition.ONE) {

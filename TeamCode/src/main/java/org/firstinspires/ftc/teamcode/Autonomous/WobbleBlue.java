@@ -21,8 +21,15 @@
 
 package org.firstinspires.ftc.teamcode.Autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
+import org.firstinspires.ftc.teamcode.Autonomous.WobbleBlue_A;
+import org.firstinspires.ftc.teamcode.Autonomous.WobbleBlue_B;
+import org.firstinspires.ftc.teamcode.Autonomous.WobbleBlue_C;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
@@ -34,15 +41,156 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvPipeline;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous
-public abstract class WobbleBlue extends LinearOpMode {
+public class WobbleBlue extends LinearOpMode
+{
     OpenCvInternalCamera phoneCam;
     SkystoneDeterminationPipeline pipeline;
+    DcMotor FrontLeftMotor;
+    DcMotor FrontRightMotor;
+    DcMotor BackLeftMotor;
+    DcMotor BackRightMotor;
+    DcMotor ArmMotor;
+    DcMotor WheelMotor;
+    DcMotor LauncherMotor;
+    int milliseconds = 0;
+    double LeftPower = 0;
+    double RightPower = 0;
 
+    public void Track_a() {
+        FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
+        FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
+        BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
+        BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
+        ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
+        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
+        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
+        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        DriveRobot(400, 0,0,0, 0, -1,0,0);//move the arm down half way
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(4455, .5,.5,.5, .5, 0,0,0);//move forward 90.75 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(600, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1000, 0, 0,0,0, 1,0,0);//move the arm up to vertical
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1040, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 20 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(2080, .5,-.5,-.5, .5, 0,0,1);//strafe right 20 in while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
+    }
+    public void Track_b(){
+        FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
+        FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
+        BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
+        BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
+        ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
+        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
+        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
+        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        DriveRobot(400, 0,0,0, 0, -1,0,0);//move the arm down half way
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1182, .5,.5,.5, .5, 0,0,0);//move forward 22.75 in
+        sleep(250);//wait for 1 sec
+        DriveRobot(1350, 0.5,.5,-.5, -0.5, 0,0,0);//turn right
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1182, .5,.5,.5, .5, 0,0,0);//move forward 22.75 in
+        sleep(250);//wait for 1 sec
+        DriveRobot(1350, -0.5,-.5,.5, 0.5, 0,0,0);//turn left
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(4675, .5, .5,.5,.5, 0,0,0);//move forward 90.75 in
+        sleep(250);//wait for 1 sec
+        DriveRobot(600, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(260, .5,.5,.5, .5, 0,0,0);//move forward 5 in
+        sleep(250);//wait for 1 sec
+        DriveRobot(1000, 0,0,0, 0, 1,0,0);//move the arm up to vertical
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(2858, -.5,-.5,-.5, -.5, 0,0,1);//move backwards 35 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(830, .5,-.5,-.5,.5,0,0,1);//strafe right 16 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(830, .5,-.5,-.5,.5,0,0,1);//strafe right 16 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
+    }
+
+    public void Track_c() {
+        FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
+        FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
+        BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
+        BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
+        ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
+        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
+        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
+        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        DriveRobot(571, -.5,.5,.5,-.5,0,0,0);//strafe left 11 in
+        sleep(250);
+        DriveRobot(6117, .5,.5,.5,.5,0,0,0);//move forward 117.75 in
+        sleep(250);
+        DriveRobot(650,0,0,0,0,-1,0,0);//move the arm down to horizontal
+        sleep(250);
+        DriveRobot(260, .5,.5,.5,.5,0,0,0);//move forward 5 in
+        sleep(250);
+        DriveRobot(1753, .5,-.5,-.5,.5,0,0,0);//strafe right 33.75 in
+        sleep(250);
+        DriveRobot(650,0,0,0,0,1,0,0);//move the arm up to vertical
+        sleep(250);
+    }
+    public void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
+        telemetry.addData("Mode", "waiting");
+        telemetry.update();
+
+        // wait for start button.
+
+        waitForStart();
+
+        telemetry.addData("Mode", "running");
+        telemetry.update();
+
+
+        // set both motors to x power.
+
+        FrontLeftMotor.setPower(LeftFrontPower);
+        FrontRightMotor.setPower(RightFrontPower);
+        BackLeftMotor.setPower(LeftBackPower);
+        BackRightMotor.setPower(RightBackPower);
+        ArmMotor.setPower(ArmPower);
+        WheelMotor.setPower(WheelPower);
+        LauncherMotor.setPower(LauncherPower);
+
+        sleep(milliseconds);        // wait for x seconds.
+
+        // set motor power to zero to stop motors.
+
+        FrontLeftMotor.setPower(0);
+        FrontRightMotor.setPower(0);
+        BackLeftMotor.setPower(0);
+        BackRightMotor.setPower(0);
+        ArmMotor.setPower(0);
+        LauncherMotor.setPower(0);
+        WheelMotor.setPower(0);
+    }
     @Override
-    public void runOpMode() {
+    public void runOpMode()
+    {
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
@@ -54,32 +202,43 @@ public abstract class WobbleBlue extends LinearOpMode {
         // landscape orientation, though.
         phoneCam.setViewportRenderingPolicy(OpenCvCamera.ViewportRenderingPolicy.OPTIMIZE_VIEW);
 
-        phoneCam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
+        phoneCam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
+        {
             @Override
-            public void onOpened() {
-                phoneCam.startStreaming(320, 240, OpenCvCameraRotation.SIDEWAYS_LEFT);
+            public void onOpened()
+            {
+                phoneCam.startStreaming(320,240, OpenCvCameraRotation.SIDEWAYS_LEFT);
             }
         });
 
+
         waitForStart();
 
-        while (opModeIsActive()) {
+
             telemetry.addData("Analysis", pipeline.getAnalysis());
             telemetry.addData("Position", pipeline.position);
             telemetry.update();
 
             // Don't burn CPU cycles busy-looping in this sample
             sleep(50);
-        }
+
+        
+        if(pipeline.position == SkystoneDeterminationPipeline.RingPosition.FOUR){
+            Track_c();
+        }else if(pipeline.position == SkystoneDeterminationPipeline.RingPosition.ONE) {
+            Track_b();
+        }else if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.NONE) {
+            Track_a();
+    }
     }
 
-    public static class SkystoneDeterminationPipeline extends OpenCvPipeline {
-        int call;
-
+    public static class SkystoneDeterminationPipeline extends OpenCvPipeline
+    {
         /*
          * An enum to define the skystone position
          */
-        public enum RingPosition {
+        public enum RingPosition
+        {
             FOUR,
             ONE,
             NONE
@@ -94,13 +253,13 @@ public abstract class WobbleBlue extends LinearOpMode {
         /*
          * The core values which define the location and size of the sample regions
          */
-        static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(181, 98);
+        static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(110,50);
 
         static final int REGION_WIDTH = 35;
         static final int REGION_HEIGHT = 25;
 
-        static final int FOUR_RING_THRESHOLD = 150;
-        static final int ONE_RING_THRESHOLD = 135;
+        final int FOUR_RING_THRESHOLD = 160;
+        final int ONE_RING_THRESHOLD = 140;
 
         Point region1_pointA = new Point(
                 REGION1_TOPLEFT_ANCHOR_POINT.x,
@@ -124,21 +283,25 @@ public abstract class WobbleBlue extends LinearOpMode {
          * This function takes the RGB frame, converts to YCrCb,
          * and extracts the Cb channel to the 'Cb' variable
          */
-        void inputToCb(Mat input) {
+        void inputToCb(Mat input)
+        {
             Imgproc.cvtColor(input, YCrCb, Imgproc.COLOR_RGB2YCrCb);
             Core.extractChannel(YCrCb, Cb, 1);
         }
 
         @Override
-        public void init(Mat firstFrame) {
+        public void init(Mat firstFrame)
+        {
             inputToCb(firstFrame);
 
             region1_Cb = Cb.submat(new Rect(region1_pointA, region1_pointB));
         }
 
         @Override
-        public Mat processFrame(Mat input) {
+        public Mat processFrame(Mat input)
+        {
             inputToCb(input);
+
             avg1 = (int) Core.mean(region1_Cb).val[0];
 
             Imgproc.rectangle(
@@ -149,31 +312,12 @@ public abstract class WobbleBlue extends LinearOpMode {
                     2); // Thickness of the rectangle lines
 
             position = RingPosition.FOUR; // Record our analysis
-            if (avg1 > FOUR_RING_THRESHOLD) {
+            if(avg1 > FOUR_RING_THRESHOLD){
                 position = RingPosition.FOUR;
-                WobbleBlue_C Track_c = new WobbleBlue_C();
-                try {
-                    Track_c.runOpMode();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } else if (avg1 > ONE_RING_THRESHOLD) {
+            }else if (avg1 > ONE_RING_THRESHOLD){
                 position = RingPosition.ONE;
-                WobbleBlue_B Track_b = new WobbleBlue_B();
-                try {
-                    Track_b.runOpMode();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } else {
+            }else{
                 position = RingPosition.NONE;
-                WobbleBlue_A Track_a = new WobbleBlue_A();
-                try {
-
-                    Track_a.runOpMode();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
 
             Imgproc.rectangle(
@@ -186,7 +330,8 @@ public abstract class WobbleBlue extends LinearOpMode {
             return input;
         }
 
-        public int getAnalysis() {
+        public int getAnalysis()
+        {
             return avg1;
         }
     }

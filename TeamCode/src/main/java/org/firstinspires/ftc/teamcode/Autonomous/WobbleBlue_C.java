@@ -48,6 +48,18 @@ public class  WobbleBlue_C extends LinearOpMode {
         sleep(250);
         DriveRobot(650,0,0,0,0,1,0,0);//move the arm up to vertical
         sleep(250);
+        DriveRobot(2338, -0.5, -.5,-.5,-.5,0,0,.95);//movebackward for 45 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,.95);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,.95);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,.95);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(415, .5,-.5,-.5,.5,0,0,.95);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,-0.5,.95);//launch ring
+        DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
     }
 
 

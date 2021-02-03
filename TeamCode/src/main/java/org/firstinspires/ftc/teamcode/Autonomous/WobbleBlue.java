@@ -77,16 +77,16 @@ public class WobbleBlue extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(1000, 0, 0,0,0, 1,0,0);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1040, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 20 in
+        DriveRobot(1140, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 20 in
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2080, .5,-.5,-.5, .5, 0,0,1);//strafe right 20 in while launcher move
+        DriveRobot(2880, .5,-.5,-.5, .5, 0,0,1);//strafe right 20 in while launcher move
         DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(615, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
         DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(415, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(615, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
         DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
         DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
@@ -142,18 +142,34 @@ public class WobbleBlue extends LinearOpMode
         WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        DriveRobot(571, -.5,.5,.5,-.5,0,0,0);//strafe left 11 in
+        DriveRobot(400, 0,0,0, 0, -1,0,0);//move the arm down half way
         sleep(250);
-        DriveRobot(6117, .5,.5,.5,.5,0,0,0);//move forward 117.75 in
+        DriveRobot(779, -.5,.5,.5,-.5,0,0,0);//strafe left 15 in
         sleep(250);
-        DriveRobot(650,0,0,0,0,-1,0,0);//move the arm down to horizontal
+        DriveRobot(7792, .5,.5,.5,.5,0,0,0);//move forward 150 in
+        sleep(250);
+        DriveRobot(600,0.5,-0.5,-0.5,0.5,0,0,0);//strafe right
+        sleep(250);
+        DriveRobot(600,0,0,0,0,-1,0,0);//move the arm down to horizontal
         sleep(250);
         DriveRobot(260, .5,.5,.5,.5,0,0,0);//move forward 5 in
         sleep(250);
-        DriveRobot(1753, .5,-.5,-.5,.5,0,0,0);//strafe right 33.75 in
+        DriveRobot(1000,0,0,0,0,1,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(650,0,0,0,0,1,0,0);//move the arm up to vertical
+        DriveRobot(3117, .5,-.5,-.5,.5,0,0,0);//strafe right 60 in
         sleep(250);
+        DriveRobot(3317,-.5,-.5,-.5,-.5,0,0,1); //move backward 60 in
+        sleep(250);
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(615, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(615, .5,-.5,-.5,.5,0,0,1);//strafe right 8 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
     }
     public void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower) {
         telemetry.addData("Mode", "waiting");
@@ -254,12 +270,12 @@ public class WobbleBlue extends LinearOpMode
         /*
          * The core values which define the location and size of the sample regions
          */
-        static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(110,50);
+        static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(110,70);
 
         static final int REGION_WIDTH = 35;
         static final int REGION_HEIGHT = 25;
 
-        final int FOUR_RING_THRESHOLD = 160;
+        final int FOUR_RING_THRESHOLD = 155;
         final int ONE_RING_THRESHOLD = 140;
 
         Point region1_pointA = new Point(

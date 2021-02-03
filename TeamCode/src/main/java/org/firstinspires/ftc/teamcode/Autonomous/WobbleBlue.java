@@ -110,7 +110,7 @@ public class WobbleBlue extends LinearOpMode
         sleep(250);//wait for 1 sec
         DriveRobot(1350, -0.5,-.5,.5, 0.5, 0,0,0);//turn left
         sleep(250);//wait for 0.25 sec
-        DriveRobot(4675, .5, .5,.5,.5, 0,0,0);//move forward 90.75 in
+        DriveRobot(4275, .5, .5,.5,.5, 0,0,0);//move forward 90.75 in
         sleep(250);//wait for 1 sec
         DriveRobot(600, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
@@ -118,17 +118,17 @@ public class WobbleBlue extends LinearOpMode
         sleep(250);//wait for 1 sec
         DriveRobot(1000, 0,0,0, 0, 1,0,0);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2858, -.5,-.5,-.5, -.5, 0,0,1);//move backwards 35 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(830, .5,-.5,-.5,.5,0,0,1);//strafe right 16 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(830, .5,-.5,-.5,.5,0,0,1);//strafe right 16 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
+        DriveRobot(2858, -.5,-.5,-.5, -.5, 0,0,.95);//move backwards 35 in
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,.95);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(830, .5,-.5,-.5,.5,0,0,.95);//strafe right 16 in
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,.95);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(830, .5,-.5,-.5,.5,0,0,.95);//strafe right 16 in
+        DriveRobot(250, 0,0,0, 0, 0,0,.95);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,.95);//launch ring
         DriveRobot(300, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
     }
 

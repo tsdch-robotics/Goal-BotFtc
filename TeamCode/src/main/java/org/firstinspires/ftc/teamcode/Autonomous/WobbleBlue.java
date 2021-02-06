@@ -237,7 +237,7 @@ public class WobbleBlue extends LinearOpMode
             telemetry.update();
 
             // Don't burn CPU cycles busy-looping in this sample
-            sleep(50);
+            sleep(250);
 
         
         if(pipeline.position == SkystoneDeterminationPipeline.RingPosition.FOUR){

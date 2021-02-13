@@ -102,14 +102,10 @@ public class WobbleBlue extends LinearOpMode
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(350, 0,0,0, 0, -1,0,0);//move the arm down half way
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1182, .5,.5,.5, .5, 0,0,0);//move forward 22.75 in
+        DriveRobot(1250, .5,.5,.5, .5, 0,0,0);//move forward 22.75 in
         sleep(250);//wait for 1 sec
-        DriveRobot(1250, 0.5,.5,-.5, -0.5, 0,0,0);//turn right
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(1502, .5,.5,.5, .5, 0,0,0);//move forward 22.75 in
-        sleep(250);//wait for 1 sec
-        DriveRobot(1340, -0.5,-.5,.5, 0.5, 0,0,0);//turn left
-        sleep(250);//wait for 0.25 sec
+        DriveRobot(2600, .5,-.5,-.5,.5,0,0,0);//strafe right 28 in
+        sleep(250);
         DriveRobot(4275, .5, .5,.5,.5, 0,0,0);//move forward 90.75 in
         sleep(250);//wait for 1 sec
         DriveRobot(600, 0,0,0, 0, -1,0,0);//move the arm down to horizontal
@@ -118,7 +114,7 @@ public class WobbleBlue extends LinearOpMode
         sleep(250);//wait for 1 sec
         DriveRobot(1000, 0,0,0, 0, 1,0,0);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2158, -.5,-.5,-.5, -.5, 0,0,1);//move backwards 43 in
+        DriveRobot(2158, -.5,-.5,-.55, -.55, 0,0,1);//move backwards 43 in
         DriveRobot(250, 0,0,0, 0, 0,0,1);//sleep while launcher move
         DriveRobot(415,.5,-.5,-.5,.5,0,0,1);//strafe right 8 in
         DriveRobot(1000, 0,0,0, 0, 0,0.25,1);//launch ring
@@ -144,9 +140,11 @@ public class WobbleBlue extends LinearOpMode
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         DriveRobot(400, 0,0,0, 0, -1,0,0);//move the arm down half way
         sleep(250);
-        DriveRobot(779, -.5,.5,.5,-.5,0,0,0);//strafe left 15 in
+        DriveRobot(300, .5,.5,.5,.5,0,0,0);//move forward 5 in
         sleep(250);
-        DriveRobot(7792, .5,.5,.5,.5,0,0,0);//move forward 150 in
+        DriveRobot(650, -.5,.5,.5,-.5,0,0,0);//strafe left 10 in
+        sleep(250);
+        DriveRobot(6800, .5,.5,.5,.5,0,0,0);//move forward 138 in
         sleep(250);
         DriveRobot(600,0.5,-0.5,-0.5,0.5,0,0,0);//strafe right
         sleep(250);

@@ -56,15 +56,15 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(1000, 0, 0,0,0, 1,0,0);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1400, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 30 in
-        DriveRobot(1000,.5,-.5, -.5,.5,0,0,0); //Strafe right
-        DriveRobot(1000,0,0,0,0,0,0,1);//Gather momenum to launch
+        DriveRobot(2000, -0.5, -.5,-.5,-.5,0,0,0);//movebackward for 30 in
+        DriveRobot(1600,.5,-.5, -.5,.5,0,0,0); //Strafe right
+        DriveRobot(1500,0,0,0,0,0,0,1);//Gather momenum to launch
         DriveRobot(250, 0,0,0, 0, 0,0.5,1);//launch ring
-        DriveRobot(1000,0,0,0,0,0,0,1);//Gather momenum to launch
+        DriveRobot(1500,0,0,0,0,0,0,1);//Gather momenum to launch
         DriveRobot(500, 0,0,0, 0, 0,0.5,1);//launch ring
-        DriveRobot(1000,0,0,0,0,0,0,1);//Gather momenum to launch
+        DriveRobot(1500,0,0,0,0,0,0,1);//Gather momenum to launch
         DriveRobot(500, 0,0,0, 0, 0,0.5,1);//launch ring
-        DriveRobot(500, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
+        DriveRobot(900, .5,.5,.5, .5, 0,0,0);//move forward a bit to park
     }
     public void Track_b(){
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");

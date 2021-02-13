@@ -122,10 +122,17 @@ public class TankDriveTeleop extends OpMode {
         if (gamepad2.right_bumper) {
             robot.LauncherMotor.setPower(25);
         } else {
-                robot.LauncherMotor.setPower(0);
-            }
+            robot.LauncherMotor.setPower(0);
+        }
+        if (gamepad2.right_bumper) {
+            robot.servo.setPosition(0.0);
+            //grabStatus = "close";
+        } else if (gamepad2.right_trigger > 0.1) {
+            robot.servo.setPosition(1.0);
+            //grabStatus = "open";
 
             robot.setDriveMotors(DriveLeftPower, DriveRightPower, DriveLeftPower, DriveRightPower);
         }
     }
+}
 

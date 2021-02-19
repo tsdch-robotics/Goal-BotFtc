@@ -183,6 +183,8 @@ public class WobbleBlue extends LinearOpMode
         DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
         DriveRobot(300, .5,.5,.5, .5, 0,0,0,1);//move forward a bit to park
     }
+
+
     public void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower ,double position) {
         telemetry.addData("Mode", "waiting");
         telemetry.update();

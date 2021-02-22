@@ -65,55 +65,6 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        servo = hardwareMap.get(Servo .class, "Claw");
-        DriveRobot(500, 0,0,0, 0, 0,0,0,1);//move the arm down half way
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(400, 0,0,0, 0, -1,0,0,1);//move the arm down half way
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(4455, 0.5,0.5,0.5, 0.5, 0,0,0,1);//move forward 90.75 in
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(600, 0,0,0, 0, -1,0,0,1);//move the arm down to horizontal
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(600, 0,0,0, 0, 0,0,0,0);//open claw
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(1000, 0, 0,0,0, 1,0,0,1);//move the arm up to vertical
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(260, 0.5,0.5,0.5, 0.5, 0,0,0,1);//move forward 5 in
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(940, -0.5, -0.5,-0.5,-0.5,0,0,0,1);//movebackward for 20 in
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(1400, 0.5,0.5,-0.5, -0.5, 0,0,0,1);//turn right
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(2880, .5, -.5, -.5, .5, 0, 0, 1, 1);//strafe right 20 in while launcher move
-        DriveRobot(750, 0, 0, 0, 0, 0, 0.25, 1, 1);//launch ring
-        DriveRobot(250, 0, 0, 0, 0, 0, 0, 1, 1);//sleep while launcher move
-        DriveRobot(760, .5, -.5, -.5, .5, 0, 0, 1, 1);//strafe right 8 in
-        DriveRobot(250, 0, 0, 0, 0, 0, 0, 1, 1);//sleep while launcher move
-        DriveRobot(750, 0, 0, 0, 0, 0, 0.25, 1, 1);//launch ring
-        DriveRobot(250, 0, 0, 0, 0, 0, 0, 1, 1);//sleep while launcher move
-        DriveRobot(740, .5, -.5, -.5, .5, 0, 0, 1, 1);//strafe right 8 in
-        DriveRobot(250, 0, 0, 0, 0, 0, 0, 1, 1);//sleep while launcher move
-        DriveRobot(750, 0, 0, 0, 0, 0, 0.25, 1, 1);//launch ring
-        DriveRobot(900, .5, .5, .5, .5, 0, 0, 0, 1);//move forward a bit to park
-    }
-    public void Track_b(){
-        FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
-        FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
-        BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
-        BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
-        ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
-        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
-        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
-        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        servo = hardwareMap.get(Servo .class, "Claw");
-        FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
-        FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
-        BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
-        BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
-        ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
-        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
-        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
-        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo.class, "Claw");
         DriveRobot(500, 0, 0, 0, 0, 0, 0, 0, 1);//grab
         sleep(250);//wait for 0.25 sec
@@ -141,6 +92,46 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 1);//move the arm up to vertical
         DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
         DriveRobot(450, 1, 1, 1, 1, 0, 0, 0, 1);//move forward a bit to park
+    }
+    public void Track_b(){
+        FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
+        FrontRightMotor = hardwareMap.dcMotor.get("DriveFrontRight");
+        BackLeftMotor = hardwareMap.dcMotor.get("DriveBackLeft");
+        BackRightMotor = hardwareMap.dcMotor.get("DriveBackRight");
+        ArmMotor = hardwareMap.dcMotor.get("ArmMotor");
+        WheelMotor = hardwareMap.dcMotor.get("WheelMotor");
+        LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
+        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        servo = hardwareMap.get(Servo .class, "Claw");
+        DriveRobot(500, 0,0,0, 0, 0,0,0,1);//grip arm
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(350, 0,0,0, 0, -1,0,0,1);//move the arm down half way
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1250, .5,.5,.5, .5, 0,0,0,1);//move forward 22.75 in
+        sleep(250);//wait for 1 sec
+        DriveRobot(2600, .5,-.5,-.5,.5,0,0,0,1);//strafe right 28 in
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(4500, .5, .5,.5,.5, 0,0,0,1);//move forward 90.75 in
+        sleep(250);//wait for 1 sec
+        DriveRobot(600, 0,0,0, 0, -1,0,0,1);//move the arm down to horizontal
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(260, .5,.5,.5, .5, 0,0,0,0);//open clawn
+        sleep(250);//wait for 1 sec
+        DriveRobot(1000, 0,0,0, 0, 1,0,0,1);//move the arm up to vertical
+        sleep(250);//wait for 0.25 sec
+        DriveRobot(1958, -.5,-.5,-.65, -.65, 0,0,1,1);//move backwards 43 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
+        DriveRobot(700,.5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
+        DriveRobot(830, .5,-.5,-.5,.5,0,0,1,1);//strafe right 16 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
+        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
+        DriveRobot(830, .5,-.5,-.5,.5,0,0,1,1);//strafe right 16 in
+        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
+        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
+        DriveRobot(1100, .5,.5,.5, .5, 0,0,0,1);//move forward a bit to park
     }
 
     public void Track_c() {

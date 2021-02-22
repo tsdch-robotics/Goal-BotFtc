@@ -88,7 +88,9 @@ public class WobbleBlue extends LinearOpMode
         DriveRobot(940, -1, -1,-1,-1,0,0,0,1);//movebackward for 20 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(1400, 1,1,-1, -1, 0,0,0,1);//turn right
+        sleep(250);//wait for 0.25 sec
         DriveRobot(2880,1,1,1,1,0,1,1,1);//move forward to the position
+        DriveRobot(1400, -1,-1,1, 1, 0,0,0,1);//turn left
         DriveRobot(750, 0,0,0, 0, 0,0.25,1,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
         DriveRobot(760, 1,-1,-.5,.5,0,0,1,1);//turn right

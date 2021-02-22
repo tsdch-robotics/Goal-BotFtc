@@ -75,7 +75,7 @@ public class WobbleBlue extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(400, 0,0,0, 0, -1,0,0,1);//move the arm down half way
         sleep(250);//wait for 0.25 sec
-        DriveRobot(4455, 1,1,1, 1, 0,0,0,1);//move forward 90.75 in
+        DriveRobot(4455, .5,.5,.5, .5, 0,0,0,1);//move forward 90.75 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0,0,0, 0, -1,0,0,1);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
@@ -83,19 +83,18 @@ public class WobbleBlue extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(1000, 0, 0,0,0, 1,0,0,1);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
-        DriveRobot(260, 1,1,1, 1, 0,0,0,1);//move forward 5 in
+        DriveRobot(260, .5,.5,.5, .5, 0,0,0,1);//move forward 5 in
         sleep(250);//wait for 0.25 sec
-        DriveRobot(940, -1, -1,-1,-1,0,0,0,1);//movebackward for 20 in
+        DriveRobot(940, -0.5, -.5,-.6,-.6,0,0,0,1);//movebackward for 20 in
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1400, 1,1,-1, -1, 0,0,0,1);//turn right
-        DriveRobot(2880,1,1,1,1,0,1,1,1);//move forward to the position
+        DriveRobot(2880, .5,-.5,-.5, .5, 0,0,1,1);//strafe right 20 in while launcher move
         DriveRobot(750, 0,0,0, 0, 0,0.25,1,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(760, 1,-1,-.5,.5,0,0,1,1);//turn right
+        DriveRobot(760, .5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
         DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
         DriveRobot(750, 0,0,0, 0, 0,0.25,1,1);//launch ring
         DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-
+        DriveRobot(740, .5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
         DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
         DriveRobot(750, 0,0,0, 0, 0,0.25,1,1);//launch ring
         DriveRobot(900, .5,.5,.5, .5, 0,0,0,1);//move forward a bit to park
@@ -126,7 +125,7 @@ public class WobbleBlue extends LinearOpMode
         sleep(250);//wait for 1 sec
         DriveRobot(1000, 0,0,0, 0, 1,0,0,1);//move the arm up to vertical
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1958, -.5,-.5,-.65, -.65, 0,0,1,1);//move backwards 43 in
+        DriveRobot(1958, -.5,-.5,-.5, -.5, 0,0,1,1);//move backwards 43 in
         DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
         DriveRobot(700,.5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
         DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
@@ -138,7 +137,7 @@ public class WobbleBlue extends LinearOpMode
         DriveRobot(830, .5,-.5,-.5,.5,0,0,1,1);//strafe right 16 in
         DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
         DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
-        DriveRobot(1100, .5,.5,.5, .5, 0,0,0,1);//move forward a bit to park
+        DriveRobot(800, .5,.5,.5, .5, 0,0,0,1);//move forward a bit to park
     }
 
     public void Track_c() {

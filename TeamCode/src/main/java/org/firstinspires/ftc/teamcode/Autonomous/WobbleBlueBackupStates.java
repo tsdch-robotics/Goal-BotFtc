@@ -39,7 +39,7 @@ import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvPipeline;
 
 @Autonomous
-public class WobbleBlue_Back_Up extends LinearOpMode
+public class WobbleBlueBackupStates extends LinearOpMode
 {
     OpenCvInternalCamera phoneCam;
     SkystoneDeterminationPipeline pipeline;
@@ -106,7 +106,7 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo .class, "Claw");
-        DriveRobot(500, 0,0,0, 0, 0,0,0,1);//grip arm
+        DriveRobot(500, 0,0,0, 0, 0,0,0,1);//move the arm down half way
         sleep(250);//wait for 0.25 sec
         DriveRobot(350, 0,0,0, 0, -1,0,0,1);//move the arm down half way
         sleep(250);//wait for 0.25 sec
@@ -244,21 +244,21 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         waitForStart();
 
 
-        telemetry.addData("Analysis", pipeline.getAnalysis());
-        telemetry.addData("Position", pipeline.position);
-        telemetry.update();
+            telemetry.addData("Analysis", pipeline.getAnalysis());
+            telemetry.addData("Position", pipeline.position);
+            telemetry.update();
 
-        // Don't burn CPU cycles busy-looping in this sample
-        sleep(250);
+            // Don't burn CPU cycles busy-looping in this sample
+            sleep(250);
 
-
+        
         if(pipeline.position == SkystoneDeterminationPipeline.RingPosition.FOUR){
             Track_c();
         }else if(pipeline.position == SkystoneDeterminationPipeline.RingPosition.ONE) {
             Track_b();
         }else if (pipeline.position == SkystoneDeterminationPipeline.RingPosition.NONE) {
             Track_a();
-        }
+    }
     }
 
     public static class SkystoneDeterminationPipeline extends OpenCvPipeline

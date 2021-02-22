@@ -26,7 +26,7 @@ public class turning extends LinearOpMode {
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo.class, "Claw");
-        DriveRobot(500, 1, 1, -1, -1, 0, 0, 0, 1);//trun right
+        DriveRobot(552, 1, 1, -1, -1, 0, 0, 0, 1);//trun right
     }
     public void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower, double position) {
         telemetry.addData("Mode", "waiting");

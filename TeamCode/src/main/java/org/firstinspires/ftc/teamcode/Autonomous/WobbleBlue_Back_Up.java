@@ -68,25 +68,12 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         servo = hardwareMap.get(Servo.class, "Claw");
         DriveRobot(500, 0, 0, 0, 0, 0, 0, 0, 1);//grab
         sleep(250);//wait for 0.25 sec
-<<<<<<< HEAD
-        DriveRobot(2250, 1,1,1, 1, 0,0,0,1);//move forward 90.75 in
-=======
         DriveRobot(400, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down half way
->>>>>>> 915faecb6b54433fd23c63c3c486b8bdf3f0e472
         sleep(250);//wait for 0.25 sec
         DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 1);//move forward 90.75 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
-<<<<<<< HEAD
-        DriveRobot(1000, 0, 0,0,0, 1,0,0,0);//move the arm up to vertical
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(500, -1,-1,-0.8, -0.8, 0,0,0,1);//swerve backwards left
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(500,-1,-1,-1,-1,0,0,0,0);//drive backward
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(500, -0.8,-0.8,-1, -1, 0,0,0,1);//swerve backwards right
-=======
         DriveRobot(600, 0, 0, 0, 0, 0, 0, 0, 0);//open claw
         DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 0);//move the arm up to vertical
         DriveRobot(340, -0.5, -.5, -.6, -.6, 0, 0, 0, 0);//movebackward for 20 in
@@ -105,7 +92,6 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 1);//move the arm up to vertical
         DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
         DriveRobot(450, 1, 1, 1, 1, 0, 0, 0, 1);//move forward a bit to park
->>>>>>> 915faecb6b54433fd23c63c3c486b8bdf3f0e472
     }
     public void Track_b(){
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");

@@ -22,9 +22,6 @@ public class WobbleBlue_A extends LinearOpMode {
     DcMotor WheelMotor;
     DcMotor LauncherMotor;
     Servo servo;
-    int milliseconds = 0;
-    double LeftPower = 0;
-    double RightPower = 0;
 
     public void runOpMode() throws InterruptedException {
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");

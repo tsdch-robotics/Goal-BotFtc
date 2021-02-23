@@ -105,7 +105,7 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         servo = hardwareMap.get(Servo .class, "Claw");
         DriveRobot(300, 0,0,0, 0, 0,0,0,1);//grip arm
         DriveRobot(1000, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
-        DriveRobot(1000, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
+        DriveRobot(900, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
         sleep(250);
         DriveRobot(1000,1,1,1,1,0,0,0,1);//drive forward
         sleep(250);

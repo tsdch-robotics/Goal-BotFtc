@@ -70,7 +70,7 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(400, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down half way
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 1);//move forward 90.75 in
+        DriveRobot(2000, 1, 1, 1, 1, 0, 0, 0, 1);//move forward 90.75 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
@@ -80,7 +80,7 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(552, 1, 1, -1, -1, 0, 0, 0, 0);//trun right
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2000, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
+        DriveRobot(1500, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(552, -1, -1, 1, 1, 0, 0, 0, 0);//trun right
         sleep(250);//wait for 0.25 sec

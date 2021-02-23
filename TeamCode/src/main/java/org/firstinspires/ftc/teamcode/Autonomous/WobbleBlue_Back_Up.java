@@ -113,7 +113,7 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
         DriveRobot(500,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(2250,-1,-1,-1,-1,0,0,0,0);//drive backward
+        DriveRobot(2000,-1,-1,-1,-1,0,0,0,0);//drive backward
         sleep(250);
         DriveRobot(500, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
         DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw

@@ -104,10 +104,10 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo .class, "Claw");
         DriveRobot(300, 0,0,0, 0, 0,0,0,1);//grip arm
-        DriveRobot(1000, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
-        DriveRobot(900, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
+        DriveRobot(1200, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
+        DriveRobot(1000, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
         sleep(250);
-        DriveRobot(1000,1,1,1,1,0,0,0,1);//drive forward
+        DriveRobot(1200,1,1,1,1,0,0,0,1);//drive forward
         sleep(250);
         DriveRobot(1000, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
@@ -118,7 +118,7 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         DriveRobot(500, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
         DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
         DriveRobot(500,0,0,0,0,1,0,0,1);//move the arm up to vertical
-        DriveRobot(2000,1,1,1,1,0,0,0,1);//drive forward
+        DriveRobot(2500,1,1,1,1,0,0,0,1);//drive forward
         sleep(250);
         DriveRobot(500, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw

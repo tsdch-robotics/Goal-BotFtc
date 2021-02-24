@@ -45,7 +45,7 @@ public class TankDriveTeleop extends OpMode {
     ChampBot robot = new ChampBot();
     public ElapsedTime runtime = new ElapsedTime();
     boolean slowcheck = false;
-
+    int IntakeInteger = 0;
 
     @Override
     public void init() {
@@ -72,6 +72,7 @@ public class TankDriveTeleop extends OpMode {
         boolean RightStrafe = gamepad1.dpad_right;
         boolean WheelToggle = false;
 
+        //Strafe Control
         if (RightStrafe) {
             // to right strafe, right motors towards each other, left motors away from each other
             robot.DriveFrontLeft.setPower(-1);
@@ -85,21 +86,39 @@ public class TankDriveTeleop extends OpMode {
             robot.DriveBackLeft.setPower(-1);
             robot.DriveBackRight.setPower(1);
         }
+
+        //Backwards Intake
         if (gamepad2.y) {
-            robot.WheelMotor.setPower(-.5);
             robot.IntakeMotor.setPower(1);
         } else {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
             robot.IntakeMotor.setPower(0);
         }
-        if (gamepad2.left_bumper) {
+
+        //Elevator Intake
+        if (gamepad2.left_trigger > 0.1) {
             robot.WheelMotor.setPower(.5);
-            robot.IntakeMotor.setPower(-1);
         } else {
             robot.WheelMotor.setPower(0);
             robot.IntakeMotor.setPower(0);
         }
+
+        //Ground Intake Boolean Control
+        if (gamepad2.left_bumper) {
+            if (IntakeInteger == 0) {
+                IntakeInteger = 1;
+            } else if (IntakeInteger == 1) {
+                IntakeInteger = 0;
+            }
+        }
+        if (IntakeInteger == 0) {
+            robot.IntakeMotor.setPower(0);
+        } else {
+            robot.IntakeMotor.setPower(-1);
+        }
+
+        //Arm Control
         if (gamepad2.dpad_up) {
             robot.ArmMotor.setPower(1);
         } else {
@@ -112,25 +131,27 @@ public class TankDriveTeleop extends OpMode {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
         }
+
+        //Launcher Control for High Goal
         if (gamepad2.right_bumper) {
             robot.LauncherMotor.setPower(.9);
         } else {
             robot.LauncherMotor.setPower(0);
         }
+        //Launcher Control for Power Shot
         if (gamepad2.right_trigger > 0.1) {
             robot.LauncherMotor.setPower(.82);
         } else {
             robot.LauncherMotor.setPower(0);
-
-            if (gamepad1.b) {
-                robot.servo.setPosition(0.0);
-                //grabStatus = "close";
-            } else if (gamepad1.a) {
-                robot.servo.setPosition(1.0);
-                //grabStatus = "open";
-            }
-            robot.setDriveMotors(DriveLeftPower, DriveRightPower, DriveLeftPower, DriveRightPower);
         }
+        if (gamepad1.b) {
+            robot.servo.setPosition(0.0);
+            //grabStatus = "close";
+        } else if (gamepad1.a) {
+            robot.servo.setPosition(1.0);
+            //grabStatus = "open";
+        }
+        robot.setDriveMotors(DriveLeftPower, DriveRightPower, DriveLeftPower, DriveRightPower);
     }
 }
 

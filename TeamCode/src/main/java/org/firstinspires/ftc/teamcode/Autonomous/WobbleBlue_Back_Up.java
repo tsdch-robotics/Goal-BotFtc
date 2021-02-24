@@ -70,28 +70,24 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(400, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down half way
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2000, 1, 1, 1, 1, 0, 0, 0, 1);//move forward 90.75 in
+        DriveRobot(2500, 1, 1, 1, 1, 0, 0, 0, 1);//move forward 90.75 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, 0, 0, 0, 0);//open claw
         DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 0);//move the arm up to vertical
-        DriveRobot(340, -0.5, -.5, -.6, -.6, 0, 0, 0, 0);//movebackward for 20 in
+        DriveRobot(300, -0.5, -.5, 0, 0, 0, 0, 0, 0);//tilt
         sleep(250);//wait for 0.25 sec
-        DriveRobot(552, 1, 1, -1, -1, 0, 0, 0, 0);//trun right
+        DriveRobot(2500, -1, -1, -1, -1, 0, 0, 0, 0);//move backwards to wobble
         sleep(250);//wait for 0.25 sec
-        DriveRobot(1500, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(552, -1, -1, 1, 1, 0, 0, 0, 0);//trun right
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
-        sleep(250);
-        DriveRobot(1104, 1, 1, -1, -1, 0, 0, 0, 0);//trun back
-        DriveRobot(600, 0, 0, 0, 0, -1, 0, 0, 0);//move the arm down to horizontal
-        DriveRobot(500, 0, 0, 0, 0, 0, 0, 0, 1);//grab
-        DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 1);//move the arm up to vertical
-        DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
-        DriveRobot(450, 1, 1, 1, 1, 0, 0, 0, 1);//move forward a bit to park
+        DriveRobot(350, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        sleep(500);
+        DriveRobot(300,0.3,0.3,0.3,0.3,0,0,0,0);//drive forward
+        DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
+        sleep(500);
+        DriveRobot(400,0,0,0,0,1,0,0,1);//move the arm up to vertical
+        DriveRobot(2500, 1, 1, 1, 1, 0, 0, 0, 0);//swerve forward
+
     }
     public void Track_b(){
         FrontLeftMotor = hardwareMap.dcMotor.get("DriveFrontLeft");
@@ -104,24 +100,38 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo .class, "Claw");
         DriveRobot(300, 0,0,0, 0, 0,0,0,1);//grip arm
-        DriveRobot(1200, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
-        DriveRobot(1000, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
+        DriveRobot(1400, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
+        DriveRobot(1300, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
         sleep(250);
-        DriveRobot(1200,1,1,1,1,0,0,0,1);//drive forward
+        DriveRobot(1500,0.9,0.9,1,1,0,0,0,1);//drive forward
         sleep(250);
-        DriveRobot(1000, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
+        DriveRobot(900, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
+        sleep(250);
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
-        DriveRobot(500,0,0,0,0,1,0,0,0);//move the arm up to vertical
+        DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(2000,-1,-1,-1,-1,0,0,0,0);//drive backward
+        DriveRobot(390,0,0,-0.5,-0.5,0,0,0,0);//turn straight
         sleep(250);
-        DriveRobot(500, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        DriveRobot(2550,-1,-1,-1,-1,0,0,0,0);//drive backward
+        sleep(250);
+        DriveRobot(350, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        sleep(500);
+        DriveRobot(300,0.3,0.3,0.3,0.3,0,0,0,0);//drive forward
         DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
-        DriveRobot(500,0,0,0,0,1,0,0,1);//move the arm up to vertical
-        DriveRobot(2500,1,1,1,1,0,0,0,1);//drive forward
+        sleep(500);
+        DriveRobot(400,0,0,0,0,1,0,0,1);//move the arm up to vertical
+        DriveRobot(2300,0.95,0.95,1,1,0,0,0,1);//drive forward
         sleep(250);
-        DriveRobot(500, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
+        DriveRobot(400, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
+        DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
+        sleep(250);
+        DriveRobot(380,0,0,-0.5,-0.5,0,0,0,1);//turn straight
+        sleep(250);
+        DriveRobot(600,-1,-1,-1,-1,0,0,0.83,1);//drive backward
+        DriveRobot(1000, 0,0,0, 0, 0,0,0.83,1);//spin launcher
+        DriveRobot(4000, 0,0,0, 0, 0,0.25,0.83,1);//launch ring
+        DriveRobot(200,1,1,1,1,0,0,0,1);//drive forward
     }
 
     public void Track_c() {
@@ -134,38 +144,37 @@ public class WobbleBlue_Back_Up extends LinearOpMode
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo .class, "Claw");
-        DriveRobot(500, 0,0,0, 0, 0,0,0,1);//move the arm down half way
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(400, 0,0,0, 0, -1,0,0,1);//move the arm down half way
+        DriveRobot(300, 0,0,0, 0, 0,0,0,1);//grip arm
+        DriveRobot(1400, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
+        DriveRobot(1300, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
         sleep(250);
-        DriveRobot(300, .5,.5,.5,.5,0,0,0,1);//move forward 5 in
+        DriveRobot(2000,0.9,0.9,1,1,0,0,0,1);//curve forward
         sleep(250);
-        DriveRobot(700, -.5,.5,.5,-.5,0,0,0,1);//strafe left 10 in
+        DriveRobot(900, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
         sleep(250);
-        DriveRobot(6600, .5,.5,.5,.5,0,0,0,1);//move forward 138 in
+        DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
+        DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(600,0.5,-0.5,-0.5,0.5,0,0,0,1);//strafe right
+        DriveRobot(2000,-0.9,-0.9,-1,-1,0,0,0,1);//curve backward
         sleep(250);
-        DriveRobot(600,0,0,0,0,-1,0,0,1);//move the arm down to horizontal
+        DriveRobot(350, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        sleep(500);
+        DriveRobot(300,0.3,0.3,0.3,0.3,0,0,0,0);//drive forward
+        DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
+        sleep(500);
+        DriveRobot(400,0,0,0,0,1,0,0,1);//move the arm up to vertical
+        DriveRobot(2800,0.9,0.9,1,1,0,0,0,1);//drive forward
         sleep(250);
-        DriveRobot(260, .5,.5,.5,.5,0,0,0,0);//open clawn
+        DriveRobot(400, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
+        DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
+        DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(1000,0,0,0,0,1,0,0,1);//move the arm up to vertical
+        DriveRobot(800,-1,-1,-1,-1,0,0,0,1);//drive backward
         sleep(250);
-        DriveRobot(2400, .5,-.5,-.5,.5,0,0,0,1);//strafe right 60 in
-        sleep(250);
-        DriveRobot(3600,-.5,-.5,-.53,-.53,0,0,1,1); //move backward 70 in
-        sleep(250);
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(800, .5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(830, .5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
-        DriveRobot(300, .5,.5,.5, .5, 0,0,0,1);//move forward a bit to park
+        DriveRobot(380,0,0,-0.5,-0.5,0,0,0.83,1);//turn straight
+        DriveRobot(1000, 0,0,0, 0, 0,0,0.83,1);//spin launcher
+        DriveRobot(4000, 0,0,0, 0, 0,0.25,0.83,1);//launch ring
+        DriveRobot(200,1,1,1,1,0,0,0,1);//drive forward
     }
 
 

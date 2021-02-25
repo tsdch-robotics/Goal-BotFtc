@@ -45,7 +45,7 @@ public class TankDriveTeleop extends OpMode {
     ChampBot robot = new ChampBot();
     public ElapsedTime runtime = new ElapsedTime();
     boolean slowcheck = false;
-    int IntakeInteger = 0;
+
 
     @Override
     public void init() {
@@ -98,7 +98,7 @@ public class TankDriveTeleop extends OpMode {
 
         //Elevator Intake
         if (gamepad2.left_trigger > 0.1) {
-            robot.WheelMotor.setPower(.5);
+            robot.WheelMotor.setPower(.7);
         } else {
             robot.WheelMotor.setPower(0);
             robot.IntakeMotor.setPower(0);
@@ -106,16 +106,9 @@ public class TankDriveTeleop extends OpMode {
 
         //Ground Intake Boolean Control
         if (gamepad2.left_bumper) {
-            if (IntakeInteger == 0) {
-                IntakeInteger = 1;
-            } else if (IntakeInteger == 1) {
-                IntakeInteger = 0;
-            }
-        }
-        if (IntakeInteger == 0) {
-            robot.IntakeMotor.setPower(0);
-        } else {
             robot.IntakeMotor.setPower(-1);
+        }else {
+            robot.IntakeMotor.setPower(0);
         }
 
         //Arm Control
@@ -134,13 +127,13 @@ public class TankDriveTeleop extends OpMode {
 
         //Launcher Control for High Goal
         if (gamepad2.right_bumper) {
-            robot.LauncherMotor.setPower(.9);
+            robot.LauncherMotor.setPower(.75);
         } else {
             robot.LauncherMotor.setPower(0);
         }
         //Launcher Control for Power Shot
         if (gamepad2.right_trigger > 0.1) {
-            robot.LauncherMotor.setPower(.82);
+            robot.LauncherMotor.setPower(0.85);
         } else {
             robot.LauncherMotor.setPower(0);
         }

@@ -37,28 +37,31 @@ public class WobbleBlue_A extends LinearOpMode {
         sleep(250);//wait for 0.25 sec
         DriveRobot(400, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down half way
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 1);//move forward 90.75 in
+        DriveRobot(2000, 1, 1, 1, 1, 0, 0, 0, 1);//move forward 90.75 in
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, 0, 0, 0, 0);//open claw
         DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 0);//move the arm up to vertical
-        DriveRobot(340, -0.5, -.5, -.6, -.6, 0, 0, 0, 0);//movebackward for 20 in
+        DriveRobot(800, -0.5, -.5, 0, 0, 0, 0, 0, 0);//tilt
         sleep(250);//wait for 0.25 sec
-        DriveRobot(552, 1, 1, -1, -1, 0, 0, 0, 0);//trun right
+        DriveRobot(1850, -1, -1, -1, -1, 0, 0, 0, 0);//move backwards to wobble
         sleep(250);//wait for 0.25 sec
-        DriveRobot(2000, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
+        DriveRobot(350, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        sleep(500);
+        DriveRobot(300,0.3,0.3,0.3,0.3,0,0,0,0);//drive forward
+        DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
+        sleep(500);
+        DriveRobot(400,0,0,0,0,1,0,0,1);//move the arm up to vertical
+        DriveRobot(1700, 1, 1, 1, 1, 0, 0, 0, 1);//swerve forward
+        DriveRobot(400, 0, 0, 0, 0, -1, 0, 0, 1);//move the arm down to horizontal
         sleep(250);//wait for 0.25 sec
-        DriveRobot(552, -1, -1, 1, 1, 0, 0, 0, 0);//trun right
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
-        sleep(250);
-        DriveRobot(1104, 1, 1, -1, -1, 0, 0, 0, 0);//trun back
-        DriveRobot(600, 0, 0, 0, 0, -1, 0, 0, 0);//move the arm down to horizontal
-        DriveRobot(500, 0, 0, 0, 0, 0, 0, 0, 1);//grab
-        DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 1);//move the arm up to vertical
-        DriveRobot(2225, 1, 1, 1, 1, 0, 0, 0, 0);//move forward 90.75 in
-        DriveRobot(450, 1, 1, 1, 1, 0, 0, 0, 1);//move forward a bit to park
+        DriveRobot(600, 0, 0, 0, 0, 0, 0, 0, 0);//open claw
+        DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 0);//move the arm up to vertical
+        DriveRobot(1000, -0.1, -0.1, -0.6, -0.6, 0, 0, 0, 0);//tilt
+        DriveRobot(1000, 0,0,0, 0, 0,0,0.83,1);//spin launcher
+        DriveRobot(4000, 0,0,0, 0, 0,0.25,0.83,1);//launch ring
+        DriveRobot(500, 1,1,1,1,1,0,0,1);//drive forward
     }
 
 

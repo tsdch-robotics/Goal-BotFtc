@@ -39,38 +39,37 @@ public class  WobbleBlue_C extends LinearOpMode {
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo.class, "Claw");
-        DriveRobot(500, 0,0,0, 0, 0,0,0,1);//move the arm down half way
-        sleep(250);//wait for 0.25 sec
-        DriveRobot(400, 0,0,0, 0, -1,0,0,1);//move the arm down half way
+        DriveRobot(300, 0,0,0, 0, 0,0,0,1);//grip arm
+        DriveRobot(1100, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
+        DriveRobot(1200, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
         sleep(250);
-        DriveRobot(300, .5,.5,.5,.5,0,0,0,1);//move forward 5 in
+        DriveRobot(2200,0.9,0.9,1,1,0,0,0,1);//curve forward
         sleep(250);
-        DriveRobot(700, -.5,.5,.5,-.5,0,0,0,1);//strafe left 10 in
+        DriveRobot(900, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
         sleep(250);
-        DriveRobot(6600, .5,.5,.5,.5,0,0,0,1);//move forward 138 in
+        DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
+        DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(600,0.5,-0.5,-0.5,0.5,0,0,0,1);//strafe right
+        DriveRobot(3500,-0.9,-0.9,-1,-1,0,0,0,1);//curve backward
         sleep(250);
-        DriveRobot(600,0,0,0,0,-1,0,0,1);//move the arm down to horizontal
+        DriveRobot(350, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        sleep(500);
+        DriveRobot(300,0.3,0.3,0.3,0.3,0,0,0,0);//drive forward
+        DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
+        sleep(500);
+        DriveRobot(400,0,0,0,0,1,0,0,1);//move the arm up to vertical
+        DriveRobot(3200,0.93,0.93,1,1,0,0,0,1);//drive forward
         sleep(250);
-        DriveRobot(260, .5,.5,.5,.5,0,0,0,0);//open clawn
+        DriveRobot(400, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
+        DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
+        DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(1000,0,0,0,0,1,0,0,1);//move the arm up to vertical
+        DriveRobot(440,0,0,-0.5,-0.5,0,0,0.83,1);//turn straight
         sleep(250);
-        DriveRobot(2400, .5,-.5,-.5,.5,0,0,0,1);//strafe right 60 in
-        sleep(250);
-        DriveRobot(3600,-.5,-.5,-.53,-.53,0,0,1,1); //move backward 70 in
-        sleep(250);
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(800, .5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(830, .5,-.5,-.5,.5,0,0,1,1);//strafe right 8 in
-        DriveRobot(250, 0,0,0, 0, 0,0,1,1);//sleep while launcher move
-        DriveRobot(1000, 0,0,0, 0, 0,0.25,1,1);//launch ring
-        DriveRobot(300, .5,.5,.5, .5, 0,0,0,1);//move forward a bit to park
+        DriveRobot(1300,-1,-1,-1,-1,0,0,0.83,1);//drive backward
+        DriveRobot(1000, 0,0,0, 0, 0,0,0.83,1);//spin launcher
+        DriveRobot(4000, 0,0,0, 0, 0,0.25,0.83,1);//launch ring
+        DriveRobot(200,1,1,1,1,0,0,0,1);//drive forward
     }
 
 

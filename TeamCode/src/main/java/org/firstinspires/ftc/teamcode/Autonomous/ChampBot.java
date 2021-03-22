@@ -21,6 +21,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  */
 public class ChampBot {
     // class variables for all hardware
+    public DcMotor TestMotor;
     public DcMotor DriveFrontLeft;
     public DcMotor DriveFrontRight;
     public DcMotor DriveBackLeft;
@@ -50,6 +51,7 @@ public class ChampBot {
         hwMap = ahwMap; // reference to hardware map
 
         // initialize drivetrain
+        TestMotor = hwMap.dcMotor.get("TestMotor");
         DriveFrontLeft = hwMap.dcMotor.get("DriveFrontLeft");
         DriveBackLeft = hwMap.dcMotor.get("DriveBackLeft");
         DriveFrontRight = hwMap.dcMotor.get("DriveFrontRight");

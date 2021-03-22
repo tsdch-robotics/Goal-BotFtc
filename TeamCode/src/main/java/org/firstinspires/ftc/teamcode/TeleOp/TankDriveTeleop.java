@@ -137,6 +137,7 @@ public class TankDriveTeleop extends OpMode {
         } else {
             robot.LauncherMotor.setPower(0);
         }
+<<<<<<< Updated upstream
         if (gamepad1.b) {
             robot.servo.setPosition(0.0);
             //grabStatus = "close";
@@ -145,6 +146,13 @@ public class TankDriveTeleop extends OpMode {
             //grabStatus = "open";
         }
         robot.setDriveMotors(DriveLeftPower, DriveRightPower, DriveLeftPower, DriveRightPower);
+=======
+        if (gamepad1.y) {
+            robot.TestMotor.setPower(1);
+        }else {
+            robot.TestMotor.setPower(0);
+        }
+>>>>>>> Stashed changes
     }
 }
 

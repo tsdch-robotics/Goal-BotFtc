@@ -95,6 +95,7 @@ public class WobbleBlue_New extends LinearOpMode
         DriveRobot(1000, 0,0,0, 0, 0,0,0.83,1);//spin launcher
         DriveRobot(4000, 0,0,0, 0, 0,0.25,0.83,1);//launch ring
         DriveRobot(300, 1,1,1,1,1,0,0,1);//drive forward
+        DriveRobot(1000,1,1,1, 1,0,0,0,1 );//drive forward
     }
 
 

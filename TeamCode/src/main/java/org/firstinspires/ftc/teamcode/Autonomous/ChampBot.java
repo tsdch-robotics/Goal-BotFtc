@@ -33,6 +33,7 @@ public class ChampBot {
     public DcMotor LauncherMotor;
 
     public Servo servo;
+    public Servo servo2;//D
 
     private VuforiaLocalizer vuforia;
     private static final String VUFORIA_KEY = "AYuwB/n/////AAABmc2iWLR8g0iipnUkJKVfgAYw+QI3BcT5KMR/SavKNiO/7h1HrtK20ekoQerKKc0YoamY11r9MOZzcgz6ku69rBwqrrl08VUqzKn+d49/pW3Gi6SseQMgb5piXwASgO9XHeqCFgmD+NkR52ta3MGEI8X6FGAt3uATqM20EPbIugPpnNjsdCgCav51jMCUI5kvgG4AjO4MIN/kPE4PlJ3ZUI7/lTSDZ8nImPoRuJQ9VWJrjOJzY6/ylE9V5j5r5nkixzVwLJ1GzA0vYsvFc+62J11ZuhiAoc1zxzpe8VK4ibSxwCP1lFRSg+6T8jiX4OXYnzovD4ghLc+0KXtF+hl9niNSkiBY7oaRYGwQW1MlgzJ9";
@@ -73,6 +74,7 @@ public class ChampBot {
 
         // initialize servos
         servo = hwMap.servo.get("Claw");
+        servo2 = hwMap.servo.get("Claw2");//D
         //Claw = hwMap.servo.get("Claw");
         //PlatformServo = hwMap.servo.get("PlatformServo");
         //LockServo = hwMap.servo.get("LockServo");

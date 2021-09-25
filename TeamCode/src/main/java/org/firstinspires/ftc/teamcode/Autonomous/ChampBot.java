@@ -49,7 +49,7 @@ public class ChampBot {
 
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {
-        hwMap = ahwMap; // reference to hardware map
+        hwMap = ahwMap; // reference to hardwae map
 
         // initialize drivetrain
         TestMotor = hwMap.dcMotor.get("TestMotor");

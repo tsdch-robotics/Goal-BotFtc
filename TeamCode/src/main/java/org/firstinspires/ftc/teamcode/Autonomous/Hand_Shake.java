@@ -26,15 +26,16 @@ public class Hand_Shake extends LinearOpMode {
         LauncherMotor = hardwareMap.dcMotor.get("LauncherMotor");
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
         servo = hardwareMap.get(Servo.class, "Claw");
-        DriveRobot(1000, 0, 0, 0, 0, -1, 0, 0, 1);//drop arm
-        DriveRobot(2000, 0, 0, 0, 0, 0, 0, 0, 0);//open hand
-        sleep(2000);
+        DriveRobot(800, 0, 0, 0, 0, -1, 0, 0, 1);//drop arm
+        DriveRobot(500, 0, 0, 0, 0, 0, 0, 0, 0);//open hand
+        sleep(500);
         DriveRobot(1000, 0, 0, 0, 0, 0, 0, 0, 1);//close hand
-        DriveRobot(300, 0, 0, 0, 0, -1, 0, 0, 1);//shake up
-        DriveRobot(300, 0, 0, 0, 0, 1, 0, 0, 1);//shake down
-        DriveRobot(300, 0, 0, 0, 0, -1, 0, 0, 1);//shake up
-        DriveRobot(300, 0, 0, 0, 0, 1, 0, 0, 1);//shake down
-        DriveRobot(1000, 0, 0, 0, 0, 0, 0, 0, 0);//open hand
+        DriveRobot(400, 0, 0, 0, 0, 1, 0, 0, 1);//shake up
+        DriveRobot(400, 0, 0, 0, 0, -1, 0, 0, 1);//shake down
+        DriveRobot(400, 0, 0, 0, 0, 1, 0, 0, 1);//shake up
+        DriveRobot(400, 0, 0, 0, 0, -1, 0, 0, 1);//shake down
+        DriveRobot(400, 0, 0, 0, 0, 1, 0, 0, 1);//shake up
+        DriveRobot(500, 0, 0, 0, 0, 0, 0, 0, 0);//open hand
     }
     public void DriveRobot(int milliseconds, double LeftFrontPower, double LeftBackPower, double RightFrontPower, double RightBackPower, double ArmPower, double WheelPower, double LauncherPower, double position) {
         telemetry.addData("Mode", "waiting");

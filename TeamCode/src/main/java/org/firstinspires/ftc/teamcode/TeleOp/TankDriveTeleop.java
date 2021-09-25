@@ -90,6 +90,7 @@ public class TankDriveTeleop extends OpMode {
         //Backwards Intake
         if (gamepad2.y) {
             robot.IntakeMotor.setPower(1);
+            robot.WheelMotor.setPower(1);
         } else {
             robot.WheelMotor.setPower(0);
             robot.ArmMotor.setPower(0);
@@ -127,7 +128,7 @@ public class TankDriveTeleop extends OpMode {
 
         //Launcher Control for High Goal
         if (gamepad2.right_bumper) {
-            robot.LauncherMotor.setPower(.75);
+            robot.LauncherMotor.setPower(.8);
         } else {
             robot.LauncherMotor.setPower(0);
         }

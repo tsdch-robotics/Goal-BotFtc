@@ -76,11 +76,11 @@ public class WobbleBlue_New extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, 0, 0, 0, 0);//open claw
         DriveRobot(600, 0, 0, 0, 0, 1, 0, 0, 0);//move the arm up to vertical
-        DriveRobot(650, -0.5, -.5, 0, 0, 0, 0, 0, 0);//tilt
+        DriveRobot(700, -0.5, -.5, 0, 0, 0, 0, 0, 0);//tilt
         sleep(250);//wait for 0.25 sec
         DriveRobot(1850, -1, -1, -1, -1, 0, 0, 0, 0);//move backwards to wobble
         sleep(250);//wait for 0.25 sec
-        DriveRobot(300, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        DriveRobot(250, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
         sleep(500);
         DriveRobot(300,0.3,0.3,0.3,0.3,0,0,0,0);//drive forward
         DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
@@ -91,7 +91,7 @@ public class WobbleBlue_New extends LinearOpMode
         sleep(250);//wait for 0.25 sec
         DriveRobot(600, 0, 0, 0, 0, 0, 0, 0, 0);//open claw
         DriveRobot(500, 0, 0, 0, 0, 1, 0, 0, 0);//move the arm up to vertical
-        DriveRobot(1000, -0.1, -0.1, -0.6, -0.6, 0, 0, 0, 0);//tilt
+        DriveRobot(1350, -0.1, -0.1, -0.6, -0.6, 0, 0, 0, 0);//tilt
         DriveRobot(1000, 0,0,0, 0, 0,0,0.83,1);//spin launcher
         DriveRobot(4000, 0,0,0, 0, 0,0.25,0.83,1);//launch ring
         DriveRobot(300, 1,1,1,1,1,0,0,1);//drive forward
@@ -113,18 +113,18 @@ public class WobbleBlue_New extends LinearOpMode
         DriveRobot(1400, 1,1,0.3, 0.3, 0,0,0,1);//swerve right
         DriveRobot(1300, 0.3,0.3,1, 1, 0,0,0,1);//swerve left
         sleep(250);
-        DriveRobot(1500,0.91,0.91,1,1,0,0,0,1);//drive forward
+        DriveRobot(1400,0.93,0.93,1,1,0,0,0,1);//drive forward
         sleep(250);
         DriveRobot(900, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
         sleep(250);
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
         DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(320,0,0,-0.5,-0.5,0,0,0,0);//turn straight
+        DriveRobot(300,0,0,-0.5,-0.5,0,0,0,0);//turn straight
         sleep(250);
         DriveRobot(2550,-1,-1,-1,-1,0,0,0,0);//drive backward
         sleep(250);
-        DriveRobot(350, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
+        DriveRobot(320, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
         sleep(500);
         DriveRobot(300,0.3,0.3,0.3,0.3,0,0,0,0);//drive forward
         DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
@@ -138,7 +138,7 @@ public class WobbleBlue_New extends LinearOpMode
         sleep(250);
         DriveRobot(370,0,0,-0.5,-0.5,0,0,0,1);//turn straight
         sleep(250);
-        DriveRobot(600,-1,-1,-1,-1,0,0,0.83,1);//drive backward
+        DriveRobot(700,-0.98,-0.98,-1,-1,0,0,0.83,1);//drive backward
         DriveRobot(1000, 0,0,0, 0, 0,0,0.83,1);//spin launcher
         DriveRobot(4000, 0,0,0, 0, 0,0.25,0.83,1);//launch ring
         DriveRobot(200,1,1,1,1,0,0,0,1);//drive forward
@@ -165,7 +165,7 @@ public class WobbleBlue_New extends LinearOpMode
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw
         DriveRobot(600,0,0,0,0,1,0,0,0);//move the arm up to vertical
         sleep(250);
-        DriveRobot(3300,-0.92,-0.92,-1,-1,0,0,0,0);//curve backward
+        DriveRobot(3100,-0.95,-0.95,-1,-1,0,0,0,0);//curve backward
         sleep(250);
         DriveRobot(450, 0,0,0, 0, -1,0,0,0);//move the arm down all the way
         sleep(500);
@@ -173,7 +173,7 @@ public class WobbleBlue_New extends LinearOpMode
         DriveRobot(260, 0,0,0,0,0,0,0,1);//close claw
         sleep(500);
         DriveRobot(500,0,0,0,0,1,0,0,1);//move the arm up to vertical
-        DriveRobot(3400,0.95,0.95,1,1,0,0,0,1);//drive forward
+        DriveRobot(3100,0.96,0.96 ,1,1,0,0,0,1);//drive forward
         sleep(250);
         DriveRobot(500, 0,0,0, 0, -1,0,0,1);//move the arm down all the way
         DriveRobot(260, 0,0,0,0,0,0,0,0);//open claw

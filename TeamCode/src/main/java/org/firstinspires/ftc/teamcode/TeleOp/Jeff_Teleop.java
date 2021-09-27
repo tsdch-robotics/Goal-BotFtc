@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
-
+/*
 
 @TeleOp(name="Tank Drive", group="ChampBot")
 public class Jeff_Teleop extends OpMode {
@@ -20,7 +20,7 @@ public class Jeff_Teleop extends OpMode {
          * Use the hardwareMap to get the dc motors and servos by name. Note
          * that the names of the devices must match the names used when you
          * configured your robot and created the configuration file.
-         */
+
         robot.init(hardwareMap);
         robot.DriveFrontLeft.setPower(0);
         robot.DriveFrontRight.setPower(0);
@@ -36,3 +36,5 @@ public class Jeff_Teleop extends OpMode {
         robot.setDriveMotors(DriveLeftPower, DriveRightPower, DriveLeftPower, DriveRightPower);
         }
     }
+
+ */

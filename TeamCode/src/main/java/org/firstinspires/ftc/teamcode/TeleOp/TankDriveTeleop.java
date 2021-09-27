@@ -55,10 +55,10 @@ public class TankDriveTeleop extends OpMode {
          * configured your robot and created the configuration file.
          */
         robot.init(hardwareMap);
-        robot.DriveFrontLeft.setPower(0);
-        robot.DriveFrontRight.setPower(0);
-        robot.DriveBackLeft.setPower(0);
-        robot.DriveBackRight.setPower(0);
+        robot.frontLeftDrive.setPower(0);
+        robot.frontRightDrive.setPower(0);
+        robot.rearLeftDrive.setPower(0);
+        robot.rearRightDrive.setPower(0);
     }
 
 
@@ -75,18 +75,29 @@ public class TankDriveTeleop extends OpMode {
         //Strafe Control
         if (RightStrafe) {
             // to right strafe, right motors towards each other, left motors away from each other
-            robot.DriveFrontLeft.setPower(-1);
-            robot.DriveFrontRight.setPower(1);
-            robot.DriveBackLeft.setPower(1);
-            robot.DriveBackRight.setPower(-1);
+            robot.frontLeftDrive.setPower(-1);
+            robot.frontRightDrive.setPower(-1);
+            robot.rearLeftDrive.setPower(1);
+            robot.rearRightDrive.setPower(-1);
         } else if (LeftStrafe) {
             // opposite of right strafe
-            robot.DriveFrontLeft.setPower(1);
-            robot.DriveFrontRight.setPower(-1);
-            robot.DriveBackLeft.setPower(-1);
-            robot.DriveBackRight.setPower(1);
+            robot.frontLeftDrive.setPower(1);
+            robot.frontRightDrive.setPower(1);
+            robot.rearLeftDrive.setPower(-1);
+            robot.rearRightDrive.setPower(1);
         }
+        robot.setDriveMotors(DriveLeftPower, DriveRightPower, DriveLeftPower, DriveRightPower);
 
+        //import odometry into the loop
+        robot.odometry();
+        telemetry.addData("LRA","%6d %6d %6d", robot.currentLeftPosition, robot.currentRightPosition, robot.currentAuxPosition);
+        telemetry.addData("xyh", "%6.1f cm 6.1f cm %6.1f deg", robot.pos.x, robot.pos.y, Math.toDegrees(robot.pos.h));
+        //telemetry.addData("loop", ".1f ms", timer.milliseconds);
+        //timer.reset();
+
+    }
+}
+/*
         //Backwards Intake
         if (gamepad2.y) {
             robot.IntakeMotor.setPower(1);
@@ -154,4 +165,6 @@ public class TankDriveTeleop extends OpMode {
         }
     }
 }
+
+ */
 

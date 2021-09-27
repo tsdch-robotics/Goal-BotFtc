@@ -20,195 +20,130 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * and some common helper functions (stop motors, reset encoders, etc.)
  */
 public class ChampBot {
-    // class variables for all hardware
-    public DcMotor TestMotor;
-    public DcMotor DriveFrontLeft;
-    public DcMotor DriveFrontRight;
-    public DcMotor DriveBackLeft;
-    public DcMotor DriveBackRight;
-    //the intake motor
-    public DcMotor WheelMotor;
-    public DcMotor ArmMotor;
-    public DcMotor IntakeMotor;
-    public DcMotor LauncherMotor;
+    public static final Double TRIGGER_THRESHOLD = 0.5;//gamepad trigger
+    //Drive Motors
+    public DcMotor frontLeftDrive;
+    public DcMotor frontRightDrive;
+    public DcMotor rearLeftDrive;
+    public DcMotor rearRightDrive;
+    //Odometry Encoders
+    public DcMotor encoderLeft;
+    public DcMotor encoderRight;
+    public DcMotor encoderAux;
 
-    public Servo servo;
-    public Servo servo2;//D
+    private HardwareMap hardwareMap;
+    public void init(HardwareMap ahwMap){
+        hardwareMap=ahwMap;
+        //configure the drive motors
+        frontLeftDrive=hardwareMap.dcMotor.get("left_front_drive");
+        frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
+        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-    private VuforiaLocalizer vuforia;
-    private static final String VUFORIA_KEY = "AYuwB/n/////AAABmc2iWLR8g0iipnUkJKVfgAYw+QI3BcT5KMR/SavKNiO/7h1HrtK20ekoQerKKc0YoamY11r9MOZzcgz6ku69rBwqrrl08VUqzKn+d49/pW3Gi6SseQMgb5piXwASgO9XHeqCFgmD+NkR52ta3MGEI8X6FGAt3uATqM20EPbIugPpnNjsdCgCav51jMCUI5kvgG4AjO4MIN/kPE4PlJ3ZUI7/lTSDZ8nImPoRuJQ9VWJrjOJzY6/ylE9V5j5r5nkixzVwLJ1GzA0vYsvFc+62J11ZuhiAoc1zxzpe8VK4ibSxwCP1lFRSg+6T8jiX4OXYnzovD4ghLc+0KXtF+hl9niNSkiBY7oaRYGwQW1MlgzJ9";
-    //public VuforiaStuff vuforiaStuff;
+        frontRightDrive=hardwareMap.dcMotor.get("right_front_drive");
+        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-    /* local OpMode members. */
-    HardwareMap hwMap = null;
-    private ElapsedTime period = new ElapsedTime();
+        rearLeftDrive=hardwareMap.dcMotor.get("left_rear_drive");
+        rearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        rearLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-    public ChampBot() { }
+        rearRightDrive=hardwareMap.dcMotor.get("left_rear_drive");
+        rearRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        rearRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
+        //shadow the motors with the odo encoders
+        encoderLeft=rearLeftDrive;
+        encoderRight=rearRightDrive;
+        encoderAux=frontRightDrive;
 
+        stop();
+        resetDriveEncoders();
+    }
+    //a function to reset encoder
+    public void resetDriveEncoders(){
+        frontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-    /* Initialize standard Hardware interfaces */
-    public void init(HardwareMap ahwMap) {
-        hwMap = ahwMap; // reference to hardwae map
+        frontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        // initialize drivetrain
-        TestMotor = hwMap.dcMotor.get("TestMotor");
-        DriveFrontLeft = hwMap.dcMotor.get("DriveFrontLeft");
-        DriveBackLeft = hwMap.dcMotor.get("DriveBackLeft");
-        DriveFrontRight = hwMap.dcMotor.get("DriveFrontRight");
-        DriveBackRight = hwMap.dcMotor.get("DriveBackRight");
-        //initialize intake motor
-        WheelMotor = hwMap.dcMotor.get("WheelMotor");
-        ArmMotor = hwMap.dcMotor.get("ArmMotor");
-        IntakeMotor = hwMap.dcMotor.get("IntakeMotor");
-        LauncherMotor = hwMap.dcMotor.get("LauncherMotor");
+        rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        // reverse one side of the drivetrain so that directions are more natural
-        DriveFrontRight.setDirection(DcMotor.Direction.REVERSE);
-        DriveFrontLeft.setDirection(DcMotor.Direction.REVERSE);
-        DriveBackLeft.setDirection(DcMotor.Direction.REVERSE);
+        rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    }
+    //the stop function
 
-        // initialize arm
-        //Arm = hwMap.dcMotor.get("Arm");
-        //Arm.setDirection(DcMotor.Direction.REVERSE);
-
-        // initialize servos
-        servo = hwMap.servo.get("Claw");
-        servo2 = hwMap.servo.get("Claw2");//D
-        //Claw = hwMap.servo.get("Claw");
-        //PlatformServo = hwMap.servo.get("PlatformServo");
-        //LockServo = hwMap.servo.get("LockServo");
-
-        // move all motors/servos to their starting position
-        //initAllServos();
-       // stopAllMotors();
-
-        // don't initialize gyro or vision unless an opmode specifically requests it!
+    public void stop() {
+        frontLeftDrive.setPower(0);
+        frontRightDrive.setPower(0);
+        rearLeftDrive.setPower(0);
+        rearRightDrive.setPower(0);
     }
 
-    public void visionInit() {
-        WebcamName webcamName;
-        webcamName = hwMap.get(WebcamName.class, "Webcam 1");
-
-        int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
-        parameters.cameraName = webcamName;
-
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        // Instantiate the Vuforia engine
-        vuforia = ClassFactory.getInstance().createVuforia(parameters);
-        // Initialize our block detection logic
-        //vuforiaStuff = new VuforiaStuff(vuforia);
-    }
-
-    /**
-     * Sets the drive motors to the specified power.
-     * -1.0 moves the motor backwards; +1.0 moves the motor forwards
-     * @param FrontL
-     * @param FrontR
-     * @param BackL
-     * @param BackR
-     */
     public void setDriveMotors(double FrontL, double FrontR, double BackL, double BackR) {
-        DriveFrontLeft.setPower(FrontL);
-        DriveFrontRight.setPower(FrontR);
-        DriveBackLeft.setPower(BackL);
-        DriveBackRight.setPower(BackR);
+        frontLeftDrive.setPower(FrontL);
+        frontRightDrive.setPower(-FrontR);
+        rearLeftDrive.setPower(BackL);
+        rearRightDrive.setPower(BackR);
     }
 
-    public void stopAllMotors() {
-        DriveFrontLeft.setPower(0.0);
-        DriveFrontRight.setPower(0.0);
-        DriveBackLeft.setPower(0.0);
-        DriveBackRight.setPower(0.0);
-        WheelMotor.setPower(0.0);
-        ArmMotor.setPower(0.0);
+    //constants that define the geometry of the robot:
+    final static double L = 20.12; //distance between encoder 1 and 2 in cm
+    final static double B = 11.5; //Distance between the mid-point of the encoder 1, encoder 2 and encoder 3 in cm
+    final static double R = 3.0; //Wheel Radius in cm
+    final static double N = 8192; //encoder ticks per revolution, REV encoder
+    final static double cm_per_tick = 2.0 * Math.PI*R/N;
 
-       // Arm.setPower(0.0);
-    }
+    //keep track of the odometry encoders between updates;
+    public int currentRightPosition = 0;
+    public int currentLeftPosition = 0;
+    public int currentAuxPosition = 0;
 
-   /* public void initAllServos() {
-        Wrist.setPosition(1.0); //in
-        Claw.setPosition(0.0); // close
-        PlatformServo.setPosition(0.0); //up
-        LockServo.setPosition(0.0); //un-locked
-    }
-*/
-    public void resetAllEncoders() {
-        // reset drive encoders
-        DriveFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        DriveFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        DriveBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        DriveBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        DriveFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    private int oldRightPosition = 0;
+    private int oldLeftPosition = 0;
+    private int oldAuxPosition = 0;
+    /*************************************************************************************
+     * Odometry
+     * Notes:
+     * n1, n2, n3 are encode values for the left, right, and back (aux) omniwheels
+     * dn1, dn2, dn3 are the differences of encoder values between two reads
+     * dx, dy, dtheta describe the robot movement between two reads (in robot coordinates)
+     * X, Y, Theta are the coordinates on the field and the heading of the robot.
+     *************************************************************************************/
+    //XyhVector is a tuple (x,y,h) where h is the angle, the heading of the robot.
+    public XyhVector START_POS = new XyhVector(213,102, Math.toRadians(-174));
+    public XyhVector pos = new XyhVector(START_POS);
 
-       // Arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-       // Arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    }
+    public void odometry(){
 
-    public int inchesToEncoderCounts(double inches) {
-        // CONSTANTS that only change when hardware changes are made to the robot
-        final double countsPerShaftRotation = 1425.2; // only change this if you change what motor you're using
-        final double shaftToWheelRatio = 24.0 / 16.0; // 1 turn of the motor shaft results in X turns of the wheel
-        final double wheelDiameter = 4.0; // diameter of the wheel in inches
+        //getting the position information from the encoders
+        oldRightPosition = currentRightPosition;
+        oldLeftPosition = currentLeftPosition;
+        oldAuxPosition = currentAuxPosition;
 
-        // CALCULATIONS - don't change these!
-        double wheelCircumference = Math.PI * wheelDiameter; // inches
-        double countsPerWheelRotation = countsPerShaftRotation / shaftToWheelRatio;
-        double countsPerInch = countsPerWheelRotation / wheelCircumference;
+        currentRightPosition = -encoderRight.getCurrentPosition();
+        currentLeftPosition = -encoderLeft.getCurrentPosition();
+        currentAuxPosition = encoderAux.getCurrentPosition();
 
-        return (int)(countsPerInch * inches);
-    }
+        int dn1 = currentLeftPosition - oldLeftPosition;
+        int dn2 = currentRightPosition - oldRightPosition;
+        int dn3 = currentAuxPosition - oldAuxPosition;
 
-    /*
-     * This method scales the joystick input so for low joystick values, the
-     * scaled value is less than linear.  This is to make it easier to drive
-     * the robot more precisely at slower speeds.
-     */
-    double scaleInput(double dVal) {
-        double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
-                0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };
+        //record the change in position of the robot between two measurements over a very small time interval
+        double dtheta = cm_per_tick * (dn2-dn1)/L;
+        double dx = cm_per_tick * (dn1+dn2)/2.0;
+        double dy = cm_per_tick * (dn3-(dn2-dn1) * B / L);
 
-        // get the corresponding index for the scaleInput array.
-        int index = (int) (dVal * 16.0);
-
-        // index should be positive.
-        if (index < 0) index = -index;
-
-        // index cannot exceed size of array minus 1.
-        if (index > 16) index = 16;
-
-        // get value from the array.
-        double dScale = 0.0;
-        if (dVal < 0) {
-            dScale = -scaleArray[index];
-        } else {
-            dScale = scaleArray[index];
-        }
-
-        // return scaled value.
-        return dScale;
-    }
-
-    /***
-     *
-     * waitForTick implements a periodic delay. However, this acts like a metronome with a regular
-     * periodic tick.  This is used to compensate for varying processing times for each cycle.
-     * The function looks at the elapsed cycle time, and sleeps for the remaining time interval.
-     *
-     * @param periodMs  Length of wait cycle in mSec.
-     * @throws InterruptedException
-     */
-    public void waitForTick(long periodMs) throws InterruptedException {
-        long remaining = periodMs - (long)period.milliseconds();
-
-        // sleep for the remaining portion of the regular cycle period.
-        if (remaining > 0) Thread.sleep(remaining);
-
-        // Reset the cycle clock for the next pass.
-        period.reset();
+        //trnasfer the robot coordinate into the field coordinate
+        double theta = pos.h +(dtheta / 2.0);
+        pos.x += dx * Math.cos(theta) - dy * Math.sin(theta);
+        pos.y += dx * Math.sin(theta) + dy * Math.cos(theta);
+        pos.h += dtheta;
     }
 }

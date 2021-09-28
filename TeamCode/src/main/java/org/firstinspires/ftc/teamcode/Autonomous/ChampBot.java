@@ -50,13 +50,13 @@ public class ChampBot {
         rearLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        rearRightDrive=hardwareMap.dcMotor.get("left_rear_drive");
+        rearRightDrive=hardwareMap.dcMotor.get("right_rear_drive");
         rearRightDrive.setDirection(DcMotor.Direction.REVERSE);
         rearRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //shadow the motors with the odo encoders
-        encoderLeft=rearLeftDrive;
+        encoderLeft=frontLeftDrive;
         encoderRight=rearRightDrive;
         encoderAux=frontRightDrive;
 

@@ -96,7 +96,7 @@ public class ChampBot {
     //constants that define the geometry of the robot:
     final static double L = 20.12; //distance between encoder 1 and 2 in cm
     final static double B = 11.5; //Distance between the mid-point of the encoder 1, encoder 2 and encoder 3 in cm
-    final static double R = 3.0; //Wheel Radius in cm
+    final static double R = 2.54; //Wheel Radius in cm
     final static double N = 8192; //encoder ticks per revolution, REV encoder
     final static double cm_per_tick = 2.0 * Math.PI*R/N;
 

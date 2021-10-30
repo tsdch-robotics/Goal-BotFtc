@@ -91,7 +91,7 @@ public class TankDriveTeleopWill extends OpMode {
         //import odometry into the loop
         robot.odometry();
         telemetry.addData("LRA","%6d %6d %6d", robot.currentLeftPosition, robot.currentRightPosition, robot.currentAuxPosition);
-        telemetry.addData("xyh", "%6.1f cm 6.1f cm %6.1f deg", robot.pos.x, robot.pos.y, Math.toDegrees(robot.pos.h));
+        telemetry.addData("xyh", "%6.1f cm %6.1f cm %6.1f deg", robot.pos.x, robot.pos.y, Math.toDegrees(robot.pos.h));
         //telemetry.addData("loop", ".1f ms", timer.milliseconds);
         //timer.reset();
 

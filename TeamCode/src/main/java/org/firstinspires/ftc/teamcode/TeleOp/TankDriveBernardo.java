@@ -85,25 +85,23 @@ public class TankDriveBernardo extends OpMode {
         // dpad for strafing left/right
         float DLY = gamepad1.left_stick_y;
         float DRY = gamepad1.right_stick_y;
-        float DLSX = gamepad1.left_stick_x;
-        float DLX = Math.abs(DLSX);
-        float DRSX = gamepad1.left_stick_x;
-        float DRX = Math.abs(DRSX);
+        float DLX = Math.abs(gamepad1.left_stick_x);
+        float DRX = Math.abs(gamepad1.right_stick_x);
         boolean WheelToggle = false;
         float rightPower = DLY/DLX;
         float leftPower = DRY/DRX;
-        /*
+
         telemetry.addData("left x-stick: ", gamepad1.left_stick_x);
         telemetry.addData("right x-stick: ", gamepad1.right_stick_x);
         telemetry.addData("left y-stick: ", gamepad1.left_stick_y);
         telemetry.addData("right y-stick: ", gamepad1.right_stick_y);
         telemetry.addData("right tangent: ", rightPower);
         telemetry.addData("left tangent: ", leftPower);
-*/
-        if (DLSX == -1 && DLY == 0 && DRSX == -1 && DRY == 0) {
+
+        if (gamepad1.dpad_left) {
             // to right strafe, right motors towards each other, left motors away from each other
             RightStrafe();
-        } else if (DLSX == 1 && DLY == 0 && DRSX == 1 && DRY == 0) {
+        } else if (gamepad1.dpad_right) {
             // opposite of right strafe
             LeftStrafe();
         }

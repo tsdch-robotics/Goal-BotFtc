@@ -40,7 +40,7 @@ import java.lang.*;
 import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
 
 
-@TeleOp(name="Tank Drive", group="ChampBot")
+@TeleOp(name="TankDriveBernardo", group="ChampBot")
 public class TankDriveBernardo extends OpMode {
     ChampBot robot = new ChampBot();
     public ElapsedTime runtime = new ElapsedTime();

@@ -22,10 +22,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class ChampBot {
     public static final Double TRIGGER_THRESHOLD = 0.5;//gamepad trigger
     //Drive Motors
-    public DcMotor frontLeftDrive;
-    public DcMotor frontRightDrive;
-    public DcMotor rearLeftDrive;
-    public DcMotor rearRightDrive;
+    public DcMotor DriveFrontLeft;
+    public DcMotor DriveFrontRight;
+    public DcMotor DriveBackLeft;
+    public DcMotor DriveBackRight;
     //Odometry Encoders
     public DcMotor encoderLeft;
     public DcMotor encoderRight;
@@ -35,62 +35,62 @@ public class ChampBot {
     public void init(HardwareMap ahwMap){
         hardwareMap=ahwMap;
         //configure the drive motors
-        frontLeftDrive=hardwareMap.dcMotor.get("left_front_drive");
-        frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
-        frontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        frontLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveFrontLeft=hardwareMap.dcMotor.get("DriveFrontLeft");
+        DriveFrontLeft.setDirection(DcMotor.Direction.FORWARD);
+        DriveFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DriveFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        frontRightDrive=hardwareMap.dcMotor.get("right_front_drive");
-        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
-        frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveFrontRight=hardwareMap.dcMotor.get("DriveFrontRight");
+        DriveFrontRight.setDirection(DcMotor.Direction.FORWARD);
+        DriveFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        rearLeftDrive=hardwareMap.dcMotor.get("left_rear_drive");
-        rearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
-        rearLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackLeft=hardwareMap.dcMotor.get("DriveBackLeft");
+        DriveBackLeft.setDirection(DcMotor.Direction.REVERSE);
+        DriveBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        rearRightDrive=hardwareMap.dcMotor.get("right_rear_drive");
-        rearRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        rearRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackRight=hardwareMap.dcMotor.get("DriveBackRight");
+        DriveBackRight.setDirection(DcMotor.Direction.REVERSE);
+        DriveBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //shadow the motors with the odo encoders
-        encoderLeft=frontLeftDrive;
-        encoderRight=rearRightDrive;
-        encoderAux=frontRightDrive;
+        encoderLeft=DriveFrontLeft;
+        encoderRight=DriveBackRight;
+        encoderAux=DriveFrontRight;
 
         stop();
         resetDriveEncoders();
     }
     //a function to reset encoder
     public void resetDriveEncoders(){
-        frontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        frontLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        DriveFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        frontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rearLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rearRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
     //the stop function
 
     public void stop() {
-        frontLeftDrive.setPower(0);
-        frontRightDrive.setPower(0);
-        rearLeftDrive.setPower(0);
-        rearRightDrive.setPower(0);
+        DriveFrontLeft.setPower(0);
+        DriveFrontRight.setPower(0);
+        DriveBackRight.setPower(0);
+        DriveBackLeft.setPower(0);
     }
 
     public void setDriveMotors(double FrontL, double FrontR, double BackL, double BackR) {
-        frontLeftDrive.setPower(FrontL);
-        frontRightDrive.setPower(-FrontR);
-        rearLeftDrive.setPower(BackL);
-        rearRightDrive.setPower(BackR);
+        DriveFrontLeft.setPower(FrontL);
+        DriveFrontRight.setPower(-FrontR);
+        DriveBackLeft.setPower(BackL);
+        DriveBackRight.setPower(BackR);
     }
 
     //constants that define the geometry of the robot:

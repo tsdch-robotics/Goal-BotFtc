@@ -61,16 +61,16 @@ public class TankDriveBernardo extends OpMode {
         robot.DriveBackRight.setPower(0);
     }
     public void RightStrafe() {
-        robot.DriveFrontLeft.setPower(1);
-        robot.DriveFrontRight.setPower(1);
-        robot.DriveBackLeft.setPower(-1);
-        robot.DriveBackRight.setPower(1);
-    }
-    public void LeftStrafe() {
         robot.DriveFrontLeft.setPower(-1);
         robot.DriveFrontRight.setPower(-1);
-        robot.DriveBackLeft.setPower(1);
+        robot.DriveBackLeft.setPower(-1);
         robot.DriveBackRight.setPower(-1);
+    }
+    public void LeftStrafe() {
+        robot.DriveFrontLeft.setPower(1);
+        robot.DriveFrontRight.setPower(1);
+        robot.DriveBackLeft.setPower(1);
+        robot.DriveBackRight.setPower(1);
     }
     public void MotorsStopped() {
         robot.DriveFrontLeft.setPower(0);
@@ -108,7 +108,7 @@ public class TankDriveBernardo extends OpMode {
             LeftStrafe();
         }
         else
-            robot.setDriveMotors(rightPower, -leftPower, rightPower, leftPower);
+            robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
         /*if (gamepad1.y) {
             robot.WheelMotor.setPower(1);
             //robot.IntakeMotor.setPower(1);

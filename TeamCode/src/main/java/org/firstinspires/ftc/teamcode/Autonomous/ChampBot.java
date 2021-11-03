@@ -88,11 +88,10 @@ public class ChampBot {
 
     public void setDriveMotors(double FrontL, double FrontR, double BackL, double BackR) {
         DriveFrontLeft.setPower(FrontL);
-        DriveFrontRight.setPower(-FrontR);
-        DriveBackLeft.setPower(BackL);
+        DriveFrontRight.setPower(FrontR);
+        DriveBackLeft.setPower(-BackL);
         DriveBackRight.setPower(BackR);
     }
-
     //constants that define the geometry of the robot:
     final static double L = 13.5; //distance between encoder 1 and 2 in cm
     final static double B = 5.31; //Distance between the mid-point of the encoder 1, encoder 2 and encoder 3 in cm

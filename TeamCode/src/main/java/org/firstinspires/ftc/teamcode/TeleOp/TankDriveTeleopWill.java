@@ -55,10 +55,10 @@ public class TankDriveTeleopWill extends OpMode {
          * configured your robot and created the configuration file.
          */
         robot.init(hardwareMap);
-        robot.frontLeftDrive.setPower(0);
-        robot.frontRightDrive.setPower(0);
-        robot.rearLeftDrive.setPower(0);
-        robot.rearRightDrive.setPower(0);
+        robot.DriveFrontLeft.setPower(0);
+        robot.DriveFrontRight.setPower(0);
+        robot.DriveBackLeft.setPower(0);
+        robot.DriveBackRight.setPower(0);
     }
 
 
@@ -75,16 +75,16 @@ public class TankDriveTeleopWill extends OpMode {
         //Strafe Control
         if (RightStrafe) {
             // to right strafe, right motors towards each other, left motors away from each other
-            robot.frontLeftDrive.setPower(1);
-            robot.frontRightDrive.setPower(1);
-            robot.rearLeftDrive.setPower(1);
-            robot.rearRightDrive.setPower(1);
+            robot.DriveFrontLeft.setPower(1);
+            robot.DriveFrontRight.setPower(1);
+            robot.DriveBackLeft.setPower(1);
+            robot.DriveBackRight.setPower(1);
         } else if (LeftStrafe) {
             // opposite of right strafe
-            robot.frontLeftDrive.setPower(-1);
-            robot.frontRightDrive.setPower(-1);
-            robot.rearLeftDrive.setPower(-1);
-            robot.rearRightDrive.setPower(-1);
+            robot.DriveFrontLeft.setPower(-1);
+            robot.DriveFrontRight.setPower(-1);
+            robot.DriveBackLeft.setPower(-1);
+            robot.DriveBackRight.setPower(-1);
         }
         robot.setDriveMotors(-DriveLeftPower, -DriveRightPower, DriveLeftPower, -DriveRightPower);
 

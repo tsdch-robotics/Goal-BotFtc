@@ -37,6 +37,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.*;
+
+import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
 
 
@@ -54,24 +56,42 @@ public class TankDriveBernardo extends OpMode {
          * that the names of the devices must match the names used when you
          * configured your robot and created the configuration file.
          */
+
         robot.init(hardwareMap);
         robot.DriveFrontLeft.setPower(0);
         robot.DriveFrontRight.setPower(0);
         robot.DriveBackLeft.setPower(0);
         robot.DriveBackRight.setPower(0);
     }
-    public void RightStrafe() {
-        robot.DriveFrontLeft.setPower(-1);
-        robot.DriveFrontRight.setPower(-1);
-        robot.DriveBackLeft.setPower(-1);
-        robot.DriveBackRight.setPower(-1);
+
+    public void RightStrafe(double Power) {
+        robot.DriveFrontLeft.setPower(-Power);
+        robot.DriveFrontRight.setPower(-Power);
+        robot.DriveBackLeft.setPower(-Power);
+        robot.DriveBackRight.setPower(-Power);
     }
-    public void LeftStrafe() {
-        robot.DriveFrontLeft.setPower(1);
-        robot.DriveFrontRight.setPower(1);
-        robot.DriveBackLeft.setPower(1);
-        robot.DriveBackRight.setPower(1);
+
+    public void RightStrafeSlow(double Power) {
+        robot.DriveFrontLeft.setPower(-Power/2);
+        robot.DriveFrontRight.setPower(-Power/2);
+        robot.DriveBackLeft.setPower(-Power/2);
+        robot.DriveBackRight.setPower(-Power/2);
     }
+
+    public void LeftStrafe(double Power) {
+        robot.DriveFrontLeft.setPower(Power);
+        robot.DriveFrontRight.setPower(Power);
+        robot.DriveBackLeft.setPower(Power);
+        robot.DriveBackRight.setPower(Power);
+    }
+
+    public void LeftStrafeSlow(double Power) {
+        robot.DriveFrontLeft.setPower(Power);
+        robot.DriveFrontRight.setPower(Power);
+        robot.DriveBackLeft.setPower(Power);
+        robot.DriveBackRight.setPower(Power);
+    }
+
     public void MotorsStopped() {
         robot.DriveFrontLeft.setPower(0);
         robot.DriveFrontRight.setPower(0);
@@ -87,26 +107,77 @@ public class TankDriveBernardo extends OpMode {
         float DRY = gamepad1.right_stick_y;
         float DLX = Math.abs(gamepad1.left_stick_x);
         float DRX = Math.abs(gamepad1.right_stick_x);
-        boolean WheelToggle = false;
-        float rightPower = DLY/DLX;
-        float leftPower = DRY/DRX;
+        float rightPower = DLY / DLX;
+        float leftPower = DRY / DRX;
+        float rightPowerSlow = rightPower / 2;
+        float leftPowerSlow = leftPower / 2;
+        double inf = Double.POSITIVE_INFINITY;
 
-        telemetry.addData("left x-stick: ", gamepad1.left_stick_x);
-        telemetry.addData("right x-stick: ", gamepad1.right_stick_x);
-        telemetry.addData("left y-stick: ", gamepad1.left_stick_y);
-        telemetry.addData("right y-stick: ", gamepad1.right_stick_y);
-        telemetry.addData("right tangent: ", rightPower);
-        telemetry.addData("left tangent: ", leftPower);
-
-        if (gamepad1.dpad_left) {
-            // to right strafe, right motors towards each other, left motors away from each other
-            RightStrafe();
-        } else if (gamepad1.dpad_right) {
-            // opposite of right strafe
-            LeftStrafe();
-        }
-        else
+        telemetry.addData("L: ", leftPower);
+        telemetry.addData("R: ", rightPower);
+        telemetry.addData("Slow L: ", leftPowerSlow);
+        telemetry.addData("Slow R: ", rightPowerSlow);
+        if (gamepad1.left_bumper) {
+            if (leftPower == inf && rightPower == inf) {
+                rightPower = 1;
+                leftPower = 1;
+            }else if (leftPower == -inf && rightPower == -inf){
+                rightPower = -1;
+                leftPower = -1;
+            }
+            leftPower = leftPower/2;
+            rightPower =rightPower/2;
+            telemetry.addData("Power R: ", rightPower);
+            telemetry.addData("Power L: ", leftPower);
+            if (gamepad1.dpad_right) {
+                LeftStrafeSlow(.5);
+            } else if (gamepad1.dpad_left) {
+                RightStrafeSlow(.5);
+            }
             robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
+        }else if (gamepad1.left_bumper == false) {
+            robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
+            if (gamepad1.dpad_right){
+                LeftStrafe(1);
+            }else if (gamepad1.dpad_left) {
+                RightStrafe(1);
+            }
+
+        }
+
+
+        /*if (robot.toggle = true && gamepad1.x) {  // Only execute once per Button push
+            robot.toggle = false;  // Prevents this section of code from being called again until the Button is released and re-pressed
+        }else if (robot.toggle) {  // Decide which way to set the motor this time through (or use this as a motor value instead)
+            while (robot.DMT = false) {
+                if (gamepad1.x) {
+                    robot.DMT = true;
+                } else if (gamepad1.dpad_right) {
+                    LeftStrafe();
+                } else if (gamepad1.dpad_left) {
+                    RightStrafe();
+                } else
+                    robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
+            }
+            robot.toggle = true;
+        }else if (robot.toggle = false) {
+            while (robot.DMT) {
+                if (gamepad1.x){
+                    robot.DMT= false;
+                } else if (gamepad1.dpad_right) {
+                    // opposite of right strafe
+                    LeftStrafeSlow();
+                }else if (gamepad1.dpad_left){
+                    RightStrafeSlow();
+                }
+                else
+                    robot.setDriveMotors(-rightPower/2, leftPower/2, -rightPower/2, -leftPower/2);
+                }
+            robot.toggle = true;
+        }else if(gamepad1.x == false) {
+            robot.toggle = true; // Button has been released, so this allows a re-press to activate the code above.
+        }
+
         /*if (gamepad1.y) {
             robot.WheelMotor.setPower(1);
             //robot.IntakeMotor.setPower(1);
@@ -158,5 +229,4 @@ public class TankDriveBernardo extends OpMode {
         }
     }
 */
-    }
-}
+    }}

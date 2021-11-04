@@ -30,6 +30,9 @@ public class ChampBot {
     public DcMotor encoderLeft;
     public DcMotor encoderRight;
     public DcMotor encoderAux;
+    public boolean DMT = true;
+    public boolean toggle = true;
+
 //code time! :)
     private HardwareMap hardwareMap;
     public void init(HardwareMap ahwMap){
@@ -91,6 +94,12 @@ public class ChampBot {
         DriveFrontRight.setPower(FrontR);
         DriveBackLeft.setPower(-BackL);
         DriveBackRight.setPower(BackR);
+    }
+    public void setDriveMotorsSlow(double FrontL, double FrontR, double BackL, double BackR) {
+        DriveFrontLeft.setPower(FrontL/2);
+        DriveFrontRight.setPower(FrontR/2);
+        DriveBackLeft.setPower(-BackL/2);
+        DriveBackRight.setPower(BackR/2);
     }
     //constants that define the geometry of the robot:
     final static double L = 13.5; //distance between encoder 1 and 2 in cm

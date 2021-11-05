@@ -71,21 +71,7 @@ public class TankDriveBernardo extends OpMode {
         robot.DriveBackRight.setPower(-Power);
     }
 
-    public void RightStrafeSlow(double Power) {
-        robot.DriveFrontLeft.setPower(-Power/2);
-        robot.DriveFrontRight.setPower(-Power/2);
-        robot.DriveBackLeft.setPower(-Power/2);
-        robot.DriveBackRight.setPower(-Power/2);
-    }
-
     public void LeftStrafe(double Power) {
-        robot.DriveFrontLeft.setPower(Power);
-        robot.DriveFrontRight.setPower(Power);
-        robot.DriveBackLeft.setPower(Power);
-        robot.DriveBackRight.setPower(Power);
-    }
-
-    public void LeftStrafeSlow(double Power) {
         robot.DriveFrontLeft.setPower(Power);
         robot.DriveFrontRight.setPower(Power);
         robot.DriveBackLeft.setPower(Power);
@@ -113,37 +99,53 @@ public class TankDriveBernardo extends OpMode {
         float leftPowerSlow = leftPower / 2;
         double inf = Double.POSITIVE_INFINITY;
 
+        telemetry.addData("DLY: ", DLY);
+        telemetry.addData("DLX: ", DLX);
+        telemetry.addData("DRY: ", DRY);
+        telemetry.addData("DRX: ", DRX);
         telemetry.addData("L: ", leftPower);
         telemetry.addData("R: ", rightPower);
-        telemetry.addData("Slow L: ", leftPowerSlow);
-        telemetry.addData("Slow R: ", rightPowerSlow);
+
         if (gamepad1.left_bumper) {
             if (leftPower == inf && rightPower == inf) {
-                rightPower = 1;
                 leftPower = 1;
-            }else if (leftPower == -inf && rightPower == -inf){
-                rightPower = -1;
+                rightPower = 1;
+            }else if (leftPower == -inf && rightPower == -inf) {
                 leftPower = -1;
+                rightPower = -1;
+            }else if (leftPower == inf) {
+                leftPower = 1;
+            }else if (leftPower == -inf) {
+                leftPower = -1;
+            }else if (rightPower == inf) {
+                rightPower = 1;
+            }else if (rightPower == -inf) {
+                rightPower = -1;
+            }else if (leftPower > 1){
+                leftPower = 1;
+            }else if (rightPower > 1) {
+                rightPower = 1;
             }
-            leftPower = leftPower/2;
-            rightPower =rightPower/2;
+            leftPower = leftPower / 2;
+            rightPower = rightPower / 2;
             telemetry.addData("Power R: ", rightPower);
             telemetry.addData("Power L: ", leftPower);
-            if (gamepad1.dpad_right) {
-                LeftStrafeSlow(.5);
-            } else if (gamepad1.dpad_left) {
-                RightStrafeSlow(.5);
-            }
             robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
-        }else if (gamepad1.left_bumper == false) {
-            robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
-            if (gamepad1.dpad_right){
-                LeftStrafe(1);
-            }else if (gamepad1.dpad_left) {
-                RightStrafe(1);
-            }
-
         }
+
+        if (gamepad1.dpad_right && gamepad1.left_bumper) {
+            LeftStrafe(.5);
+        } else if (gamepad1.dpad_left && gamepad1.left_bumper) {
+            RightStrafe(.5);
+        }
+
+    if (gamepad1.dpad_right){
+            LeftStrafe(1);
+        }else if (gamepad1.dpad_left) {
+            RightStrafe(1);
+        }
+        robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
+    }
 
 
         /*if (robot.toggle = true && gamepad1.x) {  // Only execute once per Button push
@@ -229,4 +231,4 @@ public class TankDriveBernardo extends OpMode {
         }
     }
 */
-    }}
+    }

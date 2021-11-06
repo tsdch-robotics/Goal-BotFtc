@@ -65,17 +65,11 @@ public class TankDriveBernardo extends OpMode {
     }
 
     public void RightStrafe(double Power) {
-        robot.DriveFrontLeft.setPower(-Power);
-        robot.DriveFrontRight.setPower(-Power);
-        robot.DriveBackLeft.setPower(-Power);
-        robot.DriveBackRight.setPower(-Power);
+        robot.setDriveMotors(-Power, -Power, Power, -Power);
     }
 
     public void LeftStrafe(double Power) {
-        robot.DriveFrontLeft.setPower(Power);
-        robot.DriveFrontRight.setPower(Power);
-        robot.DriveBackLeft.setPower(Power);
-        robot.DriveBackRight.setPower(Power);
+        robot.setDriveMotors(Power, Power, -Power, Power);
     }
 
     public void MotorsStopped() {
@@ -95,8 +89,6 @@ public class TankDriveBernardo extends OpMode {
         float DRX = Math.abs(gamepad1.right_stick_x);
         float rightPower = DLY / DLX;
         float leftPower = DRY / DRX;
-        float rightPowerSlow = rightPower / 2;
-        float leftPowerSlow = leftPower / 2;
         double inf = Double.POSITIVE_INFINITY;
 
         telemetry.addData("DLY: ", DLY);
@@ -110,75 +102,55 @@ public class TankDriveBernardo extends OpMode {
             if (leftPower == inf && rightPower == inf) {
                 leftPower = 1;
                 rightPower = 1;
-            }else if (leftPower == -inf && rightPower == -inf) {
+            } else if (leftPower == -inf && rightPower == -inf) {
                 leftPower = -1;
                 rightPower = -1;
-            }else if (leftPower == inf) {
+            } else if (leftPower == inf) {
                 leftPower = 1;
-            }else if (leftPower == -inf) {
+            } else if (leftPower == -inf) {
                 leftPower = -1;
-            }else if (rightPower == inf) {
+            } else if (rightPower == inf) {
                 rightPower = 1;
-            }else if (rightPower == -inf) {
+            } else if (rightPower == -inf) {
                 rightPower = -1;
-            }else if (leftPower > 1){
+            } else if (leftPower > 1) {
                 leftPower = 1;
-            }else if (rightPower > 1) {
+            } else if (rightPower > 1) {
                 rightPower = 1;
             }
             leftPower = leftPower / 2;
             rightPower = rightPower / 2;
             telemetry.addData("Power R: ", rightPower);
             telemetry.addData("Power L: ", leftPower);
+        }
+
+        if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right && gamepad1.left_bumper) {
             robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
         }
 
         if (gamepad1.dpad_right && gamepad1.left_bumper) {
-            LeftStrafe(.5);
+            robot.setDriveMotors(.5, .5, -.5, .5);
         } else if (gamepad1.dpad_left && gamepad1.left_bumper) {
-            RightStrafe(.5);
+            robot.setDriveMotors(-.5, -.5, .5, -.5);
+        } else if (gamepad1.dpad_up && gamepad1.left_bumper) {
+            robot.setDriveMotors(.5, -.5, .5, .5);
+        } else if (gamepad1.dpad_down && gamepad1.left_bumper) {
+            robot.setDriveMotors(-.5, .5, -.5, -.5);
         }
 
-    if (gamepad1.dpad_right){
-            LeftStrafe(1);
-        }else if (gamepad1.dpad_left) {
-            RightStrafe(1);
+        if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
+            robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
+        }else if (gamepad1.dpad_right && !gamepad1.left_bumper){
+            robot.setDriveMotors(1, 1, -1, 1);;
+        }else if (gamepad1.dpad_left && !gamepad1.left_bumper) {
+            robot.setDriveMotors(-1, -1, 1, -1);
+        }else if (gamepad1.dpad_up && !gamepad1.left_bumper){
+            robot.setDriveMotors(1, -1, 1, 1);
+        }else if (gamepad1.dpad_down && !gamepad1.left_bumper) {
+            robot.setDriveMotors(-1, 1, -1, -1);
         }
-        robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
     }
 
-
-        /*if (robot.toggle = true && gamepad1.x) {  // Only execute once per Button push
-            robot.toggle = false;  // Prevents this section of code from being called again until the Button is released and re-pressed
-        }else if (robot.toggle) {  // Decide which way to set the motor this time through (or use this as a motor value instead)
-            while (robot.DMT = false) {
-                if (gamepad1.x) {
-                    robot.DMT = true;
-                } else if (gamepad1.dpad_right) {
-                    LeftStrafe();
-                } else if (gamepad1.dpad_left) {
-                    RightStrafe();
-                } else
-                    robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
-            }
-            robot.toggle = true;
-        }else if (robot.toggle = false) {
-            while (robot.DMT) {
-                if (gamepad1.x){
-                    robot.DMT= false;
-                } else if (gamepad1.dpad_right) {
-                    // opposite of right strafe
-                    LeftStrafeSlow();
-                }else if (gamepad1.dpad_left){
-                    RightStrafeSlow();
-                }
-                else
-                    robot.setDriveMotors(-rightPower/2, leftPower/2, -rightPower/2, -leftPower/2);
-                }
-            robot.toggle = true;
-        }else if(gamepad1.x == false) {
-            robot.toggle = true; // Button has been released, so this allows a re-press to activate the code above.
-        }
 
         /*if (gamepad1.y) {
             robot.WheelMotor.setPower(1);

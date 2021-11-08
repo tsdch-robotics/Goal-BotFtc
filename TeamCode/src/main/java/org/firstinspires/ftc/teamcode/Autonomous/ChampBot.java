@@ -28,6 +28,7 @@ public class ChampBot {
     public DcMotor DriveBackRight;
     public DcMotor CarouselMotor1;
     public DcMotor CarouselMotor2;
+    public DcMotor ArmMotor;
     //Odometry Encoders
     public DcMotor encoderLeft;
     public DcMotor encoderRight;
@@ -40,6 +41,11 @@ public class ChampBot {
     public void init(HardwareMap ahwMap){
         hardwareMap=ahwMap;
         //configure the drive motors
+        ArmMotor=hardwareMap.dcMotor.get("ArmMotor");
+        ArmMotor.setDirection(DcMotor.Direction.FORWARD);
+        ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        ArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         DriveFrontLeft=hardwareMap.dcMotor.get("DriveFrontLeft");
         DriveFrontLeft.setDirection(DcMotor.Direction.FORWARD);
         DriveFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

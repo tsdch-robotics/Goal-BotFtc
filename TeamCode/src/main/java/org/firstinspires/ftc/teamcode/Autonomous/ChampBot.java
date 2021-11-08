@@ -26,6 +26,8 @@ public class ChampBot {
     public DcMotor DriveFrontRight;
     public DcMotor DriveBackLeft;
     public DcMotor DriveBackRight;
+    public DcMotor CarouselMotor1;
+    public DcMotor CarouselMotor2;
     //Odometry Encoders
     public DcMotor encoderLeft;
     public DcMotor encoderRight;
@@ -57,6 +59,17 @@ public class ChampBot {
         DriveBackRight.setDirection(DcMotor.Direction.REVERSE);
         DriveBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        CarouselMotor1=hardwareMap.dcMotor.get("CarouselMotor1");
+        CarouselMotor1.setDirection(DcMotor.Direction.REVERSE);
+        CarouselMotor1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        CarouselMotor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        CarouselMotor2=hardwareMap.dcMotor.get("CarouselMotor2");
+        CarouselMotor2.setDirection(DcMotor.Direction.REVERSE);
+        CarouselMotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        CarouselMotor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
 
         //shadow the motors with the odo encoders
         encoderLeft=DriveFrontLeft;
@@ -95,12 +108,7 @@ public class ChampBot {
         DriveBackLeft.setPower(-BackL);
         DriveBackRight.setPower(BackR);
     }
-    public void setDriveMotorsSlow(double FrontL, double FrontR, double BackL, double BackR) {
-        DriveFrontLeft.setPower(FrontL/2);
-        DriveFrontRight.setPower(FrontR/2);
-        DriveBackLeft.setPower(-BackL/2);
-        DriveBackRight.setPower(BackR/2);
-    }
+
     //constants that define the geometry of the robot:
     final static double L = 13.5; //distance between encoder 1 and 2 in cm
     final static double B = 5.31; //Distance between the mid-point of the encoder 1, encoder 2 and encoder 3 in cm

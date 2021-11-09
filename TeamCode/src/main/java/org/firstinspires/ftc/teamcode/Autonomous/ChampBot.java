@@ -21,6 +21,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  */
 public class ChampBot {
     public static final Double TRIGGER_THRESHOLD = 0.5;//gamepad trigger
+    public static int ArmTickCount = 1440;
     //Drive Motors
     public DcMotor DriveFrontLeft;
     public DcMotor DriveFrontRight;
@@ -33,10 +34,8 @@ public class ChampBot {
     public DcMotor encoderLeft;
     public DcMotor encoderRight;
     public DcMotor encoderAux;
-    public boolean DMT = true;
-    public boolean toggle = true;
 
-//code time! :)
+    //code time! :)
     private HardwareMap hardwareMap;
     public void init(HardwareMap ahwMap){
         hardwareMap=ahwMap;
@@ -44,7 +43,7 @@ public class ChampBot {
         ArmMotor=hardwareMap.dcMotor.get("ArmMotor");
         ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        ArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveFrontLeft=hardwareMap.dcMotor.get("DriveFrontLeft");
         DriveFrontLeft.setDirection(DcMotor.Direction.FORWARD);

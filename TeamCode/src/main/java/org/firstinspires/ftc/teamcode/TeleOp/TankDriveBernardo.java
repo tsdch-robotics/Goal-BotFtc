@@ -37,6 +37,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.*;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
@@ -149,18 +150,31 @@ public class TankDriveBernardo extends OpMode {
         }else if (gamepad1.dpad_down && !gamepad1.left_bumper) {
             robot.setDriveMotors(-1, 1, -1, -1);
         }
-        if (gamepad1.left_trigger > 0) {
-            robot.ArmMotor.setPower(-.5);
-        }else if (gamepad1.right_trigger > 0) {
-            robot.ArmMotor.setPower(.5);
-        }else
-            robot.ArmMotor.setPower(0);
+        if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y) {
+            robot.ArmMotor.setTargetPosition(robot.zeroPos);
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        }else if (!gamepad2.x && gamepad2.a && !gamepad2.b && !gamepad2.y) {
+            robot.ArmMotor.setTargetPosition(robot.lowPos);
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        }else if (!gamepad2.x && !gamepad2.a && gamepad2.b && !gamepad2.y) {
+            robot.ArmMotor.setTargetPosition(robot.mediumPos);
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && gamepad2.y) {
+            robot.ArmMotor.setTargetPosition(robot.highPos);
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y) {
+            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        }
 
-        if (gamepad1.x && !gamepad1.b) {
+        if (gamepad2.left_trigger > 0 && gamepad2.right_trigger == 0) {
             robot.CarouselMotor1.setPower(1);
-        }else if (gamepad1.b && !gamepad1.x) {
+        }else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0) {
             robot.CarouselMotor2.setPower(-1);
-        }else if (!gamepad1.x && !gamepad1.b) {
+        }else if (gamepad2.right_trigger == 0 && gamepad2.left_trigger == 0) {
             robot.CarouselMotor1.setPower(0);
             robot.CarouselMotor2.setPower(0);
     }

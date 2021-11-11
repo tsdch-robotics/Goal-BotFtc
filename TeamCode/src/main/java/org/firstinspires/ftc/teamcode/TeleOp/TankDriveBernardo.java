@@ -151,23 +151,26 @@ public class TankDriveBernardo extends OpMode {
             robot.setDriveMotors(-1, 1, -1, -1);
         }
         if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setTargetPosition(robot.zeroPos);
+            robot.zeroPos = robot.ArmMotor.getCurrentPosition();
+            robot.ArmMotor.setTargetPosition(-robot.zeroPos);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            telemetry.addData("Debug x: ", robot.ArmMotor.getCurrentPosition());
         }else if (!gamepad2.x && gamepad2.a && !gamepad2.b && !gamepad2.y) {
             robot.ArmMotor.setTargetPosition(robot.lowPos);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            telemetry.addData("Debug a: ", robot.ArmMotor.getCurrentPosition());
         }else if (!gamepad2.x && !gamepad2.a && gamepad2.b && !gamepad2.y) {
             robot.ArmMotor.setTargetPosition(robot.mediumPos);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            telemetry.addData("Debug b: ", robot.ArmMotor.getCurrentPosition());
         }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && gamepad2.y) {
             robot.ArmMotor.setTargetPosition(robot.highPos);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            telemetry.addData("Debug y: ", robot.ArmMotor.getCurrentPosition());
         }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            telemetry.addData("Debug: ", "if == true");
+            robot.ArmMotor.setPower(0);
         }
 
         if (gamepad2.left_trigger > 0 && gamepad2.right_trigger == 0) {

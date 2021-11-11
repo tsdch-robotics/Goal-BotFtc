@@ -23,10 +23,10 @@ public class ChampBot {
     public static final Double TRIGGER_THRESHOLD = 0.5;//gamepad trigger
     //1080 = 270 degrees
     public static int zeroPos = 0;
-    public static int highPos = 924;
-    public static int mediumPos = 1004;
-    public static int lowPos = 1092;
-    public static int maxTick = 1112;
+    public static int highPos = 3696;
+    public static int mediumPos = 4016;
+    public static int lowPos = 4368;
+    public static int maxTick = 4448;//with gear ratio7
     //Drive Motors
     public DcMotor DriveFrontLeft; //:D
     public DcMotor DriveFrontRight;

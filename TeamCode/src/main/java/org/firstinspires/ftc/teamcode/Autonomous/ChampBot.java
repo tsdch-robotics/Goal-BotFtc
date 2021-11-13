@@ -26,7 +26,8 @@ public class ChampBot {
     public static int highPos = 3696;
     public static int mediumPos = 4016;
     public static int lowPos = 4368;
-    public static int maxTick = 4448;//with gear ratio7
+    public static int maxTick = 4448;//with gear ratio
+    public static int cp = 0;
     //Drive Motors
     public DcMotor DriveFrontLeft; //:D
     public DcMotor DriveFrontRight;

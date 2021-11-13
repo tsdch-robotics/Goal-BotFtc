@@ -35,6 +35,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.*;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -150,28 +151,71 @@ public class TankDriveBernardo extends OpMode {
         }else if (gamepad1.dpad_down && !gamepad1.left_bumper) {
             robot.setDriveMotors(-1, 1, -1, -1);
         }
-        if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y) {
+        if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 1) {
             robot.zeroPos = robot.ArmMotor.getCurrentPosition();
-            robot.ArmMotor.setTargetPosition(-robot.zeroPos);
+            telemetry.addData("Debug x: ", robot.lowPos);
+            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
+            robot.ArmMotor.setTargetPosition(3696);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            telemetry.addData("Debug x: ", robot.ArmMotor.getCurrentPosition());
+            robot.ArmMotor.setPower(1);
+            while (robot.ArmMotor.isBusy()) {
+                telemetry.addData("Status: ", "Running to Position");
+                telemetry.update();
+            }
+            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
+        }else if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 2) {
+            robot.zeroPos = robot.ArmMotor.getCurrentPosition();
+            telemetry.addData("Debug x: ", robot.lowPos);
+            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
+            robot.ArmMotor.setTargetPosition(4016);
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.ArmMotor.setPower(1);
+            while (robot.ArmMotor.isBusy()) {
+                telemetry.addData("Status: ", "Running to Position");
+                telemetry.update();
+            }
+            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
+        }else if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 3) {
+            robot.zeroPos = robot.ArmMotor.getCurrentPosition();
+            telemetry.addData("Debug x: ", robot.lowPos);
+            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
+            robot.ArmMotor.setTargetPosition(4368);
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.ArmMotor.setPower(1);
+            while (robot.ArmMotor.isBusy()) {
+                telemetry.addData("Status: ", "Running to Position");
+                telemetry.update();
+            }
+            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }else if (!gamepad2.x && gamepad2.a && !gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setTargetPosition(robot.lowPos);
+            robot.ArmMotor.setTargetPosition(3696);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            telemetry.addData("Debug a: ", robot.ArmMotor.getCurrentPosition());
+            robot.ArmMotor.setPower(1);
+            while (robot.ArmMotor.isBusy()) {
+                telemetry.addData("Status: ", "Running to Position");
+                telemetry.update();
+            }
+            robot.cp = 1;
         }else if (!gamepad2.x && !gamepad2.a && gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setTargetPosition(robot.mediumPos);
+            robot.ArmMotor.setTargetPosition(4016);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            telemetry.addData("Debug b: ", robot.ArmMotor.getCurrentPosition());
+            robot.ArmMotor.setPower(1);
+            while (robot.ArmMotor.isBusy()) {
+                telemetry.addData("Status: ", "Running to Position");
+                telemetry.update();
+            }
+            robot.cp = 2;
         }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && gamepad2.y) {
-            robot.ArmMotor.setTargetPosition(robot.highPos);
+            robot.ArmMotor.setTargetPosition(4368);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            telemetry.addData("Debug y: ", robot.ArmMotor.getCurrentPosition());
-        }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y) {
-            telemetry.addData("Debug: ", "if == true");
-            robot.ArmMotor.setPower(0);
+            robot.ArmMotor.setPower(1);
+            while (robot.ArmMotor.isBusy()) {
+                telemetry.addData("Status: ", "Running to Position");
+                telemetry.update();
+            }
+            robot.cp = 3;
         }
+        robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         if (gamepad2.left_trigger > 0 && gamepad2.right_trigger == 0) {
             robot.CarouselMotor1.setPower(1);

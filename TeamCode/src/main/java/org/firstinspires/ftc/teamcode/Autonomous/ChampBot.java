@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import java.util.*;
 
 // Vision imports
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
@@ -19,7 +20,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * This is NOT an opmode. This file defines all the hardware on the robot
  * and some common helper functions (stop motors, reset encoders, etc.)
  */
-public class ChampBot {
+public class ChampBot<Directionvector> {
     public static final Double TRIGGER_THRESHOLD = 0.5;//gamepad trigger
     //1080 = 270 degrees
     public static int zeroPos = 0;
@@ -40,6 +41,7 @@ public class ChampBot {
     public DcMotor encoderLeft;
     public DcMotor encoderRight;
     public DcMotor encoderAux;
+    public Servo Claw;
 
     //code time! :)
     private HardwareMap hardwareMap;
@@ -80,6 +82,9 @@ public class ChampBot {
         CarouselMotor2.setDirection(DcMotor.Direction.REVERSE);
         CarouselMotor2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         CarouselMotor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        Claw=hardwareMap.servo.get("Claw");
+
 
 
         //shadow the motors with the odo encoders
@@ -173,4 +178,12 @@ public class ChampBot {
         pos.y += dx * Math.sin(theta) + dy * Math.cos(theta);
         pos.h += dtheta;
     }
+
+    //odometry, Jeff and Tarey, work in progress don't worry about it :)
+    // just commented so I could run the code :D
+    /*
+    public Directionvector = (Math.cos(h),Math.sin(h))
+    public target = (x1,y1);
+    public targetvector = (x1-x,y1-y)
+    public D=((x1-x)**2+(y1-y)**2)**(1/2)*/
 }

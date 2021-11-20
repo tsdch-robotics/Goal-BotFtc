@@ -143,7 +143,7 @@ public class TankDriveBernardo extends OpMode {
         if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
             robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
         }else if (gamepad1.dpad_right && !gamepad1.left_bumper){
-            robot.setDriveMotors(1, 1, -1, 1);;
+            robot.setDriveMotors(1, 1, -1, 1);
         }else if (gamepad1.dpad_left && !gamepad1.left_bumper) {
             robot.setDriveMotors(-1, -1, 1, -1);
         }else if (gamepad1.dpad_up && !gamepad1.left_bumper){
@@ -151,13 +151,12 @@ public class TankDriveBernardo extends OpMode {
         }else if (gamepad1.dpad_down && !gamepad1.left_bumper) {
             robot.setDriveMotors(-1, 1, -1, -1);
         }
+        /* Code for the arm with encoder
         if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 1) {
             robot.zeroPos = robot.ArmMotor.getCurrentPosition();
-            telemetry.addData("Debug x: ", robot.lowPos);
-            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
-            robot.ArmMotor.setTargetPosition(3696);
+            robot.ArmMotor.setTargetPosition(3700);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(1);
+            robot.ArmMotor.setPower(.3);
             while (robot.ArmMotor.isBusy()) {
                 telemetry.addData("Status: ", "Running to Position");
                 telemetry.update();
@@ -165,69 +164,78 @@ public class TankDriveBernardo extends OpMode {
             robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }else if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 2) {
             robot.zeroPos = robot.ArmMotor.getCurrentPosition();
-            telemetry.addData("Debug x: ", robot.lowPos);
-            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
-            robot.ArmMotor.setTargetPosition(4016);
+            robot.ArmMotor.setTargetPosition(3100);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(1);
+            robot.ArmMotor.setPower(.3);
             while (robot.ArmMotor.isBusy()) {
                 telemetry.addData("Status: ", "Running to Position");
                 telemetry.update();
             }
             robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }else if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 3) {
-            robot.zeroPos = robot.ArmMotor.getCurrentPosition();
-            telemetry.addData("Debug x: ", robot.lowPos);
-            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
-            robot.ArmMotor.setTargetPosition(4368);
+            robot.ArmMotor.setTargetPosition(2900);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(1);
+            robot.ArmMotor.setPower(.3);
             while (robot.ArmMotor.isBusy()) {
                 telemetry.addData("Status: ", "Running to Position");
                 telemetry.update();
             }
             robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }else if (!gamepad2.x && gamepad2.a && !gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setTargetPosition(3696);
+            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
+            robot.ArmMotor.setTargetPosition(3700);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(1);
+            robot.ArmMotor.setPower(.3);
             while (robot.ArmMotor.isBusy()) {
                 telemetry.addData("Status: ", "Running to Position");
                 telemetry.update();
             }
             robot.cp = 1;
+            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }else if (!gamepad2.x && !gamepad2.a && gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setTargetPosition(4016);
+            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
+            robot.ArmMotor.setTargetPosition(3100);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(1);
+            robot.ArmMotor.setPower(.3);
             while (robot.ArmMotor.isBusy()) {
                 telemetry.addData("Status: ", "Running to Position");
                 telemetry.update();
             }
             robot.cp = 2;
+            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && gamepad2.y) {
-            robot.ArmMotor.setTargetPosition(4368);
+            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
+            robot.ArmMotor.setTargetPosition(2900);
             robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(1);
+            robot.ArmMotor.setPower(.3);
             while (robot.ArmMotor.isBusy()) {
                 telemetry.addData("Status: ", "Running to Position");
                 telemetry.update();
             }
             robot.cp = 3;
+            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }
         robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+*/
+        if (gamepad1.right_trigger > 0) {
+            robot.ArmMotor.setPower(.5);
+        } else if (gamepad1.left_trigger > 0) {
+            robot.ArmMotor.setPower(-.5);
+        } else {
+            robot.ArmMotor.setPower(0);
+        }
 
-        if (gamepad2.left_trigger > 0 && gamepad2.right_trigger == 0) {
-            robot.CarouselMotor1.setPower(.8);
-        }else if (gamepad2.right_trigger > 0 && gamepad2.left_trigger == 0) {
-            robot.CarouselMotor2.setPower(-.8);
-        }else if (gamepad2.right_trigger == 0 && gamepad2.left_trigger == 0) {
+        if (gamepad1.x) {
+            robot.CarouselMotor1.setPower(.5);
+        }else if (gamepad1.b) {
+            robot.CarouselMotor2.setPower(-.5);
+        }else {
             robot.CarouselMotor1.setPower(0);
             robot.CarouselMotor2.setPower(0);
     }
-        if (gamepad2.left_bumper && !gamepad2.right_bumper) {
+        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
             robot.Claw.setPosition(1);
-        }else if (gamepad2.right_bumper && !gamepad2.left_bumper) {
+        }else if (gamepad1.right_bumper && !gamepad1.left_bumper) {
             robot.Claw.setPosition(0);
         }
     }

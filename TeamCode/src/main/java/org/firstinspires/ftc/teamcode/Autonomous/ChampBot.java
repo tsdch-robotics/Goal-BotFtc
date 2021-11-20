@@ -178,12 +178,4 @@ public class ChampBot<Directionvector> {
         pos.y += dx * Math.sin(theta) + dy * Math.cos(theta);
         pos.h += dtheta;
     }
-
-    //odometry, Jeff and Tarey, work in progress don't worry about it :)
-    // just commented so I could run the code :D
-    /*
-    public Directionvector = (Math.cos(h),Math.sin(h))
-    public target = (x1,y1);
-    public targetvector = (x1-x,y1-y)
-    public D=((x1-x)**2+(y1-y)**2)**(1/2)*/
 }

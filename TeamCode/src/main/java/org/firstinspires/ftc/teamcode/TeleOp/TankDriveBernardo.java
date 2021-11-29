@@ -38,6 +38,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.*;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
@@ -85,6 +86,12 @@ public class TankDriveBernardo extends OpMode {
     public void loop() {
         // tank drive: each stick controls one side of the robot
         // dpad for strafing left/right
+
+        robot.color_sensor.enableLed(true);
+        telemetry.addData("Red: ", robot.color_sensor.red());
+        telemetry.addData("Green: ", robot.color_sensor.green());
+        telemetry.addData("Blue: ", robot.color_sensor.blue());
+
         float DLY = gamepad1.left_stick_y;
         float DRY = gamepad1.right_stick_y;
         float DLX = Math.abs(gamepad1.left_stick_x);

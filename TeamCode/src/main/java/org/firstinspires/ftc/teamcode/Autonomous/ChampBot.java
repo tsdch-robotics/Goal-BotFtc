@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.util.*;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
 // Vision imports
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
@@ -42,7 +43,8 @@ public class ChampBot<Directionvector> {
     public DcMotor encoderRight;
     public DcMotor encoderAux;
     public Servo Claw;
-
+    //Sensors
+    public ColorSensor color_sensor;
     //code time! :)
     private HardwareMap hardwareMap;
     public void init(HardwareMap ahwMap){
@@ -84,6 +86,8 @@ public class ChampBot<Directionvector> {
         CarouselMotor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         Claw=hardwareMap.servo.get("Claw");
+
+        color_sensor = hardwareMap.colorSensor.get("color_sensor");
 
 
 

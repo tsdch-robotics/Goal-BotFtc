@@ -87,7 +87,7 @@ public class ChampBot<Directionvector> {
 
         Claw=hardwareMap.servo.get("Claw");
 
-        color_sensor = hardwareMap.colorSensor.get("color_sensor");
+        color_sensor = hardwareMap.get(ColorSensor.class, "color_sensor");
 
 
 

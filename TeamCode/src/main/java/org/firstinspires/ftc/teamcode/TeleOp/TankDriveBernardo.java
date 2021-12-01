@@ -65,6 +65,7 @@ public class TankDriveBernardo extends OpMode {
         robot.DriveFrontRight.setPower(0);
         robot.DriveBackLeft.setPower(0);
         robot.DriveBackRight.setPower(0);
+        robot.color_sensor.enableLed(true);
     }
 
     public void RightStrafe(double Power) {
@@ -87,7 +88,6 @@ public class TankDriveBernardo extends OpMode {
         // tank drive: each stick controls one side of the robot
         // dpad for strafing left/right
 
-        robot.color_sensor.enableLed(true);
         telemetry.addData("Red: ", robot.color_sensor.red());
         telemetry.addData("Green: ", robot.color_sensor.green());
         telemetry.addData("Blue: ", robot.color_sensor.blue());

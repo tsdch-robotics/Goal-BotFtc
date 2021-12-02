@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
 @TeleOp(name="RumbleTest", group = "ChampBot")
 public class RumbleTest extends LinearOpMode
 {
@@ -59,8 +60,28 @@ public class RumbleTest extends LinearOpMode
                 if (lastLB) {
                     gamepad1.stopRumble();
                 }
+                telemetry.addData(">", "Hold Left-Bumper to test Manual Rumble");
+                telemetry.addData(">", "Press A (Cross) for three blips");
+                telemetry.addData(">", "Squeeze right trigger slowly for 1 blip");
             }
+            lastLB = currentLB;
+            if (currentA && !lastA) {
+                if (!gamepad1.isRumbling()) {
+                    gamepad1.rumbleBlips(3);
+                }
+            }
+            lastA = currentA;
 
+            if (gamepad1.right_trigger > TRIGGER_THRESHHOLD) {
+                if (!highLevel) {
+                    gamepad1.rumble(0.9, 0, 200);
+                    highLevel = true;
+                }
+            }else  {
+             highLevel = false;
+            }
+            telemetry.update();
+            sleep(10);
         }
     }
 }

@@ -58,22 +58,22 @@ public class ChampBot<Directionvector> {
         DriveFrontLeft=hardwareMap.dcMotor.get("DriveFrontLeft");
         DriveFrontLeft.setDirection(DcMotor.Direction.FORWARD);
         DriveFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        DriveFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveFrontRight=hardwareMap.dcMotor.get("DriveFrontRight");
         DriveFrontRight.setDirection(DcMotor.Direction.FORWARD);
         DriveFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveBackLeft=hardwareMap.dcMotor.get("DriveBackLeft");
         DriveBackLeft.setDirection(DcMotor.Direction.REVERSE);
         DriveBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveBackRight=hardwareMap.dcMotor.get("DriveBackRight");
         DriveBackRight.setDirection(DcMotor.Direction.REVERSE);
         DriveBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        DriveBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         CarouselMotor1=hardwareMap.dcMotor.get("CarouselMotor1");
         CarouselMotor1.setDirection(DcMotor.Direction.REVERSE);
@@ -102,16 +102,15 @@ public class ChampBot<Directionvector> {
     //a function to reset encoder
     public void resetDriveEncoders(){
         DriveFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        DriveFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
         DriveFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
         DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
         DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    }
+    public void  enableEncoders() {
+        DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        DriveBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
     //the stop function
 

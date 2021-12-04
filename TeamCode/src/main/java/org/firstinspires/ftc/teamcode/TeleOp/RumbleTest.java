@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name="RumbleTest", group = "ChampBot")
-public class RumbleTest extends LinearOpMode
+//@TeleOp(name="RumbleTest", group = "ChampBot")
+/*public class RumbleTest extends LinearOpMode
 {
     boolean lastA = false;
     boolean lastLB = false;
@@ -85,3 +85,5 @@ public class RumbleTest extends LinearOpMode
         }
     }
 }
+
+ */

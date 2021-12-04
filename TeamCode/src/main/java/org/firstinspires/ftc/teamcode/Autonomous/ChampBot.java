@@ -61,12 +61,12 @@ public class ChampBot<Directionvector> {
         DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveFrontRight=hardwareMap.dcMotor.get("DriveFrontRight");
-        DriveFrontRight.setDirection(DcMotor.Direction.FORWARD);
+        DriveFrontRight.setDirection(DcMotor.Direction.REVERSE);
         DriveFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveBackLeft=hardwareMap.dcMotor.get("DriveBackLeft");
-        DriveBackLeft.setDirection(DcMotor.Direction.REVERSE);
+        DriveBackLeft.setDirection(DcMotor.Direction.FORWARD);
         DriveBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 

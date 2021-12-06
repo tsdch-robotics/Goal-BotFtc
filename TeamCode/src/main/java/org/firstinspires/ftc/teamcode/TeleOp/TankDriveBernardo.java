@@ -84,6 +84,13 @@ public class TankDriveBernardo extends OpMode {
         robot.DriveBackRight.setPower(0);
     }
 
+    public void setDriveMotors(double FrontL, double FrontR, double BackL, double BackR) {
+        robot.DriveFrontLeft.setPower(BackL);
+        robot.DriveFrontRight.setPower(BackR);
+        robot.DriveBackLeft.setPower(BackL);
+        robot.DriveBackRight.setPower(BackR);
+    }
+
     @Override
     public void loop() {
         // tank drive: each stick controls one side of the robot
@@ -101,14 +108,14 @@ public class TankDriveBernardo extends OpMode {
         float leftPower = DRY / DRX;
         double inf = Double.POSITIVE_INFINITY;
 
-        telemetry.addData("DLY: ", DLY);
-        telemetry.addData("DLX: ", DLX);
-        telemetry.addData("DRY: ", DRY);
-        telemetry.addData("DRX: ", DRX);
-        telemetry.addData("L: ", leftPower);
-        telemetry.addData("R: ", rightPower);
-
-        if (gamepad1.left_bumper) {
+        robot.DriveFrontLeft.setPower(1);
+        telemetry.addData("FrontLeft: " , robot.DriveFrontLeft.getPowerFloat());
+        robot.DriveFrontRight.setPower(1);
+        robot.DriveBackLeft.setPower(DLY);
+        robot.DriveBackRight.setPower(DRY);
+        telemetry.addData("Right: ", DRY);
+        telemetry.addData("Left: ", DLY);
+        /*if (gamepad1.left_bumper) {
             if (leftPower == inf && rightPower == inf) {
                 leftPower = 1;
                 rightPower = 1;
@@ -224,7 +231,7 @@ public class TankDriveBernardo extends OpMode {
             robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }
         robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-*/
+
         if (gamepad1.right_trigger > 0) {
             robot.ArmMotor.setPower(.5);
         } else if (gamepad1.left_trigger > 0) {
@@ -247,7 +254,7 @@ public class TankDriveBernardo extends OpMode {
             robot.Claw.setPosition(0);
         }
     }
-
+*/
 
         /*if (gamepad1.y) {
             robot.WheelMotor.setPower(1);
@@ -300,4 +307,4 @@ public class TankDriveBernardo extends OpMode {
         }
     }
 */
-    }
+    }}

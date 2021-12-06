@@ -52,12 +52,24 @@ public class LillyAutonomous extends LinearOpMode {
 
         waitForStart();
 
-        encoderStrafe(strafeSpeed, 21,Direction.left, 2.0);
+        //encoderStrafe(strafeSpeed, 21,Direction.left, 2.0);
         //encoderDrive(driveSpeed, 19, 19, 3.0);
         //Arm Placement
         //encoderDrive(driveSpeed, -18, -18, 3.0);
         //encoderTurn(driveSpeed, 1, Direction.right, 1.0);
         //encoderDrive(driveSpeed, 58, 58, 5.0);
+
+        encoderDrive(driveSpeed, 15, 15, 3.0);
+        encoderTurn(driveSpeed, 1, Direction.left, 1.0);
+        /*encoderDrive(driveSpeed, 16.5, 16.5, 3.0);
+        encoderTurn(driveSpeed, 1, Direction.right, 1.0);
+        encoderDrive(driveSpeed, 4, 4, 1.0);
+        // place block
+        encoderDrive(driveSpeed, -4,-4, 1.0);
+        encoderTurn(driveSpeed, 1, Direction. right, 1.0);
+        encoderDrive(driveSpeed, 16.5, 16.5, 3.0);
+        encoderStrafe(strafeSpeed, 19, Direction.right, 3.0);
+        encoderDrive(driveSpeed, 36,36,4.0); */
 
 
 

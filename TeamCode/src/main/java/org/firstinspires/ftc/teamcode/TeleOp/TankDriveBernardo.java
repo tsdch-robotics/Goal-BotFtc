@@ -100,6 +100,11 @@ public class TankDriveBernardo extends OpMode {
         telemetry.addData("Green: ", robot.color_sensor.green());
         telemetry.addData("Blue: ", robot.color_sensor.blue());
 
+        robot.DriveFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         float DLY = gamepad1.left_stick_y;
         float DRY = gamepad1.right_stick_y;
         float DLX = Math.abs(gamepad1.left_stick_x);
@@ -108,14 +113,9 @@ public class TankDriveBernardo extends OpMode {
         float leftPower = DRY / DRX;
         double inf = Double.POSITIVE_INFINITY;
 
-        robot.DriveFrontLeft.setPower(1);
-        telemetry.addData("FrontLeft: " , robot.DriveFrontLeft.getPowerFloat());
-        robot.DriveFrontRight.setPower(1);
-        robot.DriveBackLeft.setPower(DLY);
-        robot.DriveBackRight.setPower(DRY);
         telemetry.addData("Right: ", DRY);
         telemetry.addData("Left: ", DLY);
-        /*if (gamepad1.left_bumper) {
+        if (gamepad1.left_bumper) {
             if (leftPower == inf && rightPower == inf) {
                 leftPower = 1;
                 rightPower = 1;
@@ -231,7 +231,7 @@ public class TankDriveBernardo extends OpMode {
             robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         }
         robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+*/
         if (gamepad1.right_trigger > 0) {
             robot.ArmMotor.setPower(.5);
         } else if (gamepad1.left_trigger > 0) {
@@ -253,8 +253,7 @@ public class TankDriveBernardo extends OpMode {
         }else if (gamepad1.right_bumper && !gamepad1.left_bumper) {
             robot.Claw.setPosition(0);
         }
-    }
-*/
+        
 
         /*if (gamepad1.y) {
             robot.WheelMotor.setPower(1);

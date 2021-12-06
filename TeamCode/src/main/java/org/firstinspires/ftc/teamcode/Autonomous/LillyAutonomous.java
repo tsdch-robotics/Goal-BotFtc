@@ -17,7 +17,7 @@ public class LillyAutonomous extends LinearOpMode {
     static final double wheelDiameter = 3.78; //in inches
     static final double countsPerInch = tickCount/(wheelDiameter*3.1415);
     static final double driveSpeed = 1.0;
-    static final double turnSpeed = 0.75;
+    static final double strafeSpeed = 0.5;
     public DcMotor DriveFrontLeft; //:D
     public DcMotor DriveFrontRight;
     public DcMotor DriveBackLeft;
@@ -52,12 +52,14 @@ public class LillyAutonomous extends LinearOpMode {
 
         waitForStart();
 
-        encoderStrafe(driveSpeed, 21,Direction.left, 2.0);
+        encoderStrafe(strafeSpeed, 21,Direction.left, 2.0);
         //encoderDrive(driveSpeed, 19, 19, 3.0);
         //Arm Placement
         //encoderDrive(driveSpeed, -18, -18, 3.0);
         //encoderTurn(driveSpeed, 1, Direction.right, 1.0);
         //encoderDrive(driveSpeed, 58, 58, 5.0);
+
+
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -176,7 +178,7 @@ public class LillyAutonomous extends LinearOpMode {
         int newFrontRightTarget;
         int newBackLeftTarget;
         int newBackRightTarget;
-        double inchCount = 7.0 * Math.PI;
+        double inchCount = 6.55 * Math.PI;
 
         if (opModeIsActive()) {
             newFrontLeftTarget = robot.DriveFrontLeft.getCurrentPosition() + (int) (inchCount * countsPerInch * numberOfTurns);

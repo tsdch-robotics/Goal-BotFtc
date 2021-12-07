@@ -124,7 +124,7 @@ public class ChampBot<Directionvector> {
     public void setDriveMotors(double FrontL, double FrontR, double BackL, double BackR) {
         DriveFrontLeft.setPower(FrontL);
         DriveFrontRight.setPower(FrontR);
-        DriveBackLeft.setPower(-BackL);
+        DriveBackLeft.setPower(BackL);
         DriveBackRight.setPower(BackR);
     }
 

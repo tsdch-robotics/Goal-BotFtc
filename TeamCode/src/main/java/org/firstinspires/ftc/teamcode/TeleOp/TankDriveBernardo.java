@@ -84,12 +84,6 @@ public class TankDriveBernardo extends OpMode {
         robot.DriveBackRight.setPower(0);
     }
 
-    public void setDriveMotors(double FrontL, double FrontR, double BackL, double BackR) {
-        robot.DriveFrontLeft.setPower(BackL);
-        robot.DriveFrontRight.setPower(BackR);
-        robot.DriveBackLeft.setPower(BackL);
-        robot.DriveBackRight.setPower(BackR);
-    }
 
     @Override
     public void loop() {
@@ -142,7 +136,7 @@ public class TankDriveBernardo extends OpMode {
         }
 
         if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right && gamepad1.left_bumper) {
-            robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
+            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
         }
 
         if (gamepad1.dpad_right && gamepad1.left_bumper) {
@@ -150,21 +144,21 @@ public class TankDriveBernardo extends OpMode {
         } else if (gamepad1.dpad_left && gamepad1.left_bumper) {
             robot.setDriveMotors(-.5, -.5, .5, -.5);
         } else if (gamepad1.dpad_up && gamepad1.left_bumper) {
-            robot.setDriveMotors(.5, -.5, .5, .5);
+            robot.setDriveMotors(-.5, -.5, -.5, -.5);
         } else if (gamepad1.dpad_down && gamepad1.left_bumper) {
-            robot.setDriveMotors(-.5, .5, -.5, -.5);
+            robot.setDriveMotors(.5, .5, .5, .5);
         }
 
         if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
-            robot.setDriveMotors(-rightPower, leftPower, -rightPower, -leftPower);
+            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
         }else if (gamepad1.dpad_right && !gamepad1.left_bumper){
             robot.setDriveMotors(1, 1, -1, 1);
         }else if (gamepad1.dpad_left && !gamepad1.left_bumper) {
             robot.setDriveMotors(-1, -1, 1, -1);
         }else if (gamepad1.dpad_up && !gamepad1.left_bumper){
-            robot.setDriveMotors(1, -1, 1, 1);
+            robot.setDriveMotors(-1, -1, -1, -1);
         }else if (gamepad1.dpad_down && !gamepad1.left_bumper) {
-            robot.setDriveMotors(-1, 1, -1, -1);
+            robot.setDriveMotors(1, 1, 1, 1);
         }
         /* Code for the arm with encoder
         if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 1) {

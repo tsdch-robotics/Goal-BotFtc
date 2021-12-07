@@ -58,9 +58,28 @@ public class LillyAutonomous extends LinearOpMode {
         //encoderDrive(driveSpeed, -18, -18, 3.0);
         //encoderTurn(driveSpeed, 1, Direction.right, 1.0);
         //encoderDrive(driveSpeed, 58, 58, 5.0);
-
-        encoderDrive(.5, 20, 20, 3.0); // 15
+        robot.Claw.setPosition(0);
+        encoderDrive(.5, 15, 15, 3.0); // 15
         encoderTurn(.5, 1, Direction.left, 1.0);
+        encoderDrive(.5, 12, 12, 3.0);
+        encoderTurn(.5, 1, Direction.right, 1.0);
+        encoderDrive(0.1, 4, 4, 3.0); // 15
+        encoderDrive(0, 0, 0, 1.0); // break
+        robot.Claw.setPosition(1.0);
+        encoderDrive(0.1, -4, -4, 3.0); // 15
+        encoderTurn(.5, 1, Direction.left, 1.0);
+        encoderDrive(.5, 37.5,37.5,3);
+        encoderTurn(.5, 1, Direction.left, 1.0);
+        encoderDrive(.3, 10,10,3);
+        robot.CarouselMotor2.setPower(-.5);
+        sleep(2500);
+        robot.CarouselMotor2.setPower(0);
+        //encoderTurn(.5, 0.9, Direction.right, 1.0);
+        //encoderDrive(.5, 12, 12, 3.0);
+        //encoderStrafe(strafeSpeed, 30, Direction.right, 3.0);
+        //encoderDrive(1, 45, 45, 3.0); // 15
+
+
         /*encoderDrive(driveSpeed, 16.5, 16.5, 3.0); // 20
         encoderTurn(.5, 1, Direction.right, 1.0);
         encoderDrive(driveSpeed, 4, 4, 1.0); // 5
@@ -83,10 +102,10 @@ public class LillyAutonomous extends LinearOpMode {
         int newBackRightTarget;
 
         if (opModeIsActive()) {
-            newFrontLeftTarget = robot.DriveFrontLeft.getCurrentPosition() + (int) (leftInches * countsPerInch);
-            newFrontRightTarget = robot.DriveFrontRight.getCurrentPosition() + (int) (rightInches * countsPerInch);
-            newBackLeftTarget = robot.DriveBackLeft.getCurrentPosition() + (int) (leftInches * countsPerInch);
-            newBackRightTarget = robot.DriveBackRight.getCurrentPosition() + (int) (rightInches * countsPerInch);
+            newFrontLeftTarget = robot.DriveFrontLeft.getCurrentPosition() + (int) (1.25 * leftInches * countsPerInch);
+            newFrontRightTarget = robot.DriveFrontRight.getCurrentPosition() + (int) (1.25 * rightInches * countsPerInch);
+            newBackLeftTarget = robot.DriveBackLeft.getCurrentPosition() + (int) (1.25 * leftInches * countsPerInch);
+            newBackRightTarget = robot.DriveBackRight.getCurrentPosition() + (int) (1.25 * rightInches * countsPerInch);
 
             robot.DriveFrontLeft.setTargetPosition(newFrontLeftTarget);
             robot.DriveFrontRight.setTargetPosition(newFrontRightTarget);
@@ -99,10 +118,10 @@ public class LillyAutonomous extends LinearOpMode {
             robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
-            robot.DriveFrontLeft.setPower(Math.abs(driveSpeed));
-            robot.DriveFrontRight.setPower(Math.abs(driveSpeed));
-            robot.DriveBackLeft.setPower(Math.abs(driveSpeed));
-            robot.DriveBackRight.setPower(Math.abs(driveSpeed));
+            robot.DriveFrontLeft.setPower(Math.abs(speed));
+            robot.DriveFrontRight.setPower(Math.abs(speed));
+            robot.DriveBackLeft.setPower(Math.abs(speed));
+            robot.DriveBackRight.setPower(Math.abs(speed));
 
             while (opModeIsActive() && (runtime.seconds() < timeoutS) && (robot.DriveFrontLeft.isBusy() && robot.DriveFrontRight.isBusy() && robot.DriveBackLeft.isBusy() && robot.DriveBackRight.isBusy()))
                 ;
@@ -200,7 +219,7 @@ public class LillyAutonomous extends LinearOpMode {
         int newFrontRightTarget;
         int newBackLeftTarget;
         int newBackRightTarget;
-        double inchCount = 6.55 * Math.PI;
+        double inchCount = 6.53 * Math.PI;
 
         if (opModeIsActive()) {
             newFrontLeftTarget = robot.DriveFrontLeft.getCurrentPosition() + (int) (inchCount * countsPerInch * numberOfTurns);

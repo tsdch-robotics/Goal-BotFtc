@@ -140,9 +140,9 @@ public class TankDriveBernardo extends OpMode {
         }
 
         if (gamepad1.dpad_right && gamepad1.left_bumper) {
-            robot.setDriveMotors(.5, .5, -.5, .5);
+            robot.setDriveMotors(.5, -.5, -.5, .5);
         } else if (gamepad1.dpad_left && gamepad1.left_bumper) {
-            robot.setDriveMotors(-.5, -.5, .5, -.5);
+            robot.setDriveMotors(-.5, .5, .5, -.5);
         } else if (gamepad1.dpad_up && gamepad1.left_bumper) {
             robot.setDriveMotors(-.5, -.5, -.5, -.5);
         } else if (gamepad1.dpad_down && gamepad1.left_bumper) {
@@ -152,9 +152,9 @@ public class TankDriveBernardo extends OpMode {
         if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
             robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
         }else if (gamepad1.dpad_right && !gamepad1.left_bumper){
-            robot.setDriveMotors(1, 1, -1, 1);
+            robot.setDriveMotors(1, -1, -1, 1);
         }else if (gamepad1.dpad_left && !gamepad1.left_bumper) {
-            robot.setDriveMotors(-1, -1, 1, -1);
+            robot.setDriveMotors(-1, 1, 1, -1);
         }else if (gamepad1.dpad_up && !gamepad1.left_bumper){
             robot.setDriveMotors(-1, -1, -1, -1);
         }else if (gamepad1.dpad_down && !gamepad1.left_bumper) {

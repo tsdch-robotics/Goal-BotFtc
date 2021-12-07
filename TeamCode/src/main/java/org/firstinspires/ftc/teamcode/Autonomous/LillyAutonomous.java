@@ -59,17 +59,17 @@ public class LillyAutonomous extends LinearOpMode {
         //encoderTurn(driveSpeed, 1, Direction.right, 1.0);
         //encoderDrive(driveSpeed, 58, 58, 5.0);
 
-        encoderDrive(driveSpeed, 15, 15, 3.0);
-        encoderTurn(driveSpeed, 1, Direction.left, 1.0);
-        /*encoderDrive(driveSpeed, 16.5, 16.5, 3.0);
-        encoderTurn(driveSpeed, 1, Direction.right, 1.0);
-        encoderDrive(driveSpeed, 4, 4, 1.0);
+        encoderDrive(.5, 20, 20, 3.0); // 15
+        encoderTurn(.5, 1, Direction.left, 1.0);
+        /*encoderDrive(driveSpeed, 16.5, 16.5, 3.0); // 20
+        encoderTurn(.5, 1, Direction.right, 1.0);
+        encoderDrive(driveSpeed, 4, 4, 1.0); // 5
         // place block
-        encoderDrive(driveSpeed, -4,-4, 1.0);
-        encoderTurn(driveSpeed, 1, Direction. right, 1.0);
-        encoderDrive(driveSpeed, 16.5, 16.5, 3.0);
+        encoderDrive(driveSpeed, -4,-4, 1.0); //-5
+        encoderTurn(.5, 1, Direction. right, 1.0);
+        encoderDrive(driveSpeed, 16.5, 16.5, 3.0); //20
         encoderStrafe(strafeSpeed, 19, Direction.right, 3.0);
-        encoderDrive(driveSpeed, 36,36,4.0); */
+        encoderDrive(driveSpeed, 36,36,4.0); // 41 */
 
 
 
@@ -115,6 +115,11 @@ public class LillyAutonomous extends LinearOpMode {
             robot.DriveFrontRight.setPower(0);
             robot.DriveBackLeft.setPower(0);
             robot.DriveBackRight.setPower(0);
+
+            robot.DriveFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
             robot.DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -176,6 +181,11 @@ public class LillyAutonomous extends LinearOpMode {
                 robot.DriveBackLeft.setPower(0);
                 robot.DriveBackRight.setPower(0);
 
+                robot.DriveFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                robot.DriveFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                robot.DriveBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                robot.DriveBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
                 robot.DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -233,6 +243,11 @@ public class LillyAutonomous extends LinearOpMode {
             robot.DriveFrontRight.setPower(0);
             robot.DriveBackLeft.setPower(0);
             robot.DriveBackRight.setPower(0);
+
+            robot.DriveFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
             robot.DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

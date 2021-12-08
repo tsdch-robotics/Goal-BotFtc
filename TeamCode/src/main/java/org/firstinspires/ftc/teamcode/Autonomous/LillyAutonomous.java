@@ -42,6 +42,7 @@ public class LillyAutonomous extends LinearOpMode {
         robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Path0", "Starting at %7d :%7d :%7d :%7d");
         robot.DriveFrontLeft.getCurrentPosition();
@@ -63,10 +64,11 @@ public class LillyAutonomous extends LinearOpMode {
         encoderTurn(.5, 1, Direction.left, 1.0);
         encoderDrive(.5, 12, 12, 3.0);
         encoderTurn(.5, 1, Direction.right, 1.0);
-        encoderDrive(0.1, 4, 4, 3.0); // 15
+        encoderArm(.5,1000,3.0);
+        encoderDrive(0.1, 3.5, 3.5, 3.0); // 15
         encoderDrive(0, 0, 0, 1.0); // break
         robot.Claw.setPosition(1.0);
-        encoderDrive(0.1, -4, -4, 3.0); // 15
+        encoderDrive(0.1, -3.5, -3.5, 3.0); // 15
         encoderTurn(.5, 1, Direction.left, 1.0);
         encoderDrive(.5, 37.5,37.5,3);
         encoderTurn(.5, 1, Direction.left, 1.0);
@@ -74,6 +76,10 @@ public class LillyAutonomous extends LinearOpMode {
         robot.CarouselMotor2.setPower(-.5);
         sleep(2500);
         robot.CarouselMotor2.setPower(0);
+        encoderTurn(.5, 1, Direction.left, 1.0);
+        encoderDrive(.5,59.5,59.5,5.0);
+        encoderStrafe(.5,28, Direction.right,2.0);
+        encoderDrive(.5,30,30,3.0);
         //encoderTurn(.5, 0.9, Direction.right, 1.0);
         //encoderDrive(.5, 12, 12, 3.0);
         //encoderStrafe(strafeSpeed, 30, Direction.right, 3.0);
@@ -276,7 +282,35 @@ public class LillyAutonomous extends LinearOpMode {
             sleep(250);
         }
     }
+    public void encoderArm (double speed, double armTickCount, double timeoutS) {
+        int newArmTarget;
 
+        if (opModeIsActive()) {
+            newArmTarget = robot.ArmMotor.getCurrentPosition() + (int) (armTickCount);
+
+            robot.ArmMotor.setTargetPosition(newArmTarget);
+
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            runtime.reset();
+            robot.ArmMotor.setPower(Math.abs(speed));
+
+            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (robot.ArmMotor.isBusy()))
+                ;
+            {
+                telemetry.addData("Path1", "Running to %7d", newArmTarget);
+                //telemetry.addData("Path1", "Running to %7d :%7d :%7d :%7d", robot.DriveFrontLeft, robot.DriveFrontRight, robot.DriveBackLeft, robot.DriveBackRight);
+                telemetry.update();
+            }
+            robot.ArmMotor.setPower(0);
+
+            robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            sleep(250);
+        }
+    }
     }
 
 

@@ -24,6 +24,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class ChampBot<Directionvector> {
     public static final Double TRIGGER_THRESHOLD = 0.5;//gamepad trigger
     //1080 = 270 degrees
+    public boolean toggle = true;
     public static int zeroPos = 0;
     public static int highPos = 3696;
     public static int mediumPos = 4016;

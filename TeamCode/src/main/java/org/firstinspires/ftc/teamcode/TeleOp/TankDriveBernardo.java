@@ -98,6 +98,7 @@ public class TankDriveBernardo extends OpMode {
         robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.ArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         float DLY = gamepad1.left_stick_y;
         float DRY = gamepad1.right_stick_y;

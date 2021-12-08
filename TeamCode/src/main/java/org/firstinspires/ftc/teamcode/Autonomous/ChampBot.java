@@ -51,7 +51,7 @@ public class ChampBot<Directionvector> {
         hardwareMap=ahwMap;
         //configure the drive motors
         ArmMotor=hardwareMap.dcMotor.get("ArmMotor");
-        ArmMotor.setDirection(DcMotor.Direction.FORWARD);
+        ArmMotor.setDirection(DcMotor.Direction.REVERSE);
         ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 

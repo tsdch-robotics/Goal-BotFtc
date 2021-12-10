@@ -44,11 +44,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
+import org.firstinspires.ftc.teamcode.Autonomous.ChampBot_v2;
 
 
 @TeleOp(name="TankDriveBernardo_v2", group="ChampBot")
 public class TankDriveBernardo_v2 extends OpMode {
-    ChampBot robot = new ChampBot();
+    ChampBot_v2 robot = new ChampBot_v2();
     public ElapsedTime runtime = new ElapsedTime();
     boolean slowcheck = false;
 
@@ -66,7 +67,6 @@ public class TankDriveBernardo_v2 extends OpMode {
         robot.DriveFrontRight.setPower(0);
         robot.DriveBackLeft.setPower(0);
         robot.DriveBackRight.setPower(0);
-        robot.color_sensor.enableLed(true);
     }
 
     public void RightStrafe(double Power) {
@@ -90,15 +90,11 @@ public class TankDriveBernardo_v2 extends OpMode {
         // tank drive: each stick controls one side of the robot
         // dpad for strafing left/right
 
-        telemetry.addData("Red: ", robot.color_sensor.red());
-        telemetry.addData("Green: ", robot.color_sensor.green());
-        telemetry.addData("Blue: ", robot.color_sensor.blue());
 
         robot.DriveFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.ArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         float DLY = gamepad1.left_stick_y;
         float DRY = gamepad1.right_stick_y;
@@ -137,11 +133,13 @@ public class TankDriveBernardo_v2 extends OpMode {
             telemetry.addData("Power L: ", leftPower);
         }
 */
-
-        if (gamepad1.dpad_right) {
-            robot.setDriveMotors(.5, -.5, -.5, .5);
-        } else if (gamepad1.dpad_left) {
-            robot.setDriveMotors(-.5, .5, .5, -.5);
+        if (!gamepad1.dpad_right && !gamepad1.dpad_left && !gamepad1.dpad_down && !gamepad1.dpad_up) {
+            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
+        }
+        if (gamepad1.dpad_right && !gamepad1.dpad_left) {
+            robot.setDriveMotors(.75, -.75, -.75, .75);
+        } else if (gamepad1.dpad_left && !gamepad1.dpad_right) {
+            robot.setDriveMotors(-.75, .75, .75, -.75);
         }
         if (gamepad1.dpad_up) {
             //intake out
@@ -155,12 +153,11 @@ public class TankDriveBernardo_v2 extends OpMode {
         }
 
         if (gamepad1.x && !gamepad1.b) {
-            robot.CarouselMotor1.setPower(.5);
+            //carouselMotorleft
         }else if (gamepad1.b && !gamepad1.x) {
-            robot.CarouselMotor2.setPower(-.5);
+            //carouselMotorRight
         }else {
-            robot.CarouselMotor1.setPower(0);
-            robot.CarouselMotor2.setPower(0);
+            //carouselOff
         }
         if (gamepad1.left_bumper && !gamepad1.right_bumper) {
             //left 90 degrees
@@ -173,7 +170,6 @@ public class TankDriveBernardo_v2 extends OpMode {
             //low goal toggle
         }
 
-        robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
 
         /* Code for the arm with encoder
         if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 1) {

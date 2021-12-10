@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.*;
 
-@Autonomous(name="BernardoAutonomous", group="ChampBot")
+@Autonomous(name="BernardoRedAutonomous", group="ChampBot")
 
-public class BernardoAutonomous extends LinearOpMode {
+public class BernardoRedAutonomous extends LinearOpMode {
     ChampBot robot = new ChampBot();
     private ElapsedTime runtime = new ElapsedTime();
     static final double tickCount = 537.7;
@@ -57,15 +57,21 @@ public class BernardoAutonomous extends LinearOpMode {
         encoderDrive(.5, 29, 29, 3.0); // 15
         encoderTurn(.5, 1, Direction.right, 1.0);
         encoderArm(.5,800,3.0);
-        encoderDrive(.5, 9, 9, 3.0);
+        encoderDrive(.3, 9, 9, 3.0);
         robot.Claw.setPosition(1);
         sleep(500);
-        encoderDrive(.5, -23,-23, 3.0);
+        encoderDrive(.5, -21,-21, 3.0);
         encoderTurn(.5,1.05,Direction.right,1.0);
-        encoderDrive(.5,26,26,3.0);
+        encoderDrive(.3,26,26,3.0);
         robot.CarouselMotor2.setPower(-.5);
         sleep(2500);
         robot.CarouselMotor2.setPower(0);
+        encoderStrafe(.5,7,Direction.left, 3.0);
+        encoderTurn(.5,1, Direction.left,1.0);
+        encoderDrive(.5,47,47,5.0);
+        encoderStrafe(.5,20, Direction.right,2.0);
+        encoderDrive(.5,30,30,3.0);
+        encoderStrafe(.5,20, Direction.left,2.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

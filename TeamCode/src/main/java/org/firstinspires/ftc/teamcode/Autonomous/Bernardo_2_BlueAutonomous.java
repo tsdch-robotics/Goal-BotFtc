@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.*;
 
-@Autonomous(name="LillyBlueAutonomous", group="ChampBot")
+@Autonomous(name="Bernardo_2_BlueAutonomous", group="ChampBot")
 
-public class LillyBlueAutonomous extends LinearOpMode {
+public class Bernardo_2_BlueAutonomous extends LinearOpMode {
     ChampBot robot = new ChampBot();
     private ElapsedTime runtime = new ElapsedTime();
     static final double tickCount = 537.7;

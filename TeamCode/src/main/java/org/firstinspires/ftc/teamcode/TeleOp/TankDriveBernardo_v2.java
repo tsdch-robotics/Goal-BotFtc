@@ -43,7 +43,6 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
-import org.firstinspires.ftc.teamcode.Autonomous.ChampBot;
 import org.firstinspires.ftc.teamcode.Autonomous.ChampBot_v2;
 
 
@@ -96,146 +95,52 @@ public class TankDriveBernardo_v2 extends OpMode {
         robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        float DLY = gamepad1.left_stick_y;
-        float DRY = gamepad1.right_stick_y;
+        double DLY = gamepad1.left_stick_y * .75;
+        double DRY = gamepad1.right_stick_y * .75;
         float DLX = Math.abs(gamepad1.left_stick_x);
         float DRX = Math.abs(gamepad1.right_stick_x);
-        float rightPower = DLY / DLX;
-        float leftPower = DRY / DRX;
+        //float rightPower = DLY / DLX;
+        //float leftPower = DRY / DRX;
         double inf = Double.POSITIVE_INFINITY;
 
         telemetry.addData("Right: ", DRY);
         telemetry.addData("Left: ", DLY);
-        /*
-        if (gamepad1.left_bumper) {
-            if (leftPower == inf && rightPower == inf) {
-                leftPower = 1;
-                rightPower = 1;
-            } else if (leftPower == -inf && rightPower == -inf) {
-                leftPower = -1;
-                rightPower = -1;
-            } else if (leftPower == inf) {
-                leftPower = 1;
-            } else if (leftPower == -inf) {
-                leftPower = -1;
-            } else if (rightPower == inf) {
-                rightPower = 1;
-            } else if (rightPower == -inf) {
-                rightPower = -1;
-            } else if (leftPower > 1) {
-                leftPower = 1;
-            } else if (rightPower > 1) {
-                rightPower = 1;
-            }
-            leftPower = leftPower / 2;
-            rightPower = rightPower / 2;
+        /*if (leftPower == inf && rightPower == inf) {
+            leftPower = 1;
+            rightPower = 1;
+        } else if (leftPower == -inf && rightPower == -inf) {
+            leftPower = -1;
+            rightPower = -1;
+        } else if (leftPower == inf) {
+            leftPower = 1;
+        } else if (leftPower == -inf) {
+            leftPower = -1;
+        } else if (rightPower == inf) {
+            rightPower = 1;
+        } else if (rightPower == -inf) {
+            rightPower = -1;
+        } else if (leftPower > 1) {
+            leftPower = 1;
+        } else if (rightPower > 1) {
+            rightPower = 1;
+        }
+            leftPower = (float) (leftPower * 0.75);
+            rightPower = (float) (rightPower  *0.75);
             telemetry.addData("Power R: ", rightPower);
             telemetry.addData("Power L: ", leftPower);
-        }
 */
-        if (!gamepad1.dpad_right && !gamepad1.dpad_left && !gamepad1.dpad_down && !gamepad1.dpad_up) {
-            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
-        }
-        if (gamepad1.dpad_right && !gamepad1.dpad_left) {
+
+        if (gamepad1.dpad_right) {
             robot.setDriveMotors(.75, -.75, -.75, .75);
-        } else if (gamepad1.dpad_left && !gamepad1.dpad_right) {
+        } else if (gamepad1.dpad_left) {
             robot.setDriveMotors(-.75, .75, .75, -.75);
-        }
-        if (gamepad1.dpad_up) {
-            //intake out
+        } else if (gamepad1.dpad_up) {
+            robot.setDriveMotors(.75, .75, .75, .75);
         } else if (gamepad1.dpad_down) {
-            //intake in
+            robot.setDriveMotors(-.75, -.75, -.75, -.75);
         }
-        if (gamepad1.right_trigger > 0) {
-            //high goal position
-        } else if (gamepad1.left_trigger > 0) {
-            //low goal position
+        if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
+            robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
         }
-
-        if (gamepad1.x && !gamepad1.b) {
-            //carouselMotorleft
-        }else if (gamepad1.b && !gamepad1.x) {
-            //carouselMotorRight
-        }else {
-            //carouselOff
-        }
-        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
-            //left 90 degrees
-        }else if (gamepad1.right_bumper && !gamepad1.left_bumper) {
-            //right 90 degrees
-        }
-        if (gamepad1.y && !gamepad1.a) {
-            //high goal toggle
-        } else if (gamepad1.a && !gamepad1.y) {
-            //low goal toggle
-        }
-
-
-        /* Code for the arm with encoder
-        if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 1) {
-            robot.zeroPos = robot.ArmMotor.getCurrentPosition();
-            robot.ArmMotor.setTargetPosition(3700);
-            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(.3);
-            while (robot.ArmMotor.isBusy()) {
-                telemetry.addData("Status: ", "Running to Position");
-                telemetry.update();
-            }
-            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
-        }else if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 2) {
-            robot.zeroPos = robot.ArmMotor.getCurrentPosition();
-            robot.ArmMotor.setTargetPosition(3100);
-            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(.3);
-            while (robot.ArmMotor.isBusy()) {
-                telemetry.addData("Status: ", "Running to Position");
-                telemetry.update();
-            }
-            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
-        }else if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 3) {
-            robot.ArmMotor.setTargetPosition(2900);
-            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(.3);
-            while (robot.ArmMotor.isBusy()) {
-                telemetry.addData("Status: ", "Running to Position");
-                telemetry.update();
-            }
-            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
-        }else if (!gamepad2.x && gamepad2.a && !gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
-            robot.ArmMotor.setTargetPosition(3700);
-            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(.3);
-            while (robot.ArmMotor.isBusy()) {
-                telemetry.addData("Status: ", "Running to Position");
-                telemetry.update();
-            }
-            robot.cp = 1;
-            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
-        }else if (!gamepad2.x && !gamepad2.a && gamepad2.b && !gamepad2.y) {
-            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
-            robot.ArmMotor.setTargetPosition(3100);
-            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(.3);
-            while (robot.ArmMotor.isBusy()) {
-                telemetry.addData("Status: ", "Running to Position");
-                telemetry.update();
-            }
-            robot.cp = 2;
-            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
-        }else if (!gamepad2.x && !gamepad2.a && !gamepad2.b && gamepad2.y) {
-            robot.ArmMotor.setDirection(DcMotor.Direction.REVERSE);
-            robot.ArmMotor.setTargetPosition(2900);
-            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.ArmMotor.setPower(.3);
-            while (robot.ArmMotor.isBusy()) {
-                telemetry.addData("Status: ", "Running to Position");
-                telemetry.update();
-            }
-            robot.cp = 3;
-            robot.ArmMotor.setDirection(DcMotor.Direction.FORWARD);
-        }
-        robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-*/
     }
 }

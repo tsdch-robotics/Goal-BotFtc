@@ -100,67 +100,75 @@ public class TankDriveBernardo extends OpMode {
         robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.ArmMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        float DLY = gamepad1.left_stick_y;
-        float DRY = gamepad1.right_stick_y;
+        double DLY = gamepad1.left_stick_y * .75;
+        double DRY = gamepad1.right_stick_y * .75;
         float DLX = Math.abs(gamepad1.left_stick_x);
         float DRX = Math.abs(gamepad1.right_stick_x);
-        float rightPower = DLY / DLX;
-        float leftPower = DRY / DRX;
+        //float rightPower = DLY / DLX;
+        //float leftPower = DRY / DRX;
         double inf = Double.POSITIVE_INFINITY;
 
         telemetry.addData("Right: ", DRY);
         telemetry.addData("Left: ", DLY);
-        if (gamepad1.left_bumper) {
-            if (leftPower == inf && rightPower == inf) {
-                leftPower = 1;
-                rightPower = 1;
-            } else if (leftPower == -inf && rightPower == -inf) {
-                leftPower = -1;
-                rightPower = -1;
-            } else if (leftPower == inf) {
-                leftPower = 1;
-            } else if (leftPower == -inf) {
-                leftPower = -1;
-            } else if (rightPower == inf) {
-                rightPower = 1;
-            } else if (rightPower == -inf) {
-                rightPower = -1;
-            } else if (leftPower > 1) {
-                leftPower = 1;
-            } else if (rightPower > 1) {
-                rightPower = 1;
-            }
-            leftPower = leftPower / 2;
-            rightPower = rightPower / 2;
+        /*if (leftPower == inf && rightPower == inf) {
+            leftPower = 1;
+            rightPower = 1;
+        } else if (leftPower == -inf && rightPower == -inf) {
+            leftPower = -1;
+            rightPower = -1;
+        } else if (leftPower == inf) {
+            leftPower = 1;
+        } else if (leftPower == -inf) {
+            leftPower = -1;
+        } else if (rightPower == inf) {
+            rightPower = 1;
+        } else if (rightPower == -inf) {
+            rightPower = -1;
+        } else if (leftPower > 1) {
+            leftPower = 1;
+        } else if (rightPower > 1) {
+            rightPower = 1;
+        }
+            leftPower = (float) (leftPower * 0.75);
+            rightPower = (float) (rightPower  *0.75);
             telemetry.addData("Power R: ", rightPower);
             telemetry.addData("Power L: ", leftPower);
+*/
+
+        if (gamepad1.dpad_right){
+            robot.setDriveMotors(.75, -.75, -.75, .75);
+        }else if (gamepad1.dpad_left) {
+            robot.setDriveMotors(-.75, .75, .75, -.75);
+        }else if (gamepad1.dpad_up){
+            robot.setDriveMotors(-.75, -.75, -.75, -.75);
+        }else if (gamepad1.dpad_down) {
+            robot.setDriveMotors(.75, .75, .75, .75);
         }
 
-        if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right && gamepad1.left_bumper) {
-            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
+        if (gamepad1.right_trigger > 0) {
+            robot.ArmMotor.setPower(.5);
+        } else if (gamepad1.left_trigger > 0) {
+            robot.ArmMotor.setPower(-.5);
+        } else {
+            robot.ArmMotor.setPower(0);
         }
 
-        if (gamepad1.dpad_right && gamepad1.left_bumper) {
-            robot.setDriveMotors(.5, -.5, -.5, .5);
-        } else if (gamepad1.dpad_left && gamepad1.left_bumper) {
-            robot.setDriveMotors(-.5, .5, .5, -.5);
-        } else if (gamepad1.dpad_up && gamepad1.left_bumper) {
-            robot.setDriveMotors(-.5, -.5, -.5, -.5);
-        } else if (gamepad1.dpad_down && gamepad1.left_bumper) {
-            robot.setDriveMotors(.5, .5, .5, .5);
+        if (gamepad1.x) {
+            robot.CarouselMotor1.setPower(.5);
+        }else if (gamepad1.b) {
+            robot.CarouselMotor2.setPower(-.5);
+        }else {
+            robot.CarouselMotor1.setPower(0);
+            robot.CarouselMotor2.setPower(0);
+        }
+        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
+            robot.Claw.setPosition(1);
+        }else if (gamepad1.right_bumper && !gamepad1.left_bumper) {
+            robot.Claw.setPosition(0);
         }
 
-        if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
-            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower);
-        }else if (gamepad1.dpad_right && !gamepad1.left_bumper){
-            robot.setDriveMotors(1, -1, -1, 1);
-        }else if (gamepad1.dpad_left && !gamepad1.left_bumper) {
-            robot.setDriveMotors(-1, 1, 1, -1);
-        }else if (gamepad1.dpad_up && !gamepad1.left_bumper){
-            robot.setDriveMotors(-1, -1, -1, -1);
-        }else if (gamepad1.dpad_down && !gamepad1.left_bumper) {
-            robot.setDriveMotors(1, 1, 1, 1);
-        }
+        robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
+
         /* Code for the arm with encoder
         if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 1) {
             robot.zeroPos = robot.ArmMotor.getCurrentPosition();
@@ -227,78 +235,5 @@ public class TankDriveBernardo extends OpMode {
         }
         robot.ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 */
-        if (gamepad1.right_trigger > 0) {
-            robot.ArmMotor.setPower(.5);
-        } else if (gamepad1.left_trigger > 0) {
-            robot.ArmMotor.setPower(-.5);
-        } else {
-            robot.ArmMotor.setPower(0);
-        }
-
-        if (gamepad1.x) {
-            robot.CarouselMotor1.setPower(.5);
-        }else if (gamepad1.b) {
-            robot.CarouselMotor2.setPower(-.5);
-        }else {
-            robot.CarouselMotor1.setPower(0);
-            robot.CarouselMotor2.setPower(0);
     }
-        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
-            robot.Claw.setPosition(1);
-        }else if (gamepad1.right_bumper && !gamepad1.left_bumper) {
-            robot.Claw.setPosition(0);
-        }
-
-
-        /*if (gamepad1.y) {
-            robot.WheelMotor.setPower(1);
-            //robot.IntakeMotor.setPower(1);
-        } else {
-            robot.WheelMotor.setPower(0);
-            robot.ArmMotor.setPower(0);
-            //robot.IntakeMotor.setPower(0);
-        }
-        if (gamepad1.left_bumper) {
-            robot.WheelMotor.setPower(-1);
-            //robot.IntakeMotor.setPower(-1);
-        } else {
-            robot.WheelMotor.setPower(0);
-            //robot.IntakeMotor.setPower(0);
-        }
-        if (gamepad1.dpad_up) {
-            robot.ArmMotor.setPower(1);
-        } else {
-            robot.WheelMotor.setPower(0);
-            robot.ArmMotor.setPower(0);
-        }
-        if (gamepad1.dpad_down) {
-            robot.ArmMotor.setPower(-1);
-        } else {
-            robot.WheelMotor.setPower(0);
-            robot.ArmMotor.setPower(0);
-        }
-        if (gamepad1.b) {
-            robot.WheelMotor.setPower(0);
-            robot.ArmMotor.setPower(0);
-        } else {
-            robot.WheelMotor.setPower(0);
-            robot.ArmMotor.setPower(0);
-        }
-            //if (gamepad1.right_bumper) {
-            //robot.LauncherMotor.setPower(-1);
-            //}
-            //else {
-            // robot.LauncherMotor.setPower(0);
-            //}
-
-
-            //if (gamepad1.left_bumper) {
-                //DriveLeftPower = DriveLeftPower / 2;
-                //DriveRightPower = DriveRightPower / 2;
-            //}
-
-            robot.setDriveMotors(DriveLeftPower, DriveRightPower, DriveLeftPower, DriveRightPower);
-        }
-    }
-*/
-    }}
+}

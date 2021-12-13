@@ -4,6 +4,7 @@ import com.qualcomm.hardware.motors.RevRobotics20HdHexMotor;
 import com.qualcomm.hardware.motors.RevRobotics40HdHexMotor;
 import com.qualcomm.hardware.motors.RevRoboticsCoreHexMotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -51,7 +52,7 @@ public class ChampBot_v2<Directionvector> {
         DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         DriveBackLeft=hardwareMap.dcMotor.get("DriveBackLeft");
-        DriveBackLeft.setDirection(DcMotor.Direction.REVERSE);
+        DriveBackLeft.setDirection(DcMotor.Direction.FORWARD);
         DriveBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 

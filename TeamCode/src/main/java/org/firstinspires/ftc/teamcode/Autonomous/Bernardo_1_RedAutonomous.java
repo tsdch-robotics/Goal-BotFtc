@@ -8,16 +8,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.*;
 
-@Autonomous(name="BernardoRedAutonomous", group="ChampBot")
+@Autonomous(name="Bernardo_1_RedAutonomous", group="ChampBot")
 
-public class BernardoRedAutonomous extends LinearOpMode {
+public class Bernardo_1_RedAutonomous extends LinearOpMode {
     ChampBot robot = new ChampBot();
     private ElapsedTime runtime = new ElapsedTime();
     static final double tickCount = 537.7;
     static final double wheelDiameter = 3.78; //in inches
     static final double countsPerInch = tickCount/(wheelDiameter*3.1415);
-    static final double driveSpeed = 1.0;
-    static final double strafeSpeed = 0.5;
     public DcMotor DriveFrontLeft; //:D
     public DcMotor DriveFrontRight;
     public DcMotor DriveBackLeft;
@@ -53,25 +51,25 @@ public class BernardoRedAutonomous extends LinearOpMode {
 
         waitForStart();
 
-        robot.Claw.setPosition(0);
+
         encoderDrive(.5, 29, 29, 3.0); // 15
-        encoderTurn(.5, 1, Direction.right, 1.0);
-        encoderArm(.5,800,3.0);
-        encoderDrive(.3, 9, 9, 3.0);
-        robot.Claw.setPosition(1);
-        sleep(500);
-        encoderDrive(.5, -21,-21, 3.0);
-        encoderTurn(.5,1.05,Direction.right,1.0);
-        encoderDrive(.3,26,26,3.0);
-        robot.CarouselMotor2.setPower(-.5);
-        sleep(2500);
-        robot.CarouselMotor2.setPower(0);
-        encoderStrafe(.5,7,Direction.left, 3.0);
-        encoderTurn(.5,1, Direction.left,1.0);
-        encoderDrive(.5,47,47,5.0);
-        encoderStrafe(.5,20, Direction.right,2.0);
-        encoderDrive(.5,30,30,3.0);
-        encoderStrafe(.5,20, Direction.left,2.0);
+        //encoderTurn(.5, 1, Direction.right, 1.0);
+        //encoderArm(.5,800,3.0);
+        //encoderDrive(.3, 9, 9, 3.0);
+        //robot.Claw.setPosition(1);
+        //sleep(500);
+        //encoderDrive(.5, -21,-21, 3.0);
+        //encoderTurn(.5,1.05,Direction.right,1.0);
+        //encoderDrive(.3,26,26,3.0);
+        //robot.CarouselMotor2.setPower(-.5);
+        //sleep(2500);
+        //robot.CarouselMotor2.setPower(0);
+        //encoderStrafe(.5,7,Direction.left, 3.0);
+        //encoderTurn(.5,1, Direction.left,1.0);
+        //encoderDrive(.5,47,47,5.0);
+        //encoderStrafe(.5,20, Direction.right,2.0);
+        //encoderDrive(.5,30,30,3.0);
+        //encoderStrafe(.5,20, Direction.left,2.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -287,6 +285,7 @@ public class BernardoRedAutonomous extends LinearOpMode {
         }
     }
 }
+
 
 
 

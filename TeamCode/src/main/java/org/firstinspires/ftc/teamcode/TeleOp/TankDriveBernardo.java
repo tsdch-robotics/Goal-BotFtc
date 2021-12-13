@@ -166,9 +166,9 @@ public class TankDriveBernardo extends OpMode {
         }else if (gamepad1.right_bumper && !gamepad1.left_bumper) {
             robot.Claw.setPosition(0);
         }
-
-        robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
-
+        if (!gamepad1.dpad_right && !gamepad1.dpad_left && !gamepad1.dpad_up && !gamepad1.dpad_down) {
+            robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
+        }
         /* Code for the arm with encoder
         if (gamepad2.x && !gamepad2.a && !gamepad2.b && !gamepad2.y && robot.cp == 1) {
             robot.zeroPos = robot.ArmMotor.getCurrentPosition();

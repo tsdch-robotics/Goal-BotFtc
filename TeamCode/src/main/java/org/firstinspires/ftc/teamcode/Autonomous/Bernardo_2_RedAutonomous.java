@@ -53,7 +53,18 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
 
         waitForStart();
         sleep(250);
-        encoderDrive(.5, 16, 16, 3.0); // 15
+        encoderDrive(.5, 45, 45, 3.0);
+        encoderTurn(.5,1,Direction.right,1.0);
+        encoderDrive(.5, -17, -17, 2.0);
+        //Code for arm movement
+        encoderDrive(.5,-35,-35 ,3.0);
+        encoderTurn(.5,1.05,Direction.left, 1.0);
+        encoderDrive(.3,-37.5,-37.5, 3.0);
+        encoderTurn(.5,1.05,Direction.right,1.0);
+        encoderDrive(.5, 55,55,4.0);
+        encoderStrafe(.5,15,Direction.right,3.0);
+        encoderDrive(.5, 20, 20, 3.0);
+        encoderStrafe(.5,17, Direction.left, 2.0);
 
 
         telemetry.addData("Path", "Complete");
@@ -147,10 +158,10 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
             robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
-            robot.DriveFrontLeft.setPower(.1);
-            robot.DriveFrontRight.setPower(.1);
-            robot.DriveBackLeft.setPower(.1);
-            robot.DriveBackRight.setPower(.1);
+            robot.DriveFrontLeft.setPower(strafeSpeed);
+            robot.DriveFrontRight.setPower(strafeSpeed);
+            robot.DriveBackLeft.setPower(strafeSpeed);
+            robot.DriveBackRight.setPower(strafeSpeed);
 
             while (opModeIsActive() && (runtime.seconds() < timeoutS) && (robot.DriveFrontLeft.isBusy() && robot.DriveFrontRight.isBusy() && robot.DriveBackLeft.isBusy() && robot.DriveBackRight.isBusy()))
                 ;
@@ -183,7 +194,7 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
         int newFrontRightTarget;
         int newBackLeftTarget;
         int newBackRightTarget;
-        double inchCount = 6.53 * Math.PI;
+        double inchCount = 4.22 * Math.PI;
 
         if (opModeIsActive()) {
             newFrontLeftTarget = robot.DriveFrontLeft.getCurrentPosition() + (int) (inchCount * countsPerInch * numberOfTurns);

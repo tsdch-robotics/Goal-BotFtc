@@ -55,12 +55,12 @@ public class Lilly_1_RedAutonomous extends LinearOpMode {
 
         robot.Claw.setPosition(0);
         encoderDrive(.5, 29, 29, 3.0); // 15
-        encoderTurn(.5, 1, Direction.right, 1.0);
-        encoderArm(.5,800,3.0);
-        encoderDrive(.3, 9, 9, 3.0);
+        encoderTurn(.5, 0.95, Direction.right, 1.0);
+        encoderArm(.5,750,3.0);
+        encoderDrive(.2, 16, 9, 3.0);
         robot.Claw.setPosition(1);
         sleep(500);
-        encoderDrive(.5, -21,-21, 3.0);
+        encoderDrive(.5, -24,-24, 3.0);
         encoderTurn(.5,1.05,Direction.right,1.0);
         encoderDrive(.3,26,26,3.0);
         robot.CarouselMotor2.setPower(-.5);
@@ -69,7 +69,7 @@ public class Lilly_1_RedAutonomous extends LinearOpMode {
         encoderStrafe(.5,7,Direction.left, 3.0);
         encoderTurn(.5,1, Direction.left,1.0);
         encoderDrive(.5,47,47,5.0);
-        encoderStrafe(.5,20, Direction.right,2.0);
+        encoderStrafe(.4,17, Direction.right,2.0);
         encoderDrive(.5,30,30,3.0);
         encoderStrafe(.5,20, Direction.left,2.0);
 

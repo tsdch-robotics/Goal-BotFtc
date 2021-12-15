@@ -47,7 +47,7 @@ import org.firstinspires.ftc.teamcode.Autonomous.ChampBot_v2;
 
 
 @TeleOp(name="TankDriveBernardo_v2", group="ChampBot")
-public class TankDriveBernardo_v2 extends OpMode {
+public class  TankDriveBernardo_v2 extends OpMode {
     ChampBot_v2 robot = new ChampBot_v2();
     public ElapsedTime runtime = new ElapsedTime();
     boolean slowcheck = false;
@@ -99,13 +99,13 @@ public class TankDriveBernardo_v2 extends OpMode {
         double DRY = gamepad1.right_stick_y * .75;
         float DLX = Math.abs(gamepad1.left_stick_x);
         float DRX = Math.abs(gamepad1.right_stick_x);
-        //float rightPower = DLY / DLX;
-        //float leftPower = DRY / DRX;
+        double rightPower = DLY / DLX;
+        double leftPower = DRY / DRX;
         double inf = Double.POSITIVE_INFINITY;
 
         telemetry.addData("Right: ", DRY);
         telemetry.addData("Left: ", DLY);
-        /*if (leftPower == inf && rightPower == inf) {
+        if (leftPower == inf && rightPower == inf) {
             leftPower = 1;
             rightPower = 1;
         } else if (leftPower == -inf && rightPower == -inf) {
@@ -119,16 +119,16 @@ public class TankDriveBernardo_v2 extends OpMode {
             rightPower = 1;
         } else if (rightPower == -inf) {
             rightPower = -1;
-        } else if (leftPower > 1) {
+        } else if (leftPower > .85) {
             leftPower = 1;
-        } else if (rightPower > 1) {
+        } else if (rightPower > .85) {
             rightPower = 1;
         }
             leftPower = (float) (leftPower * 0.75);
             rightPower = (float) (rightPower  *0.75);
             telemetry.addData("Power R: ", rightPower);
             telemetry.addData("Power L: ", leftPower);
-*/
+
 
         if (gamepad1.dpad_right) {
             robot.setDriveMotors(.75, -.75, -.75, .75);
@@ -140,7 +140,7 @@ public class TankDriveBernardo_v2 extends OpMode {
             robot.setDriveMotors(-.75, -.75, -.75, -.75);
         }
         if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
-            robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
+            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower );
         }
     }
 }

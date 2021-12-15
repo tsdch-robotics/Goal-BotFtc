@@ -57,7 +57,7 @@ public class Lilly_1_RedAutonomous extends LinearOpMode {
         encoderDrive(.5, 29, 29, 3.0); // 15
         encoderTurn(.5, 0.95, Direction.right, 1.0);
         encoderArm(.5,750,3.0);
-        encoderDrive(.2, 16, 9, 3.0);
+        encoderDrive(.2, 9, 9, 3.0);
         robot.Claw.setPosition(1);
         sleep(500);
         encoderDrive(.5, -24,-24, 3.0);

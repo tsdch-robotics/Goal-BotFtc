@@ -25,11 +25,17 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class ChampBot_v2<Directionvector> {
     public static final Double TRIGGER_THRESHOLD = 0.5;//gamepad trigger
     //1080 = 270 degrees
+    //robot variables
+    public int motorLastPosition = 1;
+    public double servoLastPosition = .5;
     //Drive Motors
     public DcMotor DriveFrontLeft; //:D
     public DcMotor DriveFrontRight;
     public DcMotor DriveBackLeft;
     public DcMotor DriveBackRight;
+    public DcMotor ArmMotor;
+    //Servos
+    public Servo ArmServo;
     //Odometry Encoders
     public DcMotor encoderLeft;
     public DcMotor encoderRight;
@@ -60,6 +66,13 @@ public class ChampBot_v2<Directionvector> {
         DriveBackRight.setDirection(DcMotor.Direction.REVERSE);
         DriveBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        ArmMotor=hardwareMap.dcMotor.get("ArmMotor");
+        ArmMotor.setDirection(DcMotor.Direction.REVERSE);
+        ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        ArmServo = hardwareMap.servo.get("ArmServo");
 
         //shadow the motors with the odo encoders
         encoderLeft=DriveFrontLeft;

@@ -94,6 +94,7 @@ public class  TankDriveBernardo_v2 extends OpMode {
         robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         double DLY = gamepad1.left_stick_y * .75;
         double DRY = gamepad1.right_stick_y * .75;
@@ -142,5 +143,51 @@ public class  TankDriveBernardo_v2 extends OpMode {
         if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
             robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower );
         }
+        if (gamepad1.right_trigger > 0 && gamepad1.left_trigger == 0) {
+             if (robot.motorLastPosition == 1) {
+                 robot.ArmMotor.setTargetPosition(10);
+                 robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                 robot.ArmMotor.setPower(.3);
+                 robot.motorLastPosition = 2;
+                 while (robot.ArmMotor.isBusy()) {
+                     telemetry.addData("Path: ", "Moving Arm Up");
+                 }
+             } else if (robot.motorLastPosition == 2) {
+                 robot.ArmMotor.setTargetPosition(-10);
+                 robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                 robot.ArmMotor.setPower(.3);
+                 robot.motorLastPosition = 1;
+                 while (robot.ArmMotor.isBusy()) {
+                     telemetry.addData("Path: ", "Moving Arm Up");
+                 }
+             }
+        }
+        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
+            if (robot.servoLastPosition == .5) {
+                robot.ArmServo.setPosition(0.0);
+                robot.servoLastPosition = 0.0;
+            }else if (robot.servoLastPosition == 1) {
+                robot.ArmServo.setPosition(.5);
+                robot.servoLastPosition = .5;
+            }else if (robot.servoLastPosition == 0) {
+                telemetry.addData("Position reached: ", "Max");
+            }
+        }else if (gamepad1.right_bumper && !gamepad1.left_bumper) {
+            if (robot.servoLastPosition == .5) {
+                robot.ArmServo.setPosition(1);
+                robot.servoLastPosition = 1;
+            }else if (robot.servoLastPosition == 1) {
+                telemetry.addData("Position reached: ", "Max");
+            }else if (robot.servoLastPosition == 0) {
+                robot.ArmServo.setPosition(.5);
+                robot.servoLastPosition = .5;
+            }
+        }
+        //if (gamepad1.right_trigger == 0) {
+            //robot.ArmMotor.setTargetPosition(robot.ArmMotor.getCurrentPosition());
+            //robot.ArmMotor.setPower(.1);
+            //while (robot.ArmMotor.isBusy()) {
+               //telemetry.addData("Debug: ", "True");
+
     }
 }

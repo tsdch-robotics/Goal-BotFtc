@@ -28,6 +28,7 @@ public class ChampBot_v2<Directionvector> {
     //robot variables
     public int motorLastPosition = 1;
     public double servoLastPosition = .5;
+    public int stallPosition = 0;
     //Drive Motors
     public DcMotor DriveFrontLeft; //:D
     public DcMotor DriveFrontRight;

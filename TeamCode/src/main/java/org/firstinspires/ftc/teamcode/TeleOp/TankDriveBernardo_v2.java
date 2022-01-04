@@ -106,7 +106,7 @@ public class  TankDriveBernardo_v2 extends OpMode {
 
         telemetry.addData("Right: ", DRY);
         telemetry.addData("Left: ", DLY);
-        if (leftPower == inf && rightPower == inf) {
+        /*if (leftPower == inf && rightPower == inf) {
             leftPower = 1;
             rightPower = 1;
         } else if (leftPower == -inf && rightPower == -inf) {
@@ -125,44 +125,86 @@ public class  TankDriveBernardo_v2 extends OpMode {
         } else if (rightPower > .85) {
             rightPower = 1;
         }
-            leftPower = (float) (leftPower * 0.75);
-            rightPower = (float) (rightPower  *0.75);
-            telemetry.addData("Power R: ", rightPower);
-            telemetry.addData("Power L: ", leftPower);
+       */
+
+        if (gamepad1.left_stick_y >= .9) {
+            DLY = .75;
+        } else if (gamepad1.left_stick_y <= -.9) {
+            DLY = -.75;
+        }
+        if (gamepad1.right_stick_y >= .9) {
+            DRY = .75;
+        } else if (gamepad1.right_stick_y <= -.9) {
+            DRY = -.75;
+        }
+        leftPower = (float) (leftPower * 0.75);
+        rightPower = (float) (rightPower * 0.75);
+        telemetry.addData("Power R: ", rightPower);
+        telemetry.addData("Power L: ", leftPower);
 
 
-        if (gamepad1.dpad_right) {
-            robot.setDriveMotors(.75, -.75, -.75, .75);
-        } else if (gamepad1.dpad_left) {
-            robot.setDriveMotors(-.75, .75, .75, -.75);
-        } else if (gamepad1.dpad_up) {
-            robot.setDriveMotors(.75, .75, .75, .75);
-        } else if (gamepad1.dpad_down) {
-            robot.setDriveMotors(-.75, -.75, -.75, -.75);
-        }
-        if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
-            robot.setDriveMotors(-rightPower, -leftPower, -rightPower, -leftPower );
-        }
         if (gamepad1.right_trigger > 0 && gamepad1.left_trigger == 0) {
-             if (robot.motorLastPosition == 1) {
-                 robot.ArmMotor.setTargetPosition(10);
-                 robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                 robot.ArmMotor.setPower(.3);
-                 robot.motorLastPosition = 2;
-                 while (robot.ArmMotor.isBusy()) {
-                     telemetry.addData("Path: ", "Moving Arm Up");
-                 }
-             } else if (robot.motorLastPosition == 2) {
-                 robot.ArmMotor.setTargetPosition(-10);
-                 robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                 robot.ArmMotor.setPower(.3);
-                 robot.motorLastPosition = 1;
-                 while (robot.ArmMotor.isBusy()) {
-                     telemetry.addData("Path: ", "Moving Arm Up");
-                 }
-             }
+            if (robot.motorLastPosition == 1) {
+                robot.ArmMotor.setTargetPosition(10);
+                robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.ArmMotor.setPower(.1);
+                robot.motorLastPosition = 2;
+                while (robot.ArmMotor.isBusy()) {
+                    telemetry.addData("Path: ", "Moving Arm Up");
+                }
+                robot.ArmMotor.setPower(0);
+            }
+
+            robot.stallPosition = robot.ArmMotor.getCurrentPosition();
+            int targetPosition = robot.stallPosition - robot.ArmMotor.getCurrentPosition();
+            robot.ArmMotor.setTargetPosition(targetPosition);
+            robot.ArmMotor.setPower(.1);
+            while (robot.ArmMotor.isBusy()) {
+                if (gamepad1.dpad_right) {
+                    robot.setDriveMotors(.75, -.75, -.75, .75);
+                } else if (gamepad1.dpad_left) {
+                    robot.setDriveMotors(-.75, .75, .75, -.75);
+                } else if (gamepad1.dpad_up) {
+                    robot.setDriveMotors(.75, .75, .75, .75);
+                } else if (gamepad1.dpad_down) {
+                    robot.setDriveMotors(-.75, -.75, -.75, -.75);
+                }
+                if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
+                    robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
+                }
+            }
+            robot.ArmMotor.setPower(0);
         }
-        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
+        if (robot.motorLastPosition == 2) {
+            robot.ArmMotor.setTargetPosition(-10);
+            robot.ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.ArmMotor.setPower(.05);
+            robot.motorLastPosition = 1;
+            while (robot.ArmMotor.isBusy()) {
+                telemetry.addData("Path: ", "Moving Arm Up");
+            }
+            robot.ArmMotor.setPower(0);
+        }
+        robot.stallPosition = robot.ArmMotor.getCurrentPosition();
+        int targetPosition = robot.stallPosition - robot.ArmMotor.getCurrentPosition();
+        robot.ArmMotor.setTargetPosition(targetPosition);
+        robot.ArmMotor.setPower(.05);
+        while (robot.ArmMotor.isBusy()) {
+            if (gamepad1.dpad_right) {
+                robot.setDriveMotors(.75, -.75, -.75, .75);
+            } else if (gamepad1.dpad_left) {
+                robot.setDriveMotors(-.75, .75, .75, -.75);
+            } else if (gamepad1.dpad_up) {
+                robot.setDriveMotors(.75, .75, .75, .75);
+            } else if (gamepad1.dpad_down) {
+                robot.setDriveMotors(-.75, -.75, -.75, -.75);
+            }
+            if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
+                robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
+            }
+        }
+        robot.ArmMotor.setPower(0);
+        /*if (gamepad1.left_bumper && !gamepad1.right_bumper) {
             if (robot.servoLastPosition == .5) {
                 robot.ArmServo.setPosition(0.0);
                 robot.servoLastPosition = 0.0;
@@ -188,6 +230,6 @@ public class  TankDriveBernardo_v2 extends OpMode {
             //robot.ArmMotor.setPower(.1);
             //while (robot.ArmMotor.isBusy()) {
                //telemetry.addData("Debug: ", "True");
-
+    }*/
     }
 }

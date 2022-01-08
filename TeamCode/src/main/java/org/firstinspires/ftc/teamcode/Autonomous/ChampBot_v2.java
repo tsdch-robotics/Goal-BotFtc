@@ -35,6 +35,7 @@ public class ChampBot_v2<Directionvector> {
     public DcMotor DriveBackLeft;
     public DcMotor DriveBackRight;
     public DcMotor ArmMotor;
+    public DcMotor IntakeWheel;
     //Servos
     public Servo ArmServo;
     //Odometry Encoders
@@ -72,6 +73,11 @@ public class ChampBot_v2<Directionvector> {
         ArmMotor.setDirection(DcMotor.Direction.REVERSE);
         ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        IntakeWheel=hardwareMap.dcMotor.get("IntakeWheel");
+        IntakeWheel.setDirection(DcMotor.Direction.REVERSE);
+        IntakeWheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        IntakeWheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         ArmServo = hardwareMap.servo.get("ArmServo");
 

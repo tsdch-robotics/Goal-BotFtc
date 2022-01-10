@@ -142,15 +142,39 @@ public class  TankDriveBernardo_v2 extends OpMode {
         // arm rotate
         if(!gamepad1.left_bumper && gamepad1.right_bumper) {
             telemetry.addData("ArmServo move left.", null);
-            robot.ArmServo.setPosition(0.7); //rotate left
+            if (robot.position == 0){
+                robot.ArmServo.setPosition(.5); //rotate left
+                robot.position = .5;
+                telemetry.addData("Caught", null);
+            }
+            if (robot.position == .5) {
+                robot.ArmServo.setPosition(1);
+                robot.position = 1;
+            }
+            if (robot.position == 1) {
+                robot.ArmServo.setPosition(1);
+                robot.position = 1;
+            }
         }
         else if (gamepad1.left_bumper && !gamepad1.right_bumper) {
             telemetry.addData("ArmServo move right.", null);
-            robot.ArmServo.setPosition(-0.7); //rotate right
+            if (robot.position == 0){
+                robot.ArmServo.setPosition(0); //rotate left
+                robot.position = 0;
+            }
+            if (robot.position == .5) {
+                robot.ArmServo.setPosition(0);
+                robot.position = 0;
+            }
+            if (robot.position == 1) {
+                robot.ArmServo.setPosition(.5);
+                robot.position = .5;
+            }
         }
         else {
             telemetry.addData("Servo stopped.", null);
         }
+        telemetry.addData("Position: ", robot.position);
 
 /*        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
             if (robot.servoLastPosition == .5) {

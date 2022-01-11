@@ -4,6 +4,7 @@ import com.qualcomm.hardware.motors.RevRobotics20HdHexMotor;
 import com.qualcomm.hardware.motors.RevRobotics40HdHexMotor;
 import com.qualcomm.hardware.motors.RevRoboticsCoreHexMotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -28,10 +29,10 @@ public class ChampBot_v2<Directionvector> {
     //robot variables
     public double position = 0.5;
     //Drive Motors
-    public DcMotor DriveFrontLeft; //:D
-    public DcMotor DriveFrontRight;
-    public DcMotor DriveBackLeft;
-    public DcMotor DriveBackRight;
+    public DcMotorEx DriveFrontLeft; //:D
+    public DcMotorEx DriveFrontRight;
+    public DcMotorEx DriveBackLeft;
+    public DcMotorEx DriveBackRight;
     public DcMotor ArmMotor;
     public DcMotor IntakeWheel;
     //Servos
@@ -47,22 +48,22 @@ public class ChampBot_v2<Directionvector> {
         hardwareMap=ahwMap;
         //configure the drive motors
 
-        DriveFrontLeft=hardwareMap.dcMotor.get("DriveFrontLeft");
+        DriveFrontLeft=hardwareMap.get(DcMotorEx.class,"DriveFrontLeft");
         DriveFrontLeft.setDirection(DcMotor.Direction.FORWARD);
         DriveFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        DriveFrontRight=hardwareMap.dcMotor.get("DriveFrontRight");
+        DriveFrontRight=hardwareMap.get(DcMotorEx.class,"DriveFrontRight");
         DriveFrontRight.setDirection(DcMotor.Direction.REVERSE);
         DriveFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        DriveBackLeft=hardwareMap.dcMotor.get("DriveBackLeft");
+        DriveBackLeft=hardwareMap.get(DcMotorEx.class, "DriveBackLeft");
         DriveBackLeft.setDirection(DcMotor.Direction.FORWARD);
         DriveBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        DriveBackRight=hardwareMap.dcMotor.get("DriveBackRight");
+        DriveBackRight=hardwareMap.get(DcMotorEx.class,"DriveBackRight");
         DriveBackRight.setDirection(DcMotor.Direction.REVERSE);
         DriveBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         DriveBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

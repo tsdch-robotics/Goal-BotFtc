@@ -11,7 +11,7 @@ import java.lang.*;
 @Autonomous(name="Bernardo_2_BlueAutonomous", group="ChampBot")
 
 public class Bernardo_2_BlueAutonomous extends LinearOpMode {
-    ChampBot robot = new ChampBot();
+    ChampBot_v2 robot = new ChampBot_v2();
     private ElapsedTime runtime = new ElapsedTime();
     static final double tickCount = 537.7;
     static final double wheelDiameter = 3.78; //in inches
@@ -52,29 +52,26 @@ public class Bernardo_2_BlueAutonomous extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
-
-        robot.Claw.setPosition(0);
-        encoderDrive(.5, 15, 15, 3.0); // 15
-        encoderTurn(.5, 1, Direction.right, 1.0);
-        encoderDrive(.5, 12, 12, 3.0);
-        encoderTurn(.5, 1, Direction.left, 1.0);
-        encoderArm(.5,1000,3.0);
-        encoderDrive(0.1, 3.5, 3.5, 3.0); // 15
-        encoderDrive(0, 0, 0, 1.0); // break
-        robot.Claw.setPosition(1.0);
-        encoderDrive(0.1, -3.5, -3.5, 3.0); // 15
-        encoderTurn(.5, 1, Direction.right, 1.0);
-        encoderDrive(.5, 37.5,37.5,3);
-        encoderTurn(.5, .9, Direction.right, 1.0);
-        encoderDrive(.3, 10,10,3);
-        robot.CarouselMotor1.setPower(-.5);
-        sleep(2500);
-        robot.CarouselMotor1.setPower(0);
-        encoderTurn(.5, 1, Direction.right, 1.0);
-        encoderDrive(.5,50,50,5.0);
-        encoderStrafe(.5,28, Direction.left,2.0);
-        encoderDrive(.5,30,30,3.0);
-        encoderStrafe(.5,20, Direction.right,2.0);
+        robot.ArmServo.setPosition(0.34);
+        sleep(250);
+        encoderDrive(.5, 53, 53, 3.0);
+        encoderTurn(.5,1, Direction.left,1.0);
+        encoderDrive(.5, -12.5, -12.5, 2.0);
+        robot.ArmServo.setPosition(0);
+        sleep(500);
+        robot.IntakeWheel.setPower(.4);
+        sleep(750);
+        robot.IntakeWheel.setPower(0);
+        robot.ArmServo.setPosition(.34);
+        encoderDrive(.5,-36.5,-36.5 ,3.0);
+        encoderTurn(.5,1, Direction.right, 1.0);
+        encoderDrive(.3,-42,-42, 3.0);
+        //spin carousel wheel
+        encoderTurn(.5,1.05, Direction.left,1.0);
+        encoderDrive(.5, 55,55,4.0);
+        encoderStrafe(.5,25, Direction.left,3.0);
+        encoderDrive(.5, 22, 22, 3.0);
+        encoderStrafe(.5,17, Direction.right, 2.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -203,7 +200,7 @@ public class Bernardo_2_BlueAutonomous extends LinearOpMode {
         int newFrontRightTarget;
         int newBackLeftTarget;
         int newBackRightTarget;
-        double inchCount = 6.53 * Math.PI;
+        double inchCount = 4.22 * Math.PI;
 
         if (opModeIsActive()) {
             newFrontLeftTarget = robot.DriveFrontLeft.getCurrentPosition() + (int) (inchCount * countsPerInch * numberOfTurns);

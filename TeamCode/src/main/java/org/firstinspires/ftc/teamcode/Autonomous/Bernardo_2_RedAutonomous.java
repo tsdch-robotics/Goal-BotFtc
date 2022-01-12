@@ -23,7 +23,7 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
     public DcMotor DriveBackLeft;
     public DcMotor DriveBackRight;
     public enum Direction {
-        left,right;
+        left, right;
     }
 
     @Override
@@ -52,18 +52,25 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
+        robot.ArmServo.setPosition(0.34);
         sleep(250);
-        encoderDrive(.5, 45, 45, 3.0);
+        encoderDrive(.5, 49, 49, 3.0);
         encoderTurn(.5,1,Direction.right,1.0);
-        encoderDrive(.5, -17, -17, 2.0);
-        //Code for arm movement
-        encoderDrive(.5,-35,-35 ,3.0);
-        encoderTurn(.5,1.05,Direction.left, 1.0);
-        encoderDrive(.3,-37.5,-37.5, 3.0);
-        encoderTurn(.5,1.05,Direction.right,1.0);
+        encoderDrive(.5, -13.5, -13.5, 2.0);
+        robot.ArmServo.setPosition(1);
+        sleep(500);
+        robot.IntakeWheel.setPower(.4);
+        sleep(750);
+        robot.IntakeWheel.setPower(0);
+        robot.ArmServo.setPosition(.34);
+        encoderDrive(.5,-36.5,-36.5 ,3.0);
+        encoderTurn(.5,1.3,Direction.left, 1.0);
+        encoderDrive(.3,-41,-41, 3.0);
+        //spin carousel wheel
+        encoderTurn(.5,1.1,Direction.right,1.0);
         encoderDrive(.5, 55,55,4.0);
-        encoderStrafe(.5,15,Direction.right,3.0);
-        encoderDrive(.5, 20, 20, 3.0);
+        encoderStrafe(.5,25,Direction.right,3.0);
+        encoderDrive(.5, 22, 22, 3.0);
         encoderStrafe(.5,17, Direction.left, 2.0);
 
 

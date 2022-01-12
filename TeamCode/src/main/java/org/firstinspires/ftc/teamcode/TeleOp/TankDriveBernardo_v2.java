@@ -105,8 +105,6 @@ public class  TankDriveBernardo_v2 extends OpMode {
         double leftPower = DRY / DRX;
         double inf = Double.POSITIVE_INFINITY;
 
-        telemetry.addData("Right: ", DRY);
-        telemetry.addData("Left: ", DLY);
         /*
         //Drive controls
         robot.DriveFrontLeft.setPower(-DLY);
@@ -132,29 +130,38 @@ public class  TankDriveBernardo_v2 extends OpMode {
         }
 */
         //arm controls
-        if (gamepad1.left_trigger > 0 && gamepad1.right_trigger == 0)
+        if (gamepad1.right_trigger > 0 && gamepad1.left_trigger == 0 && robot.ArmMotor.getCurrentPosition() < 78)
             robot.ArmMotor.setPower(0.4); //raise arm
-        else if (gamepad1.left_trigger == 0 && gamepad1.right_trigger > 0)
+        else if (gamepad1.right_trigger == 0 && gamepad1.left_trigger > 0 && robot.ArmMotor.getCurrentPosition() > -848)
             robot.ArmMotor.setPower(-0.4); //lower arm
         else
             robot.ArmMotor.setPower(0);
 
         // arm rotate
         if(!gamepad1.left_bumper && gamepad1.right_bumper) {
-            telemetry.addData("ArmServo move left.", null);
-            robot.ArmServo.setPosition(1);
+            robot.position = robot.position + .5;
+            while (runtime.time() < .2); {
+                telemetry.addData("Waiting",null);
+            }
+            if (robot.ArmServo.getPosition() > 1)
+                robot.ArmServo.setPosition(1);
+                robot.position = 1;
+            runtime.reset();
         }
         else if (gamepad1.left_bumper && !gamepad1.right_bumper) {
-            telemetry.addData("ArmServo move right.", null);
-            robot.ArmServo.setPosition(0);
+            robot.position = robot.position - 0.5;
+            while (runtime.time() < .2); {
+                telemetry.addData("Waiting",null);
+            }
+            robot.ArmServo.setPosition(robot.position);
+            if (robot.ArmServo.getPosition() < 0)
+                robot.ArmServo.setPosition(0);
+            robot.position = 0;
+            runtime.reset();
         }
         else if (gamepad1.left_bumper && gamepad1.right_bumper) {
             robot.ArmServo.setPosition(0.34);
         }
-        else {
-            telemetry.addData("Servo stopped.", null);
-        }
-        telemetry.addData("Position: ", robot.position);
 
 /*        if (gamepad1.left_bumper && !gamepad1.right_bumper) {
             if (robot.servoLastPosition == .5) {
@@ -182,7 +189,7 @@ public class  TankDriveBernardo_v2 extends OpMode {
         if (gamepad1.y && !gamepad1.b) {
             robot.IntakeWheel.setPower(0.35); //discharge
         }
-        else if (gamepad1.a && !gamepad1.y) {
+        else if (gamepad1.b && !gamepad1.y) {
             robot.IntakeWheel.setPower(-0.45); //load
         }
         else {
@@ -221,11 +228,6 @@ public class  TankDriveBernardo_v2 extends OpMode {
         } else if (gamepad1.right_stick_y <= -.9) {
             DRY = -.75;
         }
-
-        leftPower = (float) (leftPower * 0.75);
-        rightPower = (float) (rightPower * 0.75);
-        telemetry.addData("Power R: ", rightPower);
-        telemetry.addData("Power L: ", leftPower);
 
 
         /*if (gamepad1.right_trigger > 0 && gamepad1.left_trigger == 0) {
@@ -288,6 +290,8 @@ public class  TankDriveBernardo_v2 extends OpMode {
         if (!gamepad1.dpad_up && !gamepad1.dpad_down && !gamepad1.dpad_left && !gamepad1.dpad_right) {
             robot.setDriveMotors(-DLY, -DRY, -DLY, -DRY);
         }
+        telemetry.addData("Arm position : ", robot.ArmMotor.getCurrentPosition());
+        telemetry.addData("Servo Position: ", robot.ArmServo.getPosition());
     }
 }
 

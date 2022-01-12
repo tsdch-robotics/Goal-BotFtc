@@ -19,7 +19,7 @@ public class PIDController extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         ChampBot_v2 robot = new ChampBot_v2();
 
-        waitforStart();
+        //waitforStart();
 
         while (opModeIsActive()) {
 

@@ -53,19 +53,25 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
 
         waitForStart();
 
+        encoderDrive(.5,-14,-14,3.0);
         robot.ArmServo.setPosition(0);
-        encoderStrafe(.5,25,Direction.left,3.0); //straft left
         sleep(750);
-        robot.IntakeWheel.setPower(.4); //drop block
+        encoderStrafe(.5,20,Direction.left,3.0); //straft left
         sleep(750);
-        encoderStrafe(.5,30,Direction.right,3.0); //strafe right
+        robot.IntakeWheel.setPower(.4);
+        sleep(2000);//drop block
+        robot.IntakeWheel.setPower(0);
+        encoderStrafe(.5,15,Direction.right,3.0); //strafe right
+        encoderStrafe(.2,10,Direction.right,3.0); //align against wall
         robot.ArmServo.setPosition(0.34); //position arm to straight
         sleep(750);
-        encoderDrive(.5,20,20,3.0); //dirve forward a bit
+        encoderDrive(.5,23,23,3.0); //dirve forward a bit
         //need to set arm to correct hight to intake block
-        encoderDriveAndIntake(.2,10,10,4.0); //drive forward slowly while spinning intake wheel
+        robot.IntakeWheel.setPower(-.4);
+        encoderDriveAndIntake(.2,15,15,3.0); //drive forward slowly while spinning intake wheel
+        robot.IntakeWheel.setPower(0);
         //need to set arm back to original height
-        encoderDrive(-.5,30,30,4.0); //dirve backwards to original position
+        encoderDrive(-.5,-38,-38,4.0); //dirve backwards to original position
 
         //repeat
 
@@ -95,6 +101,7 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
         telemetry.addData("Path", "Complete");
         telemetry.update();
     }
+
     public void encoderDrive (double speed, double leftInches, double rightInches, double timeoutS) {
         int newFrontLeftTarget;
         int newFrontRightTarget;
@@ -184,6 +191,7 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
                 //telemetry.addData("Path1", "Running to %7d :%7d :%7d :%7d", robot.DriveFrontLeft, robot.DriveFrontRight, robot.DriveBackLeft, robot.DriveBackRight);
                 telemetry.update();
             }
+
             robot.DriveFrontLeft.setPower(0);
             robot.DriveFrontRight.setPower(0);
             robot.DriveBackLeft.setPower(0);
@@ -199,7 +207,6 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
             robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-            robot.IntakeWheel.setPower(-0.4);
 
             sleep(250);
         }
@@ -252,6 +259,7 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
                 //telemetry.addData("Path1", "Running to %7d :%7d :%7d :%7d", robot.DriveFrontLeft, robot.DriveFrontRight, robot.DriveBackLeft, robot.DriveBackRight);
                 telemetry.update();
             }
+
             robot.DriveFrontLeft.setPower(0);
             robot.DriveFrontRight.setPower(0);
             robot.DriveBackLeft.setPower(0);

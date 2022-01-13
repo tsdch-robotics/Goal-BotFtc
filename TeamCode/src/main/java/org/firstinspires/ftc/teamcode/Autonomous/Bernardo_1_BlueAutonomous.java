@@ -11,7 +11,7 @@ import java.lang.*;
 @Autonomous(name="Bernardo_1_BlueAutonomous", group="ChampBot")
 
 public class Bernardo_1_BlueAutonomous extends LinearOpMode {
-    ChampBot robot = new ChampBot();
+    ChampBot_v2 robot = new ChampBot_v2();
     private ElapsedTime runtime = new ElapsedTime();
     static final double tickCount = 537.7;
     static final double wheelDiameter = 3.78; //in inches

@@ -341,6 +341,10 @@ public class Bernardo_2_RedAutonomous extends LinearOpMode {
             sleep(250);
         }
     }
+
+    public void setArm (double position) {
+        
+    }
     /*public void encoderArm (double speed, double armTickCount, double timeoutS) {
         int newArmTarget;
 

@@ -52,7 +52,18 @@ public class Bernardo_1_RedAutonomous extends LinearOpMode {
         waitForStart();
 
 
-        encoderDrive(.5, 29, 29, 3.0); // 15
+        robot.ArmServo.setPosition(0.34);
+        encoderStrafe(.5,7,Direction.left, 3.0); //straft left
+        encoderDrive(.2, 10, 10, 3.0); //drive slowly forward
+        encoderDrive(-.2, 10, 10, 3.0); //drive slowly backwards
+        encoderStrafe(.5,10,Direction.right, 3.0); //straft right
+        encoderDrive(.5, 29, 29, 3.0); //drive into warehouse
+        encoderDriveAndIntake(.2,10,10,4.0); //drive forward slowly while spinning intake wheel
+        encoderDrive(-.5, 32, 32, 3.0); //drive out of warehouse
+        //repeat
+
+
+        //encoderDrive(.5, 29, 29, 3.0);
         //encoderTurn(.5, 1, Direction.right, 1.0);
         //encoderArm(.5,800,3.0);
         //encoderDrive(.3, 9, 9, 3.0);
@@ -285,7 +296,3 @@ public class Bernardo_1_RedAutonomous extends LinearOpMode {
         }
     }
 }
-
-
-
-

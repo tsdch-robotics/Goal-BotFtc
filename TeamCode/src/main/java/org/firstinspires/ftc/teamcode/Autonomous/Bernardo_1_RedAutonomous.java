@@ -11,7 +11,7 @@ import java.lang.*;
 @Autonomous(name="Bernardo_1_RedAutonomous", group="ChampBot")
 
 public class Bernardo_1_RedAutonomous extends LinearOpMode {
-    ChampBot robot = new ChampBot();
+    ChampBot_v2 robot = new ChampBot_v2();
     private ElapsedTime runtime = new ElapsedTime();
     static final double tickCount = 537.7;
     static final double wheelDiameter = 3.78; //in inches
@@ -138,6 +138,63 @@ public class Bernardo_1_RedAutonomous extends LinearOpMode {
             sleep(250);
         }
     }
+
+    public void encoderDriveAndIntake (double speed, double leftInches, double rightInches, double timeoutS) {
+        int newFrontLeftTarget;
+        int newFrontRightTarget;
+        int newBackLeftTarget;
+        int newBackRightTarget;
+
+        if (opModeIsActive()) {
+            newFrontLeftTarget = robot.DriveFrontLeft.getCurrentPosition() + (int) (1.25 * leftInches * countsPerInch);
+            newFrontRightTarget = robot.DriveFrontRight.getCurrentPosition() + (int) (1.25 * rightInches * countsPerInch);
+            newBackLeftTarget = robot.DriveBackLeft.getCurrentPosition() + (int) (1.25 * leftInches * countsPerInch);
+            newBackRightTarget = robot.DriveBackRight.getCurrentPosition() + (int) (1.25 * rightInches * countsPerInch);
+
+            robot.DriveFrontLeft.setTargetPosition(newFrontLeftTarget);
+            robot.DriveFrontRight.setTargetPosition(newFrontRightTarget);
+            robot.DriveBackLeft.setTargetPosition(newBackLeftTarget);
+            robot.DriveBackRight.setTargetPosition(newBackRightTarget);
+
+            robot.DriveFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            runtime.reset();
+            robot.DriveFrontLeft.setPower(Math.abs(speed));
+            robot.DriveFrontRight.setPower(Math.abs(speed));
+            robot.DriveBackLeft.setPower(Math.abs(speed));
+            robot.DriveBackRight.setPower(Math.abs(speed));
+
+            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (robot.DriveFrontLeft.isBusy() && robot.DriveFrontRight.isBusy() && robot.DriveBackLeft.isBusy() && robot.DriveBackRight.isBusy()))
+                ;
+            {
+                telemetry.addData("Path1", "Running to %7d :%7d :%7d :%7d", newFrontLeftTarget, newFrontRightTarget, newBackLeftTarget, newBackRightTarget);
+                //telemetry.addData("Path1", "Running to %7d :%7d :%7d :%7d", robot.DriveFrontLeft, robot.DriveFrontRight, robot.DriveBackLeft, robot.DriveBackRight);
+                telemetry.update();
+            }
+            robot.DriveFrontLeft.setPower(0);
+            robot.DriveFrontRight.setPower(0);
+            robot.DriveBackLeft.setPower(0);
+            robot.DriveBackRight.setPower(0);
+
+            robot.DriveFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            robot.DriveBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+            robot.DriveFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.DriveFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.DriveBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.DriveBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            robot.IntakeWheel.setPower(-0.4);
+
+            sleep(250);
+        }
+    }
+
     public void encoderStrafe (double strafeSpeed, double inches, Direction direction, double timeoutS) {
         int newFrontLeftTarget;
         int newFrontRightTarget;
